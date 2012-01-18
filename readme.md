@@ -7,16 +7,14 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 How to Use:
 -----------
 
-##On desktop:
+###On desktop:
 
 1.	Drag this link to your bookmarks toolbar or add it to your favorites:
 
-	[HTML-Lint](#test)
-
-	//javascript: (function () {'use strict';var script = document.createElement('script');script.src = 'https://raw.github.com/curtisj44/HTML-Lint/master/html-lint.js';script.id = 'html-lint-js';document.body.appendChild(script);}());
+	<a href="javascript:(function(){'use strict';var script=document.createElement('script');script.src='https://raw.github.com/curtisj44/HTML-Lint/master/html-lint.js';script.id='html-lint-js';document.body.appendChild(script);}());">HTML-Lint</a>
 
 
-##On mobile:
+###On mobile:
 
 1.	Copy the code below:
 
