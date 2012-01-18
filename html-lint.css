@@ -14,9 +14,9 @@
 	min-height:200px;
 	border:1px solid #000;
 	border-color:rgba(0,0,0,.8);
-	-moz-box-shadow:0 10px 22px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.4) inset, 0 1px 0 rgba(255,255,255,.2) inset;
+	-moz-box-shadow:   0 10px 22px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.4) inset, 0 1px 0 rgba(255,255,255,.2) inset;
 	-webkit-box-shadow:0 10px 22px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.4) inset, 0 1px 0 rgba(255,255,255,.2) inset;
-	box-shadow:0 10px 22px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.4) inset, 0 1px 0 rgba(255,255,255,.2) inset;
+	box-shadow:        0 10px 22px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.4) inset, 0 1px 0 rgba(255,255,255,.2) inset;
 	background:#000;
 	background:rgba(0,0,0,.9);
 	color:#fff;
@@ -65,9 +65,9 @@
 	padding:.5em 3%;
 	width:100%;
 	border-bottom:1px solid rgba(0,0,0,.7);
-	-moz-box-shadow:0 1px 0 rgba(255,255,255,.1);
+	-moz-box-shadow:   0 1px 0 rgba(255,255,255,.1);
 	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.1);
-	box-shadow:0 1px 0 rgba(255,255,255,.1);
+	box-shadow:        0 1px 0 rgba(255,255,255,.1);
 	background:rgba(255,255,255,.1);
 	font-weight:bold;
 	font-size:20px;
@@ -86,16 +86,14 @@
 	-moz-border-radius:4px;
 	-webkit-border-radius:4px;
 	border-radius:4px;
-	-moz-box-shadow:0 1px 0 rgba(255,255,255,.1);
+	-moz-box-shadow:   0 1px 0 rgba(255,255,255,.1);
 	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.1);
-	box-shadow:0 1px 0 rgba(255,255,255,.1);
+	box-shadow:        0 1px 0 rgba(255,255,255,.1);
 	background:rgba(255,255,255,.1);
 	color:rgba(255,255,255,.8);
-	-moz-transition:.3s all ease-out;
-	-ms-transition:.3s all ease-out;
-	-o-transition:.3s all ease-out;
+	-moz-transition:   .3s all ease-out;
 	-webkit-transition:.3s all ease-out;
-	transition:.3s all ease-out;
+	transition:.        3s all ease-out;
 	cursor:pointer}
 #html-lint .html-lint-button:hover,
 #html-lint .html-lint-button:focus {
@@ -111,9 +109,9 @@
 	right:20px;
 	padding:0 .4em .1em;
 	border-top-width:0;
-	-moz-border-radius:0 0 4px 4px;
+	-moz-border-radius:   0 0 4px 4px;
 	-webkit-border-radius:0 0 4px 4px;
-	border-radius:0 0 4px 4px;
+	border-radius:        0 0 4px 4px;
 	font-weight:bold;
 	font-size:19px;
 	line-height:1}
@@ -123,9 +121,9 @@
 	overflow:hidden;
 	padding:.25em 3% 0;
 	border-bottom:1px solid rgba(0,0,0,.7);
-	-moz-box-shadow:0 1px 0 rgba(255,255,255,.1);
+	-moz-box-shadow:   0 1px 0 rgba(255,255,255,.1);
 	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.1);
-	box-shadow:0 1px 0 rgba(255,255,255,.1);
+	box-shadow:        0 1px 0 rgba(255,255,255,.1);
 	list-style:none}
 #html-lint .html-lint-tab-list li {
 	float:left;
@@ -160,9 +158,9 @@
 	-moz-border-radius:3px;
 	-webit-border-radius:3px;
 	border-radius:3px;
-	-moz-box-shadow:0 1px 0 rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.2) inset;
+	-moz-box-shadow:   0 1px 0 rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.2) inset;
 	-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.2) inset;
-	box-shadow:0 1px 0 rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.2) inset;
+	box-shadow:        0 1px 0 rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.2) inset;
 	background:rgba(255,10,10,.4)}
 
 #html-lint h1 .html-lint-error {
@@ -178,11 +176,9 @@
 	top:80%;
 	right:5px;
 	font-size:10px;
-	-moz-transition:.3s all ease-out;
-	-ms-transition:.3s all ease-out;
-	-o-transition:.3s all ease-out;
+	-moz-transition:   .3s all ease-out;
 	-webkit-transition:.3s all ease-out;
-	transition:.3s all ease-out}
+	transition:        .3s all ease-out}
 
 #html-lint a:hover .html-lint-error-count,
 #html-lint a:focus .html-lint-error-count {
@@ -208,9 +204,9 @@
 		float:none}
 	#html-lint .html-lint-tab-list a {
 		border-left-width:0;
-		-moz-border-radius:0 4px 4px 0;
+		-moz-border-radius:   0 4px 4px 0;
 		-webkit-border-radius:0 4px 4px 0;
-		border-radius:0 4px 4px 0}
+		border-radius:        0 4px 4px 0}
 
 	/* tab panel ----------------------------------------- */
 	#html-lint .html-lint-tab-panel {
