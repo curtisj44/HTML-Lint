@@ -16,7 +16,9 @@ Drag this link to your bookmarks toolbar or add it to your favorites: [HTML-Lint
 
 1.	Copy the code below:
 
-	`javascript: (function(){'use strict';var script = document.createElement('script');script.src = 'https://raw.github.com/curtisj44/HTML-Lint/master/html-lint.js';script.id = 'html-lint-js';document.body.appendChild(script);}());`
+	```javascript
+	javascript: (function(){'use strict';var script = document.createElement('script');script.src = 'https://raw.github.com/curtisj44/HTML-Lint/master/html-lint.js';script.id = 'html-lint-js';document.body.appendChild(script);}());
+	```
 
 2.	Bookmark any URL.
 
