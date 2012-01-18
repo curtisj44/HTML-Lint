@@ -750,7 +750,7 @@
 
 	self.utility = {};
 
-	self.utility.css = 'http://dl.dropbox.com/u/8864275/html-lint/html-lint.css';
+	self.utility.css = 'https://raw.github.com/curtisj44/HTML-Lint/master/html-lint.css';
 
 	self.utility.error = function (message) {
 		return '<span class="html-lint-error">' + (message || 'missing tag') + '</span>';
