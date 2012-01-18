@@ -27,7 +27,11 @@ How to Use:
 3.	Edit that new bookmark: Set the name to 'HTML-Lint' and paste the above as the URL.
 
 
+
+<!--
 What it tests:
 --------------
 
 Coming soon...
+
+-->
