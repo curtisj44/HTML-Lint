@@ -1,0 +1,263 @@
+/* HTML-Lint
+---------------------------------------------------------------------------------------- //// */
+
+#html-lint {
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box;
+	position:absolute;
+	z-index:9900000; /* thanks management.fortune.cnn.com */
+	top:0;
+	overflow:hidden;
+	width:100%;
+	min-width:200px;
+	min-height:200px;
+	border:1px solid #000;
+	border-color:rgba(0,0,0,.8);
+	-moz-box-shadow:0 10px 22px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.4) inset, 0 1px 0 rgba(255,255,255,.2) inset;
+	-webkit-box-shadow:0 10px 22px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.4) inset, 0 1px 0 rgba(255,255,255,.2) inset;
+	box-shadow:0 10px 22px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.4) inset, 0 1px 0 rgba(255,255,255,.2) inset;
+	background:#000;
+	background:rgba(0,0,0,.9);
+	color:#fff;
+	font:normal 14px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
+	-ms-text-size-adjust:100%;
+	-webkit-text-size-adjust:100%}
+
+#html-lint * {
+	position:static;
+	margin:0;
+	padding:0;
+	height:auto;
+	min-height:0;
+	border:0;
+	background:none;
+	color:#fff;
+	font:inherit;
+	letter-spacing:0;
+	text-align:left;
+	text-decoration:none;
+	text-indent:0;
+	text-shadow:none;
+	text-transform:none;
+	list-style:none}
+
+#html-lint a {
+	text-decoration:underline}
+
+#html-lint img {
+	max-width:100%}
+
+#html-lint code {
+	display:inline;
+	font-family:monospace}
+
+#html-lint p,
+#html-lint dd {
+	display:block;
+	margin:0 0 1em;
+	color:#eee}
+
+/* headings ----------------------------------------- */
+#html-lint h1 {
+	display:block;
+	margin:0 0 .5em;
+	padding:.5em 3%;
+	width:100%;
+	border-bottom:1px solid rgba(0,0,0,.7);
+	-moz-box-shadow:0 1px 0 rgba(255,255,255,.1);
+	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.1);
+	box-shadow:0 1px 0 rgba(255,255,255,.1);
+	background:rgba(255,255,255,.1);
+	font-weight:bold;
+	font-size:20px;
+	line-height:1}
+
+/* definition list ----------------------------------------- */
+#html-lint dl {
+	margin:0 3%}
+#html-lint dt {
+	font-weight:bold}
+
+/* button ----------------------------------------- */
+#html-lint .html-lint-button {
+	position:relative;
+	border:1px solid rgba(0,0,0,.7);
+	-moz-border-radius:4px;
+	-webkit-border-radius:4px;
+	border-radius:4px;
+	-moz-box-shadow:0 1px 0 rgba(255,255,255,.1);
+	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.1);
+	box-shadow:0 1px 0 rgba(255,255,255,.1);
+	background:rgba(255,255,255,.1);
+	color:rgba(255,255,255,.8);
+	-moz-transition:.3s all ease-out;
+	-ms-transition:.3s all ease-out;
+	-o-transition:.3s all ease-out;
+	-webkit-transition:.3s all ease-out;
+	transition:.3s all ease-out;
+	cursor:pointer}
+#html-lint .html-lint-button:hover,
+#html-lint .html-lint-button:focus {
+	background:rgba(255,255,255,.2);
+	color:#fff}
+#html-lint .html-lint-button:active {
+	top:1px}
+
+/* ---- close ---- */
+#html-lint .html-lint-close {
+	position:absolute;
+	top:0;
+	right:20px;
+	padding:0 .4em .1em;
+	border-top-width:0;
+	-moz-border-radius:0 0 4px 4px;
+	-webkit-border-radius:0 0 4px 4px;
+	border-radius:0 0 4px 4px;
+	font-weight:bold;
+	font-size:19px;
+	line-height:1}
+
+/* tab list ----------------------------------------- */
+#html-lint .html-lint-tab-list {
+	overflow:hidden;
+	padding:.25em 3% 0;
+	border-bottom:1px solid rgba(0,0,0,.7);
+	-moz-box-shadow:0 1px 0 rgba(255,255,255,.1);
+	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.1);
+	box-shadow:0 1px 0 rgba(255,255,255,.1);
+	list-style:none}
+#html-lint .html-lint-tab-list li {
+	float:left;
+	margin:0 .7em 1em 0;
+	list-style:none}
+#html-lint .html-lint-tab-list a {
+	display:block;
+	position:relative;
+	padding:.5em 15%;
+	text-decoration:none;
+	text-transform:capitalize}
+
+#html-lint .html-lint-tab-list a.selected {
+	background:rgba(255,255,255,.3)}
+
+/* tab panel ----------------------------------------- */
+#html-lint .html-lint-tab-panel {
+	padding:.5em 0}
+
+#html-lint .html-lint-tab-panel p i {
+	display:block;
+	float:left;
+	margin:0 3% 0 0;
+	min-width:6%;
+	text-align:right}
+
+/* error ----------------------------------------- */
+#html-lint .html-lint-error,
+.html-lint-error-highlight {
+	padding:0 3px;
+	border:1px solid rgba(70,5,5,.8);
+	-moz-border-radius:3px;
+	-webit-border-radius:3px;
+	border-radius:3px;
+	-moz-box-shadow:0 1px 0 rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.2) inset;
+	-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.2) inset;
+	box-shadow:0 1px 0 rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.2) inset;
+	background:rgba(255,10,10,.4)}
+
+#html-lint h1 .html-lint-error {
+	margin:0 2.5% 0 0}
+
+.html-lint-error-highlight {
+	background:#9f1a1a}
+
+/* ---- error count ---- */
+#html-lint .html-lint-error-count {
+	display:block;
+	position:absolute;
+	top:80%;
+	right:5px;
+	font-size:10px;
+	-moz-transition:.3s all ease-out;
+	-ms-transition:.3s all ease-out;
+	-o-transition:.3s all ease-out;
+	-webkit-transition:.3s all ease-out;
+	transition:.3s all ease-out}
+
+#html-lint a:hover .html-lint-error-count,
+#html-lint a:focus .html-lint-error-count {
+	background:rgba(200,10,10,.7)}
+
+#html-lint a.selected .html-lint-error-count {
+	background:rgba(200,10,10,.8)}
+
+/* Media Queries
+---------------------------------------------------------------------------------------- //// */
+
+@media (min-width:480px) {
+	/* tab list ----------------------------------------- */
+	#html-lint .html-lint-tab-list {
+		float:left;
+		padding:0;
+		width:30%;
+		border-bottom:0;
+		-moz-box-shadow:none;
+		-webkit-box-shadow:none;
+		box-shadow:none}
+	#html-lint .html-lint-tab-list li {
+		float:none}
+	#html-lint .html-lint-tab-list a {
+		border-left-width:0;
+		-moz-border-radius:0 4px 4px 0;
+		-webkit-border-radius:0 4px 4px 0;
+		border-radius:0 4px 4px 0}
+
+	/* tab panel ----------------------------------------- */
+	#html-lint .html-lint-tab-panel {
+		float:right;
+		width:70%}
+
+	/* error ----------------------------------------- */
+	#html-lint .html-lint-error-count {
+		top:26%;
+		right:7px;
+		font-size:11px}
+}
+
+@media (min-width:600px) {
+	#html-lint {
+		word-wrap:break-word}
+
+	/* definition list ----------------------------------------- */
+	#html-lint dl {
+		overflow:hidden}
+	#html-lint dt,
+	#html-lint dd {
+		float:left;
+		margin:0 0 1em}
+	#html-lint dt {
+		clear:both;
+		padding-right:1%;
+		width:24%}
+	#html-lint dd {
+		width:75%}
+
+	/* tab list ----------------------------------------- */
+	#html-lint .html-lint-tab-list {
+		width:20%}
+
+	/* tab panel ----------------------------------------- */
+	#html-lint .html-lint-tab-panel {
+		width:80%}
+}
+
+@media (min-width:1004px) {
+	#html-lint {
+		top:20px;
+		right:20px;
+		width:80%;
+		max-width:800px;
+		-moz-border-radius:7px;
+		-webkit-border-radius:7px;
+		border-radius:7px}
+}
