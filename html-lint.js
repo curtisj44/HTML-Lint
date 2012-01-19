@@ -1,5 +1,3 @@
-// https://github.com/allmarkedup/snoopy/blob/master/src/lib/sniffer.js
-
 (function (HtmlLint) {
 	'use strict';
 
