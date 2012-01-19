@@ -1,5 +1,3 @@
-// https://github.com/allmarkedup/snoopy/blob/master/src/lib/sniffer.js
-
 (function (HtmlLint) {
 	'use strict';
 
@@ -750,7 +748,7 @@
 
 	self.utility = {};
 
-	self.utility.css = 'https://raw.github.com/curtisj44/HTML-Lint/master/html-lint.css';
+	self.utility.css = 'http://dl.dropbox.com/u/8864275/HTML-Lint/html-lint.css';
 
 	self.utility.error = function (message) {
 		return '<span class="html-lint-error">' + (message || 'missing tag') + '</span>';
