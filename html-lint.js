@@ -64,12 +64,12 @@
 			output = '';
 
 		$.each(tests, function (index, test) {
-			currentErrors = $(test.selector).length;
+			currentErrors = $(index).length;
 
 			if (currentErrors > 0) {
 				errors += currentErrors;
 				output += '<p><i>' + self.utility.error(currentErrors) + '</i>' + test.label + '</p>';
-				//$(test.selector).addClass('html-lint-error-highlight').attr('data-html-lint', test.label);
+				//$(index).addClass('html-lint-error-highlight').attr('data-html-lint', test.label);
 			}
 		});
 
@@ -334,414 +334,314 @@
 
 	self.test = {
 		// ---- Tags ----
-		'empty tag': {
-			'selector': 'a:empty, b:empty, abbr:empty, acronym:empty, button:empty, dd:empty, div:empty, dl:empty, dt:empty, h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, form:empty, fieldset:empty, label:empty, li:empty, ol:empty, p:empty, span:empty, strong:empty, ul:empty',
+		'a:empty, b:empty, abbr:empty, acronym:empty, button:empty, dd:empty, div:empty, dl:empty, dt:empty, h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, form:empty, fieldset:empty, label:empty, li:empty, ol:empty, p:empty, span:empty, strong:empty, ul:empty': {
 			'label': 'empty tag'
 		},
 		'applet': {
-			'selector': 'applet',
 			'label': '<code>&lt;applet&gt;</code>'
 		},
 		'center': {
-			'selector': 'center',
 			'label': '<code>&lt;center&gt;</code>'
 		},
 		'font': {
-			'selector': 'font',
 			'label': '<code>&lt;font&gt;</code>'
 		},
 		'iframe': {
-			'selector': 'iframe',
 			'label': '<code>&lt;iframe&gt;</code>'
 		},
 		'noscript': {
-			'selector': 'noscript',
 			'label': '<code>&lt;noscript&gt;</code>'
 		},
 		's': {
-			'selector': 's',
 			'label': '<code>&lt;s&gt;</code>'
 		},
 		'strike': {
-			'selector': 'strike',
 			'label': '<code>&lt;strike&gt;</code>'
 		},
 		'u': {
-			'selector': 'u',
 			'label': '<code>&lt;u&gt;</code>'
 		},
 		'br + br': {
-			'selector': 'br + br',
 			'label': 'Multiple <code>&lt;br&gt;</code>&rsquo;s (* not quite accurate)'
 		},
 
 		// ---- Attributes ----
 		':contains("=NOTFOUND!")': {
-			'selector': ':contains("=NOTFOUND!")',
 			'label': 'Missing SiteCore resource'
 		},
 
 		'abbr:not([title])': {
-			'selector': 'abbr:not([title])',
 			'label': '<code>&lt;abbr&gt;</code> missing <code>title</code>'
 		},
 		'acronym:not([title])': {
-			'selector': 'acronym:not([title])',
 			'label': '<code>&lt;acronym&gt;</code> missing <code>title</code>'
 		},
-		'a:contains("click here")': {
-			'selector': 'a:contains("Click here"), a:contains("click here")',
+		'a:contains("Click here"), a:contains("click here")': {
 			'label': '&ldquo;Click here&rdquo; used as link text'
 		},
-		'a:contains("read more")': {
-			'selector': 'a:contains("Read more"), a:contains("Read more")',
+		'a:contains("Read more"), a:contains("Read more")': {
 			'label': '&ldquo;Read more&rdquo; used as link text'
 		},
 		'a:not([href])': {
-			'selector': 'a:not([href])',
 			'label': '<code>&lt;a&gt;</code> missing <code>href</code>'
 		},
 		'a[href=""]': {
-			'selector': 'a[href=""]',
 			'label': '<code>a[href=""]</code>'
 		},
 		'a[href="#"]': {
-			'selector': 'a[href="#"]',
 			'label': '<code>a[href="#"]</code>'
 		},
 		'a[href*="javascript:"]': {
-			'selector': 'a[href*="javascript:"]',
 			'label': '<code>a[href*="javascript:"]</code>'
 		},
 		'a[href*="<"]': {
-			'selector': 'a[href*="<"]',
 			'label': '<code>a[href*="<"]</code>'
 		},
 		'a[href*=">"]': {
-			'selector': 'a[href*=">"]',
 			'label': '<code>a[href*=">"]</code>'
 		},
 		'a[target]': {
-			'selector': 'a[target]',
 			'label': '<code>a[target]</code>'
 		},
-		//'script in the head': {
-		//	'selector': 'head script:not([src*="hasJS.js"], [src*="swfobject.js"], [src*="google-analytics.com"])',
+		//'head script:not([src*="hasJS.js"], [src*="swfobject.js"], [src*="google-analytics.com"])': {
 		//	'label': '<code>&lt;script&gt;</code> in the <code>&lt;head&gt;</code>'
 		//},
-		'fieldset missing legend': {
-			'selector': 'fieldset:not(:has(legend))',
+		'fieldset:not(:has(legend))': {
 			'label': '<code>&lt;fieldset&gt;</code> missing <code>&lt;legend&gt;</code>'
 		},
 		'form[action=""]': {
-			'selector': 'form[action=""]',
 			'label': '<code>form[action=""]</code>'
 		},
 		'form[action="#"]': {
-			'selector': 'form[action="#"]',
 			'label': '<code>form[action="#"]</code>'
 		},
-		'form missing fieldset': {
-			'selector': 'form:not(:has(fieldset))',
+		'form:not(:has(fieldset))': {
 			'label': '<code>&lt;form&gt;</code> missing <code>&lt;fieldset&gt;</code>'
 		},
 		'img:not([alt])': {
-			'selector': 'img:not([alt])',
 			'label': '<code>&lt;img&gt;</code> missing <code>alt</code>'
 		},
 		'img:not(".tracking")[alt=""]': {
-			'selector': 'img:not(".tracking")[alt=""]',
 			'label': '<code>img[alt=""]</code>'
 		},
 		'img[src=""]': {
-			'selector': 'img[src=""]',
 			'label': '<code>img[src=""]</code>'
 		},
 		'label:not([for])': {
-			'selector': 'label:not([for])',
 			'label': '<code>&lt;label&gt;</code> missing for'
 		},
-		'link not in <head>': {
-			'selector': 'body link:not("#html-lint-css")',
+		'body link:not("#html-lint-css")': {
 			'label': '<code>&lt;link&gt;</code> not in <code>&lt;head&gt;</code>'
 		},
 		'link:not([rel])': {
-			'selector': 'link:not([rel])',
 			'label': '<code>&lt;link&gt;</code> missing rel'
 		},
 		'link[rel="shortcut icon"][type="image/ico"]': {
-			'selector': 'link[rel="shortcut icon"][type="image/ico"]',
 			'label': '<code>type="images/ico"</code> is not needed on <code>&lt;link&gt;</code>'
 		},
 		'link[rel="stylesheet"][media="all"]': {
-			'selector': 'link[media="all"]',
 			'label': '<code>media="all"</code> is not needed on <code>&lt;link&gt;</code>'
 		},
 		'link[rel="stylesheet"][type="text/css"]': {
-			'selector': 'link[rel="stylesheet"][type="text/css"]',
 			'label': '<code>type="text/css"</code> is not needed on <code>&lt;link&gt;</code>'
 		},
 		'script[charset]': {
-			'selector': 'script[charset]',
 			'label': '<code>script[charset]</code>'
 		},
 		'script[language]': {
-			'selector': 'script[language]',
 			'label': '<code>language</code> attribute is not valid on <code>&lt;script&gt;</code>'
 		},
 		'script[type="text/javascript"]': {
-			'selector': 'script[type="text/javascript"]',
 			'label': '<code>type="text/javascript"</code> is not needed on <code>&lt;script&gt;</code>'
 		},
 		'table:not([summary])': {
-			'selector': 'table:not([summary])',
 			'label': '<code>&lt;table&gt;</code> missing <code>summary</code>'
 		},
 
 		//'table:not(:has(caption))': {
-		//	'selector': 'table:not(:has(caption))',
 		//	'label': '<code>&lt;table&gt;</code> missing <code>&lt;caption&gt;</code>'
 		//},
 
 		'table:not(:has(th))': {
-			'selector': 'table:not(:has(th))',
 			'label': '<code>&lt;table&gt;</code> missing <code>&lt;th&gt;</code>'
 		},
 		'table table': {
-			'selector': 'table table',
 			'label': '<code>&lt;table&gt;</code> inside <code>&lt;table&gt;</code>'
 		},
 		'th:not([scope])': {
-			'selector': 'th:not([scope])',
 			'label': '<code>&lt;th&gt;</code> missing scope'
 		},
 		'th[scope=""]': {
-			'selector': 'th[scope=""]',
 			'label': '<code>th[scope=""]</code>'
 		},
 		':not("canvas, img, object")[width]': {
-			'selector': ':not("canvas, img, object")[width]',
 			'label': 'Invalid attribute: <code>width</code>'
 		},
 
 		'[align]': {
-			'selector': '[align]',
 			'label': 'Invalid attribute: <code>align</code>'
 		},
 		'[alink]': {
-			'selector': '[alink]',
 			'label': 'Bad attribute: <code>alink</code>'
 		},
 		'[background]': {
-			'selector': '[background]',
 			'label': 'Invalid attribute: <code>background</code>'
 		},
 		'[bgcolor]': {
-			'selector': '[bgcolor]',
 			'label': 'Invalid attribute: <code>bgcolor</code>'
 		},
 		'[border]': {
-			'selector': '[border]',
 			'label': 'Bad attribute: <code>border</code>'
 		},
 		'[cellpadding]': {
-			'selector': '[cellpadding]',
 			'label': 'Bad attribute: <code>cellpadding</code>'
 		},
 		'[cellspacing]': {
-			'selector': '[cellspacing]',
 			'label': 'Bad attribute: <code>cellspacing</code>'
 		},
 		'[class=""]': {
-			'selector': '[class=""]',
 			'label': '<code>class=""</code>'
 		},
 		'[halign]': {
-			'selector': '[halign]',
 			'label': 'Invalid attribute: <code>halign</code>'
 		},
 		'[id=""]': {
-			'selector': '[id=""]',
 			'label': '<code>id=""</code>'
 		},
 		'[link]': {
-			'selector': '[link]',
 			'label': 'Bad attribute: <code>link</code>'
 		},
 		'[name=""]': {
-			'selector': '[name=""]',
 			'label': '<code>name=""</code>'
 		},
 		'[shape]': {
-			'selector': '[shape]',
 			'label': 'Bad attribute: <code>shape</code>'
 		},
 		'[size]': {
-			'selector': '[size]',
 			'label': 'Bad attribute: <code>size</code>'
 		},
 		'[style*="background"]': {
-			'selector': '[style*="background"]',
 			'label': 'Inline style: <code>background</code>'
 		},
 		'[style*="border"]': {
-			'selector': '[style*="border"]',
 			'label': 'Inline style: <code>border</code>'
 		},
 		'[style*="font"]': {
-			'selector': '[style*="font"]',
 			'label': 'Inline style: <code>font</code>'
 		},
 		'[style*="letter-spacing"]': {
-			'selector': '[style*="letter-spacing"]',
 			'label': 'Inline style: <code>letter-spacing</code>'
 		},
 		'[style*="line-height"]': {
-			'selector': '[style*="line-height"]',
 			'label': 'Inline style: <code>line-height</code>'
 		},
 		'[style*="list-style"]': {
-			'selector': '[style*="list-style"]',
 			'label': 'Inline style: <code>list-style</code>'
 		},
 		'[style*="outline"]': {
-			'selector': '[style*="outline"]',
 			'label': 'Inline style: <code>outline</code>'
 		},
 		'[style*="resize"]': {
-			'selector': '[style*="resize"]',
 			'label': 'Inline style: <code>resize</code>'
 		},
 		'[style*="text"]': {
-			'selector': '[style*="text"]',
 			'label': 'Inline style: <code>text</code>'
 		},
 		'[style*="vertical"]': {
-			'selector': '[style*="vertical"]',
 			'label': 'Inline style: <code>vertical</code>'
 		},
 		'[style*="word"]': {
-			'selector': '[style*="word"]',
 			'label': 'Inline style: <code>word</code>'
 		},
 		'[tabindex]': {
-			'selector': '[tabindex]',
 			'label': 'Bad attribute: <code>tabindex</code>'
 		},
 		'[title=""]': {
-			'selector': '[title=""]',
-			'label': '<code>title=""</code>'
+			'label': '<code>title</code> attribute is empty'
 		},
 		'[valign]': {
-			'selector': '[valign]',
 			'label': 'Invalid attribute: <code>valign</code>'
 		},
 		'[vlink]': {
-			'selector': '[vlink]',
 			'label': 'Bad attribute: <code>vlink</code>'
 		},
 
 		// Event Handlers
 		'[onAbort]': {
-			'selector': '[onAbort]',
 			'label': 'Bad attribute: <code>onAbort</code>'
 		},
 		'[onBlur]': {
-			'selector': '[onBlur]',
 			'label': 'Bad attribute: <code>onBlur</code>'
 		},
 		'[onChange]': {
-			'selector': '[onChange]',
 			'label': 'Bad attribute: <code>onChange</code>'
 		},
 		'[onClick]': {
-			'selector': '[onClick]',
 			'label': 'Bad attribute: <code>onClick</code>'
 		},
 		'[onDblClick]': {
-			'selector': '[onDblClick]',
 			'label': 'Bad attribute: <code>onDblClick</code>'
 		},
 		'[onDragDrop]': {
-			'selector': '[onDragDrop]',
 			'label': 'Bad attribute: <code>onDragDrop</code>'
 		},
 		'[onError]': {
-			'selector': '[onError]',
 			'label': 'Bad attribute: <code>onError</code>'
 		},
 		'[onFocus]': {
-			'selector': '[onFocus]',
 			'label': 'Bad attribute: <code>onFocus</code>'
 		},
 		'[onKeyDown]': {
-			'selector': '[onKeyDown]',
 			'label': 'Bad attribute: <code>onKeyDown</code>'
 		},
 		'[onKeyPress]': {
-			'selector': '[onKeyPress]',
 			'label': 'Bad attribute: <code>onKeyPress</code>'
 		},
 		'[onKeyUp]': {
-			'selector': '[onKeyUp]',
 			'label': 'Bad attribute: <code>onKeyUp</code>'
 		},
 		'[onLoad]': {
-			'selector': '[onLoad]',
 			'label': 'Bad attribute: <code>onLoad</code>'
 		},
 		'[onMouseDown]': {
-			'selector': '[onMouseDown]',
 			'label': 'Bad attribute: <code>onMouseDown</code>'
 		},
 		'[onMouseMove]': {
-			'selector': '[onMouseMove]',
 			'label': 'Bad attribute: <code>onMouseMove</code>'
 		},
 		'[onMouseOut]': {
-			'selector': '[onMouseOut]',
 			'label': 'Bad attribute: <code>onMouseOut</code>'
 		},
 		'[onMouseOver]': {
-			'selector': '[onMouseOver]',
 			'label': 'Bad attribute: <code>onMouseOver</code>'
 		},
 		'[onMouseUp]': {
-			'selector': '[onMouseUp]',
 			'label': 'Bad attribute: <code>onMouseUp</code>'
 		},
 		'[onMove]': {
-			'selector': '[onMove]',
 			'label': 'Bad attribute: <code>onMove</code>'
 		},
 		'[onReset]': {
-			'selector': '[onReset]',
 			'label': 'Bad attribute: <code>onReset</code>'
 		},
 		'[onResize]': {
-			'selector': '[onResize]',
 			'label': 'Bad attribute: <code>onResize</code>'
 		},
 		'[onSelect]': {
-			'selector': '[onSelect]',
 			'label': 'Bad attribute: <code>onSelect</code>'
 		},
 		'[onSubmit]': {
-			'selector': '[onSubmit]',
 			'label': 'Bad attribute: <code>onSubmit</code>'
 		},
 		'[onUnload]': {
-			'selector': '[onUnload]',
 			'label': 'Bad attribute: <code>onUnload</code>'
 		},
 
 		// Ids & Classes
 		'#ContentWrapper': {
-			'selector': '#ContentWrapper',
 			'label': 'Bad Id: <code>ContentWrapper</code>'
 		},
 		'.MsoNormal': {
-			'selector': '.MsoNormal',
 			'label': 'Bad Class: <code>MsoNormal</code>'
 		}
 	};
