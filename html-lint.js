@@ -670,7 +670,7 @@
 		}
 
 		// Add jQuery
-		if (typeof jQuery !== 'undefined' && parseInt($.fn.jquery.replace(/\./g, '')) > 164) {
+		if (typeof jQuery !== 'undefined' && $.fn !== 'undefined' && parseInt($.fn.jquery.replace(/\./g, '')) > 164) {
 			self.init();
 		} else {
 			script = document.createElement('script');
