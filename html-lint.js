@@ -12,7 +12,7 @@
 			$panel.remove();
 		}
 
-		$htmlLint.append('<div class="html-lint-tab-panel" data-panel="' + nameRevised + '" style="display:none">' + output + '</div>');
+		$htmlLint.append('<div class="html-lint-tab-panel" data-panel="' + nameRevised + '">' + output + '</div>');
 
 		// tab button
 		$htmlLint.find('.html-lint-tab-list').append('<li><a class="html-lint-button" href="#' + nameRevised + '">' + name + '</a></li>');
@@ -144,6 +144,7 @@
 				output += $value.attr('charset');
 			} else {
 				output += self.utility.error('missing value');
+				errors += 1;
 			}
 
 			output += '</dd>';
@@ -183,7 +184,8 @@
 							output += '<dd>' + $content + '</dd>';
 						}
 					} else {
-						output += '<dd>' + self.utility.error() + '</dd>';
+						output += '<dd>' + self.utility.error('missing value') + '</dd>';
+						errors += 1;
 					}
 				});
 			}
@@ -213,7 +215,8 @@
 							output += '<dd>' + $content + '</dd>';
 						}
 					} else {
-						output += '<dd>' + self.utility.error() + '</dd>';
+						output += '<dd>' + self.utility.error('missing value') + '</dd>';
+						errors += 1;
 					}
 				});
 			}
@@ -270,15 +273,101 @@
 		var errors = 0,
 			output = '<dl>';
 
-		// jQuery
-		output += '<dt>jQuery</dt><dd>' + $.fn.jquery;
-
-		if ($.fn.jquery !== self.utility.jQueryVersion) {
-			output += ' ' + self.utility.error('not the latest version');
-			errors += 1;
+		/* ---- Disqus ---- */
+		if (window.disqus_domain) {
+			output += '<dt>Disqus</dt><dd>-</dd>';
 		}
 
-		output += '</dd>';
+		/* ---- Google Analytics ---- */
+		if (window._gaq || window._gat) {
+			output += '<dt>Google Analytics</dt><dd>-</dd>';
+		}
+
+		/* ---- Google Webfonts ---- */
+		if (window.WebFontConfig) {
+			output += '<dt>Google Webfonts</dt>';
+			output += '<dd>' + WebFontConfig.google.families + '</dt>';
+		}
+
+		/* ---- jQuery ---- */
+		if (!(self.utility.jQueryAdded)) {
+			output += '<dt>jQuery</dt><dd>' + $.fn.jquery;
+
+			if ($.fn.jquery !== self.utility.jQuery) {
+				output += ' ' + self.utility.error('update to ' + self.utility.jQuery);
+				errors += 1;
+			}
+
+			output += '</dd>';
+		}
+
+		/* ---- jQuery UI ---- */
+		if ($.ui) {
+			output += '<dt>jQuery UI</dt><dd>' + $.ui.version;
+
+			if ($.ui.version !== self.utility.jQueryUI) {
+				output += ' ' + self.utility.error('update to ' + self.utility.jQueryUI);
+				errors += 1;
+			}
+
+			output += '</dd>';
+		}
+
+		/* ---- KISS Insights ---- */
+		if (window.$KI) {
+			output += '<dt>KISS Insights</dt><dd>-</dd>';
+		}
+
+		/* ---- Mint ---- */
+		if (window.Mint) {
+			output += '<dt>Mint</dt><dd>-</dd>';
+		}
+
+		/* ---- Modernizr ---- */
+		if (window.Modernizr) {
+			output += '<dt>Modernizr</dt><dd>' + Modernizr._version;
+
+			if (Modernizr._version !== self.utility.Modernizr) {
+				output += ' ' + self.utility.error('update to ' + self.utility.Modernizr);
+				errors += 1;
+			}
+
+			output += '</dd>';
+		}
+
+		/* ---- Respond.js ---- */
+		if (window.respond && window.respond.mediaQueriesSupported) {
+			output += '<dt>Respond.js</dt><dd>-</dd>';
+		}
+
+		/* ---- SWFObject ---- */
+		if (window.swfobject) {
+			output += '<dt>SWFObject</dt><dd>-</dd>';
+		}
+
+		/* ---- Typekit ---- */
+		if (window.Typekit) {
+			output += '<dt>Typekit</dt>';
+			output += '<dd>' + $('html').attr('class') + '</dd>';
+		}
+
+		/* ---- Wufoo ---- */
+		if (window.__wufooForms) {
+			output += '<dt>Wufoo Forms</dt><dd>-</dd>';
+		}
+
+		/* ---- YUI ---- */
+		if (window.YUI) {
+			output += '<dt>YUI</dt><dd>' + window.YUI.version;
+
+			if (window.YUI.version !== self.utility.YUI) {
+				output += ' ' + self.utility.error('update to ' + self.utility.YUI);
+				errors += 1;
+			}
+
+			output += '</dd>';
+		}
+
 
 		self.addPanel('Technology', output, errors);
 	};
@@ -307,13 +396,12 @@
 			errors += parseInt($(value).html(), 10);
 		});
 
-		$htmlLint.find('h1').prepend(self.utility.error(errors));
+		$htmlLint.find('h1').append(' found ' + self.utility.error(errors + ' errors'));
 	};
 
 	self.tabAction = function ($href, $tabList, $tabPanels) {
 		var $panelName = $href.replace('#', ''),
 			$tabListCurrent = $tabList.find('a[href="' + $href + '"]'),
-			$tabPanelsVisible = $tabPanels.filter(':visible'),
 			$tabPanelCurrent = $tabPanels.filter('[data-panel="' + $panelName + '"]');
 
 		if (!$tabListCurrent.hasClass('selected')) {
@@ -322,13 +410,8 @@
 			$tabListCurrent.addClass('selected');
 
 			// panel
-			if ($tabPanelsVisible.length > 0) {
-				$tabPanelsVisible.fadeOut(150, function () {
-					$tabPanelCurrent.fadeIn(150);
-				});
-			} else {
-				$tabPanelCurrent.fadeIn(150);
-			}
+			$tabPanels.removeClass('selected');
+			$tabPanelCurrent.addClass('selected');
 		}
 	};
 
@@ -646,15 +729,20 @@
 		}
 	};
 
-	self.utility = {};
+	self.utility = {
+		css: 'http://' + ((document.getElementById('html-lint-js').getAttribute('src').indexOf('?dev') > 0) ? 'dl.dropbox.com/u/8864275' : 'curtisj44.github.com') + '/HTML-Lint/html-lint.css',
 
-	self.utility.css = 'http://curtisj44.github.com/HTML-Lint/html-lint.css';
+		error: function (message) {
+			return '<span class="html-lint-error">' + (message || 'missing tag') + '</span>';
+		},
 
-	self.utility.error = function (message) {
-		return '<span class="html-lint-error">' + (message || 'missing tag') + '</span>';
+		jQueryAdded: false,
+
+		jQuery: '1.7.1',
+		jQueryUI: '1.8.18',
+		Modernizr: '2.5.3',
+		YUI: '3.4.1'
 	};
-
-	self.utility.jQueryVersion = '1.7.1';
 
 	self.preInit = function () {
 		var link,
@@ -670,13 +758,14 @@
 		}
 
 		// Add jQuery
-		if (typeof jQuery !== 'undefined' && $.fn !== 'undefined' && parseInt($.fn.jquery.replace(/\./g, '')) > 164) {
+		if (typeof jQuery !== 'undefined' && !!jQuery.fn && parseInt(jQuery.fn.jquery.replace(/\./g, '')) > 164) {
 			self.init();
 		} else {
+			self.utility.jQueryAdded = true;
 			script = document.createElement('script');
 			script.onload = self.init;
 			script.id = 'html-lint-jquery';
-			script.src = '//ajax.googleapis.com/ajax/libs/jquery/' + self.utility.jQueryVersion + '/jquery.min.js';
+			script.src = '//ajax.googleapis.com/ajax/libs/jquery/' + self.utility.jQuery + '/jquery.min.js';
 			document.body.appendChild(script);
 		}
 	};
