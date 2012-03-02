@@ -17,13 +17,18 @@
 	-moz-box-shadow:   0 10px 22px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.4) inset, 0 1px 0 rgba(255,255,255,.2) inset;
 	-webkit-box-shadow:0 10px 22px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.4) inset, 0 1px 0 rgba(255,255,255,.2) inset;
 	box-shadow:        0 10px 22px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.4) inset, 0 1px 0 rgba(255,255,255,.2) inset;
-	background:#000;
-	background:rgba(0,0,0,.9);
+	background:#4a515d;
+	background:   -moz-linear-gradient(bottom, rgba(56,60,68,.9) 100%, rgba(74,81,93,.9) 80%, rgba(74,81,93,.9) 7%, rgba(74,81,93,.7) 15px, rgba(100,100,100,.8) 0%);
+	background:    -ms-linear-gradient(bottom, rgba(56,60,68,.9) 100%, rgba(74,81,93,.9) 80%, rgba(74,81,93,.9) 7%, rgba(74,81,93,.7) 15px, rgba(100,100,100,.8) 0%);
+	background:     -o-linear-gradient(bottom, rgba(56,60,68,.9) 100%, rgba(74,81,93,.9) 80%, rgba(74,81,93,.9) 7%, rgba(74,81,93,.7) 15px, rgba(100,100,100,.8) 0%);
+	background:-webkit-linear-gradient(bottom, rgba(56,60,68,.9) 100%, rgba(74,81,93,.9) 80%, rgba(74,81,93,.9) 7%, rgba(74,81,93,.7) 15px, rgba(100,100,100,.8) 0%);
+	background:        linear-gradient(bottom, rgba(56,60,68,.9) 100%, rgba(74,81,93,.9) 80%, rgba(74,81,93,.9) 7%, rgba(74,81,93,.7) 15px, rgba(100,100,100,.8) 0%);
 	color:#fff;
 	font:normal 14px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
 	-ms-text-size-adjust:100%;
 	-webkit-text-size-adjust:100%}
 
+/* reset and redefines ----------------------------------------- //// */
 #html-lint * {
 	position:static;
 	margin:0;
@@ -33,8 +38,11 @@
 	height:auto;
 	min-height:0;
 	border:0;
+	-moz-box-shadow:   none;
+	-webkit-box-shadow:none;
+	box-shadow:        none;
 	background:none;
-	color:#fff;
+	color:#000;
 	font:inherit;
 	letter-spacing:0;
 	text-align:left;
@@ -43,6 +51,9 @@
 	text-shadow:none;
 	text-transform:none;
 	list-style:none}
+#html-lint *:after,
+#html-lint *:before {
+	height:0}
 
 #html-lint a {
 	text-decoration:underline}
@@ -58,12 +69,18 @@
 #html-lint dd {
 	display:block;
 	margin:0 0 1em;
-	color:#eee}
+	color:#333}
 
-/* headings ----------------------------------------- */
+#html-lint p {
+	padding:1em 0 0;
+	border-top:1px solid #eee}
+#html-lint p:first-child {
+	padding-top:0;
+	border:0}
+
+/* heading ----------------------------------------- */
 #html-lint h1 {
 	display:block;
-	margin:0 0 .5em;
 	padding:.5em 3%;
 	width:100%;
 	border-bottom:1px solid rgba(0,0,0,.7);
@@ -71,45 +88,49 @@
 	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.1);
 	box-shadow:        0 1px 0 rgba(255,255,255,.1);
 	background:rgba(255,255,255,.1);
+	color:#fff !important;
 	font-weight:bold;
-	font-size:20px;
-	line-height:1}
+	font-size:20px !important;
+	line-height:1.4}
 
 /* definition list ----------------------------------------- */
 #html-lint dl {
 	margin:0 3%}
 #html-lint dt {
+	padding:1em 0 0;
+	border-top:1px solid #eee;
 	font-weight:bold}
+#html-lint dt:first-child {
+	padding-top:0;
+	border:0}
 
-/* button ----------------------------------------- */
+/* button ----------------------------------------- //// */
 #html-lint .html-lint-button {
 	position:relative;
 	border:1px solid rgba(0,0,0,.7);
-	-moz-border-radius:4px;
-	-webkit-border-radius:4px;
-	border-radius:4px;
 	-moz-box-shadow:   0 1px 0 rgba(255,255,255,.1);
 	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.1);
 	box-shadow:        0 1px 0 rgba(255,255,255,.1);
 	background:rgba(255,255,255,.1);
 	color:rgba(255,255,255,.8);
-	-moz-transition:   .3s all ease-out;
-	-webkit-transition:.3s all ease-out;
-	transition:.        3s all ease-out;
+	-moz-transition:   .2s all ease-out;
+	-webkit-transition:.2s all ease-out;
+	transition:.        2s all ease-out;
 	cursor:pointer}
 #html-lint .html-lint-button:hover,
 #html-lint .html-lint-button:focus {
-	background:rgba(255,255,255,.2);
+	background:rgba(0,0,0,.1);
 	color:#fff}
 #html-lint .html-lint-button:active {
-	top:1px}
+	top:1px;
+	background:rgba(0,0,0,.2)}
 
-/* ---- close ---- */
+/* close ----------------------------------------- */
 #html-lint .html-lint-close {
 	position:absolute;
 	top:0;
 	right:20px;
-	padding:0 .4em .1em;
+	padding:.2em .5em .3em;
 	border-top-width:0;
 	-moz-border-radius:   0 0 4px 4px;
 	-webkit-border-radius:0 0 4px 4px;
@@ -118,10 +139,17 @@
 	font-size:19px;
 	line-height:1}
 
+/* tab layout ----------------------------------------- //// */
+#html-lint .html-lint-tab-list,
+#html-lint .html-lint-tab-panel {
+	-moz-box-sizing:border-box;
+	-webkit-box-sizing:border-box;
+	box-sizing:border-box}
+
 /* tab list ----------------------------------------- */
 #html-lint .html-lint-tab-list {
 	overflow:hidden;
-	padding:.25em 3% 0;
+	padding:1em 3%;
 	border-bottom:1px solid rgba(0,0,0,.7);
 	-moz-box-shadow:   0 1px 0 rgba(255,255,255,.1);
 	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.1);
@@ -129,21 +157,29 @@
 	list-style:none}
 #html-lint .html-lint-tab-list li {
 	float:left;
-	margin:0 .7em 1em 0;
-	list-style:none}
+	margin:-1px 0 0 -1px;
+	width:50%}
 #html-lint .html-lint-tab-list a {
 	display:block;
 	position:relative;
 	padding:.5em 15%;
 	text-decoration:none;
 	text-transform:capitalize}
-
 #html-lint .html-lint-tab-list a.selected {
-	background:rgba(255,255,255,.3)}
+	background:#037bf0}
 
 /* tab panel ----------------------------------------- */
 #html-lint .html-lint-tab-panel {
-	padding:.5em 0}
+	display:none;
+	padding:2em 3% 1em;
+	background:#fff;
+	background:   -moz-linear-gradient(top, rgba(255,255,255,1) 70%, rgba(240,240,240,1) 100%);
+	background:    -ms-linear-gradient(top, rgba(255,255,255,1) 70%, rgba(240,240,240,1) 100%);
+	background:     -o-linear-gradient(top, rgba(255,255,255,1) 70%, rgba(240,240,240,1) 100%);
+	background:-webkit-linear-gradient(top, rgba(255,255,255,1) 70%, rgba(240,240,240,1) 100%);
+	background:        linear-gradient(top, rgba(255,255,255,1) 70%, rgba(240,240,240,1) 100%)}
+#html-lint .html-lint-tab-panel.selected {
+	display:block}
 
 #html-lint .html-lint-tab-panel p i {
 	display:block;
@@ -152,21 +188,22 @@
 	min-width:6%;
 	text-align:right}
 
-/* error ----------------------------------------- */
+/* error ----------------------------------------- //// */
 #html-lint .html-lint-error,
 .html-lint-error-highlight {
 	padding:0 3px;
-	border:1px solid rgba(70,5,5,.8);
+	border:1px solid rgba(70,5,5,.6);
 	-moz-border-radius:3px;
 	-webit-border-radius:3px;
 	border-radius:3px;
 	-moz-box-shadow:   0 1px 0 rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.2) inset;
 	-webkit-box-shadow:0 1px 0 rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.2) inset;
 	box-shadow:        0 1px 0 rgba(0,0,0,.2), 0 1px 0 rgba(255,255,255,.2) inset;
-	background:rgba(255,10,10,.4)}
-
-#html-lint h1 .html-lint-error {
-	margin:0 2.5% 0 0}
+	background:rgba(200,0,0,.8);
+	color:#fff;
+	white-space:nowrap}
+#html-lint .html-lint-error code {
+	color:#fff}
 
 .html-lint-error-highlight {
 	background:#9f1a1a}
@@ -175,8 +212,8 @@
 #html-lint .html-lint-error-count {
 	display:block;
 	position:absolute;
-	top:80%;
-	right:5px;
+	top:26%;
+	right:14px;
 	font-size:10px;
 	-moz-transition:   .3s all ease-out;
 	-webkit-transition:.3s all ease-out;
@@ -189,13 +226,16 @@
 #html-lint a.selected .html-lint-error-count {
 	background:rgba(200,10,10,.8)}
 
-/* Media Queries
----------------------------------------------------------------------------------------- //// */
 
+/* MEDIA QUERY: 480px
+---------------------------------------------------------------------------------------- //// */
 @media (min-width:480px) {
+	/* tab layout ----------------------------------------- //// */
+
 	/* tab list ----------------------------------------- */
 	#html-lint .html-lint-tab-list {
 		float:left;
+		overflow:visible;
 		padding:0;
 		width:30%;
 		border-bottom:0;
@@ -203,28 +243,54 @@
 		-webkit-box-shadow:none;
 		box-shadow:none}
 	#html-lint .html-lint-tab-list li {
-		float:none}
+		float:none;
+		margin-left:0;
+		width:100%}
 	#html-lint .html-lint-tab-list a {
-		border-left-width:0;
-		-moz-border-radius:   0 4px 4px 0;
-		-webkit-border-radius:0 4px 4px 0;
-		border-radius:        0 4px 4px 0}
+		border-width:1px 0}
+
+	#html-lint .html-lint-tab-list a.selected {
+		position:relative}
+	#html-lint .html-lint-tab-list a.selected:after,
+	#html-lint .html-lint-tab-list a.selected:before {
+		position:absolute;
+		top:50%;
+		right:-1px;
+		margin:-10px 0 0;
+		border-top:8px solid transparent;
+		border-right:8px solid #fff;
+		border-bottom:8px solid transparent;
+		content:''}
+	#html-lint .html-lint-tab-list a.selected:before {
+		right:0;
+		border-right-color:rgba(0,0,0,.8)}
+
+	#html-lint .html-lint-tab-list a:active.selected:after,
+	#html-lint .html-lint-tab-list a:active.selected:before {
+		margin-top:-11px}
 
 	/* tab panel ----------------------------------------- */
 	#html-lint .html-lint-tab-panel {
 		float:right;
-		width:70%}
+		padding-right:3%;
+		padding-left:3%;
+		width:70%;
+		border-left:1px solid rgba(0,0,0,.8);
+		min-height:300px}
 
-	/* error ----------------------------------------- */
+	/* error ----------------------------------------- //// */
 	#html-lint .html-lint-error-count {
-		top:26%;
-		right:7px;
 		font-size:11px}
 }
 
+
+/* MEDIA QUERY: 600px
+---------------------------------------------------------------------------------------- //// */
 @media (min-width:600px) {
 	#html-lint {
 		word-wrap:break-word}
+
+	/* reset and redefines ----------------------------------------- //// */
 
 	/* definition list ----------------------------------------- */
 	#html-lint dl {
@@ -238,7 +304,14 @@
 		padding-right:1%;
 		width:24%}
 	#html-lint dd {
-		width:75%}
+		padding:1em 0 0;
+		width:75%;
+		border-top:1px solid #eee}
+	#html-lint dt:first-child + dd {
+		padding:0;
+		border:0}
+
+	/* tab layout ----------------------------------------- //// */
 
 	/* tab list ----------------------------------------- */
 	#html-lint .html-lint-tab-list {
@@ -249,13 +322,16 @@
 		width:80%}
 }
 
+
+/* MEDIA QUERY: 1004px
+---------------------------------------------------------------------------------------- //// */
 @media (min-width:1004px) {
 	#html-lint {
 		top:20px;
 		right:20px;
 		width:80%;
 		max-width:800px;
-		-moz-border-radius:7px;
-		-webkit-border-radius:7px;
-		border-radius:7px}
+		-moz-border-radius:   4px;
+		-webkit-border-radius:4px;
+		border-radius:        4px}
 }
