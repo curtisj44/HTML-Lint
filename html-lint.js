@@ -130,6 +130,8 @@
 				output += '<dt>charset</dt>';
 			} else if ($value.attr('http-equiv')) {
 				output += '<dt>' + $value.attr('http-equiv') + '</dt>';
+			} else if ($value.attr('itemprop')) {
+				output += '<dt>itemprop="' + $value.attr('itemprop') + '"</dt>';
 			}
 
 			output += '<dd>';
@@ -273,6 +275,18 @@
 		var errors = 0,
 			output = '<dl>';
 
+		/* ---- Chartbeat ---- */
+		if (window._sf_async_config) {
+			output += '<dt>Chartbeat</dt><dd>-</dd>';
+		}
+
+		/* ---- Cufon ---- */
+		if (window.Cufon) {
+			output += '<dt>Cufon</dt>';
+			output += '<dd>' + self.utility.error('obsolete') + '</dd>';
+			errors += 1;
+		}
+
 		/* ---- Disqus ---- */
 		if (window.disqus_domain) {
 			output += '<dt>Disqus</dt><dd>-</dd>';
@@ -329,6 +343,18 @@
 
 			if (Modernizr._version !== self.utility.Modernizr) {
 				output += ' ' + self.utility.error('update to ' + self.utility.Modernizr);
+				errors += 1;
+			}
+
+			output += '</dd>';
+		}
+
+		/* ---- MooTools ---- */
+		if (window.MooTools) {
+			output += '<dt>MooTools</dt><dd>' + MooTools.version;
+
+			if (MooTools.version !== self.utility.MooTools) {
+				output += ' ' + self.utility.error('update to ' + self.utility.MooTools);
 				errors += 1;
 			}
 
@@ -741,6 +767,7 @@
 		jQuery: '1.7.1',
 		jQueryUI: '1.8.18',
 		Modernizr: '2.5.3',
+		MooTools: '1.4.5',
 		YUI: '3.4.1'
 	};
 
