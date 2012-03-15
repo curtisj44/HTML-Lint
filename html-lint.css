@@ -298,6 +298,7 @@
 	#html-lint dt,
 	#html-lint dd {
 		float:left;
+		clear:none;
 		margin:0 0 1em}
 	#html-lint dt {
 		clear:both;
