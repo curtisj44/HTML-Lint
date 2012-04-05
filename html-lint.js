@@ -137,7 +137,7 @@
 			output += '<dd>';
 
 			if ($value.attr('content')) {
-				if ($value.attr('content').indexOf('http') === 0) {
+				if ($value.attr('content').indexOf('http') === 0 || $value.attr('content').indexOf('.txt') > 0) {
 					output += '<a href="' + $value.attr('content') + '">' + $value.attr('content') + '</a>';
 				} else {
 					output += $value.attr('content');
@@ -275,6 +275,8 @@
 		var errors = 0,
 			output = '<dl>';
 
+		// TODO - write this all better
+
 		/* ---- Chartbeat ---- */
 		if (window._sf_async_config) {
 			output += '<dt>Chartbeat</dt><dd>-</dd>';
@@ -295,12 +297,6 @@
 		/* ---- Google Analytics ---- */
 		if (window._gaq || window._gat) {
 			output += '<dt>Google Analytics</dt><dd>-</dd>';
-		}
-
-		/* ---- Google Webfonts ---- */
-		if (window.WebFontConfig) {
-			output += '<dt>Google Webfonts</dt>';
-			output += '<dd>' + WebFontConfig.google.families + '</dt>';
 		}
 
 		/* ---- jQuery ---- */
@@ -361,13 +357,20 @@
 			output += '</dd>';
 		}
 
+		/* ---- Prototype ---- */
+		if (window.Prototype) {
+			output += '<dt>Prototype</dt>';
+			output += '<dd>' + window.Prototype.Version + ' ' + self.utility.error('who uses Prototype anymore?') + '</dd>';
+			errors += 1;
+		}
+
 		/* ---- Respond.js ---- */
 		if (window.respond && window.respond.mediaQueriesSupported) {
 			output += '<dt>Respond.js</dt><dd>-</dd>';
 		}
 
 		/* ---- SWFObject ---- */
-		if (window.swfobject) {
+		if (window.swfobject || window.SWFObject) {
 			output += '<dt>SWFObject</dt><dd>-</dd>';
 		}
 
@@ -375,6 +378,20 @@
 		if (window.Typekit) {
 			output += '<dt>Typekit</dt>';
 			output += '<dd>' + $('html').attr('class') + '</dd>';
+		}
+
+		/* ---- WebFontConfig ---- */
+		if (window.WebFontConfig) {
+			if (window.WebFontConfig.google) {
+				output += '<dt>Google Webfonts</dt>';
+				output += '<dd>' + WebFontConfig.google.families + '</dt>';
+			} else if (window.WebFontConfig.fontdeck) {
+				output += '<dt>Fontdeck</dt>';
+				output += '<dd>-</dt>';
+			} else if (window.WebFontConfig.custom) {
+				output += '<dt>WebFonts (Fontdeck?)</dt>';
+				output += '<dd>' + WebFontConfig.custom.families.join('<br />') + '</dt>';
+			}
 		}
 
 		/* ---- Wufoo ---- */
@@ -394,6 +411,10 @@
 			output += '</dd>';
 		}
 
+		/* ---- YepNope ---- */
+		if (window.window.yepnope) {
+			output += '<dt>yepnope</dt><dd>-</dd>';
+		}
 
 		self.addPanel('Technology', output, errors);
 	};
@@ -526,6 +547,9 @@
 		},
 		'form:not(:has(fieldset))': {
 			'label': '<code>&lt;form&gt;</code> missing <code>&lt;fieldset&gt;</code>'
+		},
+		'input[type="text"]': {
+			'label': '<code>type="text"</code> is not needed on <code>&lt;input&gt;</code>'
 		},
 		'img:not([alt])': {
 			'label': '<code>&lt;img&gt;</code> missing <code>alt</code>'
@@ -764,7 +788,7 @@
 
 		jQueryAdded: false,
 
-		jQuery: '1.7.1',
+		jQuery: '1.7.2',
 		jQueryUI: '1.8.18',
 		Modernizr: '2.5.3',
 		MooTools: '1.4.5',
