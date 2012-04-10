@@ -65,12 +65,14 @@
 	display:inline;
 	font-family:monospace}
 
+#html-lint li {
+	display:block}
+
 #html-lint p,
 #html-lint dd {
 	display:block;
 	margin:0 0 1em;
 	color:#333}
-
 #html-lint p {
 	padding:1em 0 0;
 	border-top:1px solid #eee}
