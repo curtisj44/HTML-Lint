@@ -569,6 +569,9 @@
 		'link:not([rel])': {
 			'label': '<code>&lt;link&gt;</code> missing rel'
 		},
+		'link[charset]': {
+			'label': '<code>link[charset]</code>'
+		},
 		'link[rel="shortcut icon"][type="image/ico"]': {
 			'label': '<code>type="images/ico"</code> is not needed on <code>&lt;link&gt;</code>'
 		},
