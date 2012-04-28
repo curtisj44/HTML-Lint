@@ -1,7 +1,5 @@
-(function (HtmlLint) {
+(function (self) {
 	'use strict';
-
-	var self = HtmlLint;
 
 	self.addPanel = function (name, output, errors) {
 		var $htmlLint = $('#html-lint'),
