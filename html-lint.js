@@ -441,7 +441,7 @@
 			errors += parseInt($(value).html(), 10);
 		});
 
-		$htmlLint.find('h1').append(' found ' + self.utility.error(errors + ' errors'));
+		$htmlLint.find('h2').append(self.utility.error(errors));
 	};
 
 	self.tabAction = function ($href, $tabList, $tabPanels) {
@@ -831,6 +831,7 @@
 
 		var output = '<div id="html-lint" style="display:none">' +
 				'<h1>HTML-Lint</h1>' +
+				'<h2>Total Errors</h2>' +
 				'<button class="html-lint-button html-lint-close">&times;</button>' +
 				'<ol class="html-lint-tab-list"></ol>' +
 				'</div>';
