@@ -81,19 +81,29 @@
 	border:0}
 
 /* heading ----------------------------------------- */
-#html-lint h1 {
+#html-lint h1,
+#html-lint h2 {
 	display:block;
 	padding:.5em 3%;
-	width:100%;
+	width:94%;
 	border-bottom:1px solid rgba(0,0,0,.7);
 	-moz-box-shadow:   0 1px 0 rgba(255,255,255,.1);
 	-webkit-box-shadow:0 1px 0 rgba(255,255,255,.1);
 	box-shadow:        0 1px 0 rgba(255,255,255,.1);
-	background:rgba(255,255,255,.1);
-	color:#fff !important;
 	font-weight:bold;
+	color:#fff !important}
+
+#html-lint h1 {
+	background:rgba(255,255,255,.1);
 	font-size:20px !important;
-	line-height:1.4}
+	line-height:1;
+	text-shadow:0 1px 0 rgba(0,0,0,.7)}
+
+#html-lint h2 {
+	background:rgba(255,255,255,.2);
+	font-size:14px !important}
+#html-lint h2 .html-lint-error {
+	float:right}
 
 /* definition list ----------------------------------------- */
 #html-lint dl {
@@ -131,7 +141,7 @@
 #html-lint .html-lint-close {
 	position:absolute;
 	top:0;
-	right:20px;
+	right:3%;
 	padding:.2em .5em .3em;
 	border-top-width:0;
 	-moz-border-radius:   0 0 4px 4px;
