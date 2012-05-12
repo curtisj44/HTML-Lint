@@ -86,7 +86,7 @@
 			$keywords = $metaTags.filter('meta[name="keywords"], meta[name="Keywords"]'),
 			checkTag = function (tag) {
 				if (!tag) {
-					tag = self.utility.Error();
+					tag = self.utility.error();
 					errors += 1;
 				}
 				return tag;
