@@ -810,7 +810,7 @@
 		}
 
 		// Add jQuery
-		if (typeof jQuery !== 'undefined' && !!jQuery.fn && parseInt(jQuery.fn.jquery.replace(/\./g, '')) > 164) {
+		if (typeof jQuery !== 'undefined' && !!jQuery.fn && parseInt(jQuery.fn.jquery.replace(/\./g, ''), 10) > 164) {
 			self.init();
 		} else {
 			self.utility.jQueryAdded = true;
