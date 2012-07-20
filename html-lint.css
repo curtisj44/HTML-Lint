@@ -30,6 +30,9 @@
 
 /* reset and redefines ----------------------------------------- //// */
 #html-lint * {
+	-moz-box-sizing:   content-box;
+	-webkit-box-sizing:content-box;
+	box-sizing:        content-box;
 	position:static;
 	margin:0;
 	padding:0;
