@@ -791,7 +791,7 @@
 
 		jQuery: '1.7.2',
 		jQueryUI: '1.8.18',
-		Modernizr: '2.6',
+		Modernizr: '2.6.1',
 		MooTools: '1.4.5',
 		YUI: '3.5.1'
 	};
