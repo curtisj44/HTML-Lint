@@ -789,11 +789,11 @@
 
 		jQueryAdded: false,
 
-		jQuery: '1.8.1',
+		jQuery: '1.8.2',
 		jQueryUI: '1.8.22',
 		Modernizr: '2.6.2',
 		MooTools: '1.4.5',
-		YUI: '3.7.1'
+		YUI: '3.7.2'
 	};
 
 	self.preInit = function () {
