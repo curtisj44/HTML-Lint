@@ -2,9 +2,9 @@
 ---------------------------------------------------------------------------------------- //// */
 
 #html-lint {
-	-moz-box-sizing:border-box;
+	-moz-box-sizing:   border-box;
 	-webkit-box-sizing:border-box;
-	box-sizing:border-box;
+	box-sizing:        border-box;
 	position:absolute;
 	z-index:9900000; /* thanks management.fortune.cnn.com */
 	top:0;
@@ -25,7 +25,8 @@
 	background:        linear-gradient(bottom, rgba(56,60,68,.9) 100%, rgba(74,81,93,.9) 80%, rgba(74,81,93,.9) 7%, rgba(74,81,93,.7) 15px, rgba(100,100,100,.8) 0%);
 	color:#fff;
 	font:normal 14px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
-	-ms-text-size-adjust:100%;
+	direction:ltr;
+	-ms-text-size-adjust:    100%;
 	-webkit-text-size-adjust:100%}
 
 /* reset and redefines ----------------------------------------- //// */
