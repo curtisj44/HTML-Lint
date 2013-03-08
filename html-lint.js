@@ -135,7 +135,9 @@
 			output += '<dd>';
 
 			if ($value.attr('content')) {
-				if ($value.attr('content').indexOf('http') === 0 || $value.attr('content').indexOf('.txt') > 0) {
+				if ($value.attr('name') === 'msapplication-TileImage') {
+					output += '<img src="' + $value.attr('content') + '" style="background-color:' + $metaTags.filter($('meta[name="msapplication-TileColor"]')).attr('content') + '">';
+				} else if ($value.attr('content').indexOf('http') === 0 || $value.attr('content').indexOf('.txt') > 0) {
 					output += '<a href="' + $value.attr('content') + '">' + $value.attr('content') + '</a>';
 				} else {
 					output += $value.attr('content');
@@ -789,11 +791,11 @@
 
 		jQueryAdded: false,
 
-		jQuery: '1.8.2',
+		jQuery: '1.9.1',
 		jQueryUI: '1.9.0',
 		Modernizr: '2.6.2',
 		MooTools: '1.4.5',
-		YUI: '3.7.2'
+		YUI: '3.7.3'
 	};
 
 	self.preInit = function () {
