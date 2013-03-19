@@ -795,7 +795,7 @@
 		jQueryUI: '1.9.0',
 		Modernizr: '2.6.2',
 		MooTools: '1.4.5',
-		YUI: '3.7.3'
+		YUI: '3.9.0'
 	};
 
 	self.preInit = function () {
