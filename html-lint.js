@@ -791,7 +791,7 @@
 
 		jQueryAdded: false,
 
-		jQuery: '2.0.2',
+		jQuery: '2.0.3',
 		jQueryUI: '1.9.0',
 		Modernizr: '2.6.2',
 		MooTools: '1.4.5',
