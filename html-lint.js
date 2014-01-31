@@ -10,14 +10,16 @@
 			$panel.remove();
 		}
 
-		$htmlLint.append('<div class="html-lint-tab-panel" data-panel="' + nameRevised + '">' + output + '</div>');
+		if (output.length > 0) {
+			$htmlLint.append('<div class="html-lint-tab-panel" data-panel="' + nameRevised + '">' + output + '</div>');
 
-		// tab button
-		$htmlLint.find('.html-lint-tab-list').append('<li><a class="html-lint-button" href="#' + nameRevised + '">' + name + '</a></li>');
+			// tab button
+			$htmlLint.find('.html-lint-tab-list').append('<li><a class="html-lint-button" href="#' + nameRevised + '">' + name + '</a></li>');
 
-		// errors
-		if (errors) {
-			$htmlLint.find('[href="#' + nameRevised + '"]').append('<b class="html-lint-error html-lint-error-count">' + errors + '</b>');
+			// errors
+			if (errors) {
+				$htmlLint.find('[href="#' + nameRevised + '"]').append('<b class="html-lint-error html-lint-error-count">' + errors + '</b>');
+			}
 		}
 	};
 
@@ -68,10 +70,12 @@
 				errors += currentErrors;
 				output += '<p><i>' + self.utility.error(currentErrors) + '</i>' + test.label + '</p>';
 				//$(index).addClass('html-lint-error-highlight').attr('data-html-lint', test.label);
+
+				console.warn(index, $(index));
 			}
 		});
 
-		return [output, errors];
+		self.addPanel('Tests', output, errors);
 	};
 
 	self.panel = {};
@@ -234,7 +238,7 @@
 
 	self.panel.overview = function () {
 		var errors = 0,
-			$appleTouchIcon = $('link[rel="apple-touch-icon"], link[rel="apple-touch-icon-precomposed"]'),
+			$appleTouchIcon = $('link[rel*="apple-touch-icon"]'),
 			$shortcutIcon = $('link[rel="shortcut icon"], link[rel="icon"]'),
 			output = '<dl>';
 
@@ -253,9 +257,10 @@
 		if ($appleTouchIcon.length > 0) {
 			$appleTouchIcon.each(function (index, value) {
 				var $value = $(value);
+
 				output += '<dt>' +
 					$value.attr('rel') +
-					$value.attr('sizes') ? ' (' + $value.attr('sizes') + ')' : '' +
+					($value.attr('sizes') ? ' (' + $value.attr('sizes') + ')' : '') +
 					'</dt>' +
 					'<dd>' +
 					'<img src="' + $value.attr('href') + '" alt="' + $value.attr('rel') + '" />' +
@@ -428,11 +433,17 @@
 			output += '<dt>yepnope</dt><dd>-</dd>';
 		}
 
+		output += '</dl>';
+
+		if (output === '<dl></dl>') {
+			output = '';
+		}
+
 		self.addPanel('Technology', output, errors);
 	};
 
 	self.panel.tests = function () {
-		self.addPanel('Tests', self.handleErrors(self.test)[0], self.handleErrors(self.test)[1]);
+		self.handleErrors(self.test);
 	};
 
 	self.tabSetup = function () {
@@ -551,6 +562,9 @@
 		'fieldset:not(:has(legend))': {
 			'label': '<code>&lt;fieldset&gt;</code> missing <code>&lt;legend&gt;</code>'
 		},
+		'fieldset > *:not(legend):first-child': {
+			'label': '<code>&lt;fieldset&gt;</code>&rsquo;s first child is not <code>&lt;legend&gt;</code>'
+		},
 		'form[action=""]': {
 			'label': '<code>form[action=""]</code>'
 		},
@@ -572,14 +586,17 @@
 		'img[src=""]': {
 			'label': '<code>img[src=""]</code>'
 		},
+		'img[width="1"][height="1"]': {
+			'label': 'Tracking pixel <code>img</code>'
+		},
 		'label:not([for])': {
-			'label': '<code>&lt;label&gt;</code> missing for'
+			'label': '<code>&lt;label&gt;</code> missing <code>for</code>'
 		},
 		'body link:not("#html-lint-css")': {
 			'label': '<code>&lt;link&gt;</code> not in <code>&lt;head&gt;</code>'
 		},
 		'link:not([rel])': {
-			'label': '<code>&lt;link&gt;</code> missing rel'
+			'label': '<code>&lt;link&gt;</code> missing <code>rel</code>'
 		},
 		'link[charset]': {
 			'label': '<code>link[charset]</code>'
@@ -593,6 +610,9 @@
 		'link[rel="stylesheet"][type="text/css"]': {
 			'label': '<code>type="text/css"</code> is not needed on <code>&lt;link&gt;</code>'
 		},
+		'nav:not([role])': {
+			'label': '<code>&lt;nav&gt;</code> missing <code>role</code>'
+		},
 		'script[charset]': {
 			'label': '<code>script[charset]</code>'
 		},
@@ -601,6 +621,12 @@
 		},
 		'script[type="text/javascript"]': {
 			'label': '<code>type="text/javascript"</code> is not needed on <code>&lt;script&gt;</code>'
+		},
+		'style[media="all"]': {
+			'label': '<code>media="all"</code> is not needed on <code>&lt;style&gt;</code>'
+		},
+		'style[type="text/css"]': {
+			'label': '<code>type="text/css"</code> is not needed on <code>&lt;style&gt;</code>'
 		},
 		'table:not([summary])': {
 			'label': '<code>&lt;table&gt;</code> missing <code>summary</code>'
@@ -617,7 +643,7 @@
 			'label': '<code>&lt;table&gt;</code> inside <code>&lt;table&gt;</code>'
 		},
 		'th:not([scope])': {
-			'label': '<code>&lt;th&gt;</code> missing scope'
+			'label': '<code>&lt;th&gt;</code> missing <code>scope</code>'
 		},
 		'th[scope=""]': {
 			'label': '<code>th[scope=""]</code>'
@@ -650,6 +676,9 @@
 		'[class=""]': {
 			'label': '<code>class=""</code>'
 		},
+		'[frameborder]': {
+			'label': 'Bad attribute: <code>frameborder</code>'
+		},
 		'[halign]': {
 			'label': 'Invalid attribute: <code>halign</code>'
 		},
@@ -659,6 +688,12 @@
 		'[link]': {
 			'label': 'Bad attribute: <code>link</code>'
 		},
+		'[marginheight]': {
+			'label': 'Bad attribute: <code>marginheight</code>'
+		},
+		'[marginwidth]': {
+			'label': 'Bad attribute: <code>marginwidth</code>'
+		},
 		'[name=""]': {
 			'label': '<code>name=""</code>'
 		},
@@ -667,6 +702,9 @@
 		},
 		'[size]': {
 			'label': 'Bad attribute: <code>size</code>'
+		},
+		'[src*="javascript:"]': {
+			'label': '<code>[src*="javascript:"]</code>'
 		},
 		'[style*="background"]': {
 			'label': 'Inline style: <code>background</code>'
