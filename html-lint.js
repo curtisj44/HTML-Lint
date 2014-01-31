@@ -665,6 +665,9 @@
 		'[class=""]': {
 			'label': '<code>class=""</code>'
 		},
+		'[frameborder]': {
+			'label': 'Bad attribute: <code>frameborder</code>'
+		},
 		'[halign]': {
 			'label': 'Invalid attribute: <code>halign</code>'
 		},
@@ -673,6 +676,12 @@
 		},
 		'[link]': {
 			'label': 'Bad attribute: <code>link</code>'
+		},
+		'[marginheight]': {
+			'label': 'Bad attribute: <code>marginheight</code>'
+		},
+		'[marginwidth]': {
+			'label': 'Bad attribute: <code>marginwidth</code>'
 		},
 		'[name=""]': {
 			'label': '<code>name=""</code>'
@@ -683,8 +692,8 @@
 		'[size]': {
 			'label': 'Bad attribute: <code>size</code>'
 		},
-		'[src*="javascript:false"]': {
-			'label': 'Bad <code>src</code> attribute value'
+		'[src*="javascript:"]': {
+			'label': '<code>[src*="javascript:"]</code>'
 		},
 		'[style*="background"]': {
 			'label': 'Inline style: <code>background</code>'
