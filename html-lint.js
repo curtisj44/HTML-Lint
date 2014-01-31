@@ -238,24 +238,13 @@
 
 	self.panel.overview = function () {
 		var errors = 0,
-			$appleTouchIcon = $('link[rel*="apple-touch-icon"]'),
-			$shortcutIcon = $('link[rel="shortcut icon"], link[rel="icon"]'),
+			$appleTouchIcons = $('link[rel*="apple-touch-icon"]'),
+			$shortcutIcons = $('link[rel="shortcut icon"], link[rel="icon"]'),
+			$icons = $appleTouchIcons.add($shortcutIcons),
 			output = '<dl>';
 
-		// shortcut icon
-		if ($shortcutIcon.length > 0) {
-			output += '<dt>' + $shortcutIcon.attr('rel') + '</dt>' +
-				'<dd>' +
-				'<img src="' + $shortcutIcon.attr('href') + '" alt="' + $shortcutIcon.attr('rel') + '" />' +
-				'</dd>';
-		} else {
-			output += '<dt>shortcut icon</dt><dd>' + self.utility.error() + '</dd>';
-			errors += 1;
-		}
-
-		// apple-touch-icons
-		if ($appleTouchIcon.length > 0) {
-			$appleTouchIcon.each(function (index, value) {
+		if ($icons.length > 0) {
+			$icons.each(function (index, value) {
 				var $value = $(value);
 
 				output += '<dt>' +
@@ -266,8 +255,17 @@
 					'<img src="' + $value.attr('href') + '" alt="' + $value.attr('rel') + '" />' +
 					'</dd>';
 			});
-		} else {
+		}
+
+		// no apple-touch-icon
+		if ($appleTouchIcons.length < 0) {
 			output += '<dt>apple-touch-icon</dt><dd>' + self.utility.error() + '</dd>';
+			errors += 1;
+		}
+
+		// no shortcut icon
+		if ($shortcutIcons.length < 0) {
+			output += '<dt>shortcut icon</dt><dd>' + self.utility.error() + '</dd>';
 			errors += 1;
 		}
 
