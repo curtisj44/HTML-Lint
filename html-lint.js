@@ -278,7 +278,7 @@
 
 	self.panel.technology = function () {
 		var errors = 0,
-			output = '';
+			output = '<dl>';
 
 		// TODO - write this all better
 
@@ -433,8 +433,10 @@
 			output += '<dt>yepnope</dt><dd>-</dd>';
 		}
 
-		if (output.length > 0) {
-			output += '<dl>' + output + '</dl>';
+		output += '</dl>';
+
+		if (output === '<dl></dl>') {
+			output = '';
 		}
 
 		self.addPanel('Technology', output, errors);
