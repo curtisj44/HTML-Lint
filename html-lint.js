@@ -573,13 +573,13 @@
 			'label': '<code>img[src=""]</code>'
 		},
 		'label:not([for])': {
-			'label': '<code>&lt;label&gt;</code> missing for'
+			'label': '<code>&lt;label&gt;</code> missing <code>for</code>'
 		},
 		'body link:not("#html-lint-css")': {
 			'label': '<code>&lt;link&gt;</code> not in <code>&lt;head&gt;</code>'
 		},
 		'link:not([rel])': {
-			'label': '<code>&lt;link&gt;</code> missing rel'
+			'label': '<code>&lt;link&gt;</code> missing <code>rel</code>'
 		},
 		'link[charset]': {
 			'label': '<code>link[charset]</code>'
@@ -617,7 +617,7 @@
 			'label': '<code>&lt;table&gt;</code> inside <code>&lt;table&gt;</code>'
 		},
 		'th:not([scope])': {
-			'label': '<code>&lt;th&gt;</code> missing scope'
+			'label': '<code>&lt;th&gt;</code> missing <code>scope</code>'
 		},
 		'th[scope=""]': {
 			'label': '<code>th[scope=""]</code>'
