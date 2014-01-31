@@ -605,6 +605,12 @@
 		'script[type="text/javascript"]': {
 			'label': '<code>type="text/javascript"</code> is not needed on <code>&lt;script&gt;</code>'
 		},
+		'style[media="all"]': {
+			'label': '<code>media="all"</code> is not needed on <code>&lt;style&gt;</code>'
+		},
+		'style[type="text/css"]': {
+			'label': '<code>type="text/css"</code> is not needed on <code>&lt;style&gt;</code>'
+		},
 		'table:not([summary])': {
 			'label': '<code>&lt;table&gt;</code> missing <code>summary</code>'
 		},
