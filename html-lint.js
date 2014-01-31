@@ -677,6 +677,9 @@
 		'[size]': {
 			'label': 'Bad attribute: <code>size</code>'
 		},
+		'[src*="javascript:false"]': {
+			'label': 'Bad <code>src</code> attribute value'
+		},
 		'[style*="background"]': {
 			'label': 'Inline style: <code>background</code>'
 		},
