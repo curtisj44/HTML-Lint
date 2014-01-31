@@ -73,7 +73,7 @@
 			}
 		});
 
-		return [output, errors];
+		self.addPanel('Tests', output, errors);
 	};
 
 	self.panel = {};
@@ -275,7 +275,7 @@
 
 	self.panel.technology = function () {
 		var errors = 0,
-			output = '<dl>';
+			output = '';
 
 		// TODO - write this all better
 
@@ -430,11 +430,15 @@
 			output += '<dt>yepnope</dt><dd>-</dd>';
 		}
 
+		if (output.length > 0) {
+			output += '<dl>' + output + '</dl>';
+		}
+
 		self.addPanel('Technology', output, errors);
 	};
 
 	self.panel.tests = function () {
-		self.addPanel('Tests', self.handleErrors(self.test)[0], self.handleErrors(self.test)[1]);
+		self.handleErrors(self.test);
 	};
 
 	self.tabSetup = function () {
