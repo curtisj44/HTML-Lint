@@ -572,6 +572,9 @@
 		'img[src=""]': {
 			'label': '<code>img[src=""]</code>'
 		},
+		'img[width="1"][height="1"]': {
+			'label': 'Tracking pixel <code>img</code>'
+		},
 		'label:not([for])': {
 			'label': '<code>&lt;label&gt;</code> missing <code>for</code>'
 		},
