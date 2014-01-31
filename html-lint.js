@@ -593,6 +593,9 @@
 		'link[rel="stylesheet"][type="text/css"]': {
 			'label': '<code>type="text/css"</code> is not needed on <code>&lt;link&gt;</code>'
 		},
+		'nav:not([role])': {
+			'label': '<code>&lt;nav&gt;</code> missing <code>role</code>'
+		},
 		'script[charset]': {
 			'label': '<code>script[charset]</code>'
 		},
