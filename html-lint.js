@@ -364,6 +364,18 @@
 			errors += 1;
 		}
 
+		/* ---- RequireJS ---- */
+		if (window.require) {
+			output += '<dt>RequireJS</dt><dd>' + require.version;
+
+			if (require.version !== self.utility.RequireJS) {
+				output += ' ' + self.utility.error('update to ' + self.utility.RequireJS);
+				errors += 1;
+			}
+
+			output += '</dd>';
+		}
+
 		/* ---- Respond.js ---- */
 		if (window.respond && window.respond.mediaQueriesSupported) {
 			output += '<dt>Respond.js</dt><dd>-</dd>';
@@ -795,6 +807,7 @@
 		jQueryUI: '1.10.4',
 		Modernizr: '2.7.1',
 		MooTools: '1.4.5',
+		RequireJS: '2.1.10',
 		YUI: '3.14.1'
 	};
 
