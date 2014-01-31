@@ -238,7 +238,7 @@
 
 	self.panel.overview = function () {
 		var errors = 0,
-			$appleTouchIcon = $('link[rel="apple-touch-icon"], link[rel="apple-touch-icon-precomposed"]'),
+			$appleTouchIcon = $('link[rel*="apple-touch-icon"]'),
 			$shortcutIcon = $('link[rel="shortcut icon"], link[rel="icon"]'),
 			output = '<dl>';
 
@@ -257,9 +257,10 @@
 		if ($appleTouchIcon.length > 0) {
 			$appleTouchIcon.each(function (index, value) {
 				var $value = $(value);
+
 				output += '<dt>' +
 					$value.attr('rel') +
-					$value.attr('sizes') ? ' (' + $value.attr('sizes') + ')' : '' +
+					($value.attr('sizes') ? ' (' + $value.attr('sizes') + ')' : '') +
 					'</dt>' +
 					'<dd>' +
 					'<img src="' + $value.attr('href') + '" alt="' + $value.attr('rel') + '" />' +
