@@ -253,13 +253,13 @@
 		if ($appleTouchIcon.length > 0) {
 			$appleTouchIcon.each(function (index, value) {
 				var $value = $(value);
-				output += '<dt>';
-				output += $value.attr('rel');
-				output += ($value.attr('sizes')) ? ' (' + $value.attr('sizes') + ')' : '';
-				output += '</dt>';
-				output += '<dd>';
-				output += '<img src="' + $value.attr('href') + '" alt="' + $value.attr('rel') + '" />';
-				output += '</dd>';
+				output += '<dt>' +
+					$value.attr('rel') +
+					$value.attr('sizes') ? ' (' + $value.attr('sizes') + ')' : '' +
+					'</dt>' +
+					'<dd>' +
+					'<img src="' + $value.attr('href') + '" alt="' + $value.attr('rel') + '" />' +
+					'</dd>';
 			});
 		} else {
 			output += '<dt>apple-touch-icon</dt><dd>' + self.utility.error() + '</dd>';
@@ -303,8 +303,8 @@
 		if (!(self.utility.jQueryAdded)) {
 			output += '<dt>jQuery</dt><dd>' + $.fn.jquery;
 
-			if ($.fn.jquery !== self.utility.jQuery) {
-				output += ' ' + self.utility.error('update to ' + self.utility.jQuery);
+			if ($.fn.jquery !== self.utility.jQuery[0] && $.fn.jquery !== self.utility.jQuery[1]) {
+				output += ' ' + self.utility.error('update to ' + self.utility.jQuery[0] + ' or ' + self.utility.jQuery[1]);
 				errors += 1;
 			}
 
@@ -791,11 +791,11 @@
 
 		jQueryAdded: false,
 
-		jQuery: '2.0.2',
-		jQueryUI: '1.9.0',
-		Modernizr: '2.6.2',
+		jQuery: ['1.11.0', '2.1.0'],
+		jQueryUI: '1.10.4',
+		Modernizr: '2.7.1',
 		MooTools: '1.4.5',
-		YUI: '3.9.0'
+		YUI: '3.14.1'
 	};
 
 	self.preInit = function () {
@@ -819,7 +819,7 @@
 			script = document.createElement('script');
 			script.onload = self.init;
 			script.id = 'html-lint-jquery';
-			script.src = '//ajax.googleapis.com/ajax/libs/jquery/' + self.utility.jQuery + '/jquery.min.js';
+			script.src = '//ajax.googleapis.com/ajax/libs/jquery/' + self.utility.jQuery[0] + '/jquery.min.js';
 			document.body.appendChild(script);
 		}
 	};
