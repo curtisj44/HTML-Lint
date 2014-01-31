@@ -562,7 +562,7 @@
 		'fieldset:not(:has(legend))': {
 			'label': '<code>&lt;fieldset&gt;</code> missing <code>&lt;legend&gt;</code>'
 		},
-		'fieldset *:not(legend):first-child': {
+		'fieldset > *:not(legend):first-child': {
 			'label': '<code>&lt;fieldset&gt;</code>&rsquo;s first child is not <code>&lt;legend&gt;</code>'
 		},
 		'form[action=""]': {
