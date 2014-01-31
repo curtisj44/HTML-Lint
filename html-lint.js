@@ -303,8 +303,8 @@
 		if (!(self.utility.jQueryAdded)) {
 			output += '<dt>jQuery</dt><dd>' + $.fn.jquery;
 
-			if ($.fn.jquery !== self.utility.jQuery) {
-				output += ' ' + self.utility.error('update to ' + self.utility.jQuery);
+			if ($.fn.jquery !== self.utility.jQuery[0] && $.fn.jquery !== self.utility.jQuery[1]) {
+				output += ' ' + self.utility.error('update to ' + self.utility.jQuery[0] + ' or ' + self.utility.jQuery[1]);
 				errors += 1;
 			}
 
