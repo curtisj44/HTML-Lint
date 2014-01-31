@@ -70,6 +70,8 @@
 				errors += currentErrors;
 				output += '<p><i>' + self.utility.error(currentErrors) + '</i>' + test.label + '</p>';
 				//$(index).addClass('html-lint-error-highlight').attr('data-html-lint', test.label);
+
+				console.warn(index, $(index));
 			}
 		});
 
