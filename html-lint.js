@@ -253,13 +253,13 @@
 		if ($appleTouchIcon.length > 0) {
 			$appleTouchIcon.each(function (index, value) {
 				var $value = $(value);
-				output += '<dt>';
-				output += $value.attr('rel');
-				output += ($value.attr('sizes')) ? ' (' + $value.attr('sizes') + ')' : '';
-				output += '</dt>';
-				output += '<dd>';
-				output += '<img src="' + $value.attr('href') + '" alt="' + $value.attr('rel') + '" />';
-				output += '</dd>';
+				output += '<dt>' +
+					$value.attr('rel') +
+					$value.attr('sizes') ? ' (' + $value.attr('sizes') + ')' : '' +
+					'</dt>' +
+					'<dd>' +
+					'<img src="' + $value.attr('href') + '" alt="' + $value.attr('rel') + '" />' +
+					'</dd>';
 			});
 		} else {
 			output += '<dt>apple-touch-icon</dt><dd>' + self.utility.error() + '</dd>';
