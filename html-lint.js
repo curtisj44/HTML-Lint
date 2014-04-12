@@ -31,8 +31,8 @@
 			return false;
 		});
 
-		$(document).bind('keyup', function (event) {
-			if (event.keyCode === 27) {
+		$(document).bind('keyup', function (e) {
+			if (e.keyCode === 27) {
 				self.closeAction($closeButton);
 			}
 		});
