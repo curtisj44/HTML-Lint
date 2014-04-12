@@ -844,7 +844,7 @@
 		Modernizr: '2.7.1',
 		MooTools: '1.4.5',
 		RequireJS: '2.1.10',
-		YUI: '3.14.1'
+		YUI: '3.16.0'
 	};
 
 	self.preInit = function () {
