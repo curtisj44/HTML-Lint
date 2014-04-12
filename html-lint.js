@@ -208,12 +208,12 @@
 
 					if ($content) {
 						if ($property === 'fb:app_id') {
-							output += '<dd><a href="http://www.facebook.com/apps/application.php?id=' + $content + '">' + $content + '</a></dd>';
+							output += '<dd><a href="https://www.facebook.com/apps/application.php?id=' + $content + '">' + $content + '</a></dd>';
 						} else if ($property === 'fb:admins') {
 							adminIds = $content.split(',');
 
 							$.each(adminIds, function (index, value) {
-								adminLinks += '<a href="http://www.facebook.com/profile.php?id=' + value + '">' + value + '</a> ';
+								adminLinks += '<a href="https://www.facebook.com/profile.php?id=' + value + '">' + value + '</a> ';
 							});
 
 							output += '<dd>' + adminLinks + '</dd>';
