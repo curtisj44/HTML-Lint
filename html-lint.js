@@ -31,8 +31,8 @@
 			return false;
 		});
 
-		$(document).bind('keyup', function (event) {
-			if (event.keyCode === 27) {
+		$(document).bind('keyup', function (e) {
+			if (e.keyCode === 27) {
 				self.closeAction($closeButton);
 			}
 		});
@@ -208,12 +208,12 @@
 
 					if ($content) {
 						if ($property === 'fb:app_id') {
-							output += '<dd><a href="http://www.facebook.com/apps/application.php?id=' + $content + '">' + $content + '</a></dd>';
+							output += '<dd><a href="https://www.facebook.com/apps/application.php?id=' + $content + '">' + $content + '</a></dd>';
 						} else if ($property === 'fb:admins') {
 							adminIds = $content.split(',');
 
 							$.each(adminIds, function (index, value) {
-								adminLinks += '<a href="http://www.facebook.com/profile.php?id=' + value + '">' + value + '</a> ';
+								adminLinks += '<a href="https://www.facebook.com/profile.php?id=' + value + '">' + value + '</a> ';
 							});
 
 							output += '<dd>' + adminLinks + '</dd>';
@@ -844,7 +844,7 @@
 		Modernizr: '2.7.1',
 		MooTools: '1.4.5',
 		RequireJS: '2.1.10',
-		YUI: '3.14.1'
+		YUI: '3.16.0'
 	};
 
 	self.preInit = function () {
