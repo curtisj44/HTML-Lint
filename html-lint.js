@@ -839,7 +839,7 @@
 
 		jQueryAdded: false,
 
-		jQuery: ['1.11.0', '2.1.0'],
+		jQuery: ['1.11.1', '2.1.1'],
 		jQueryUI: '1.10.4',
 		Modernizr: '2.7.1',
 		MooTools: '1.4.5',
