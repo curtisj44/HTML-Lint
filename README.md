@@ -14,4 +14,4 @@ How to Use:
 
 2.	Create a new bookmark.
 
-3.	Set the name to ‘HTML-Lint’ and paste the above as the URL.
+3.	Set the name to “HTML-Lint” and paste the above as the URL.
