@@ -841,10 +841,10 @@
 
 		jQuery: ['1.11.1', '2.1.1'],
 		jQueryUI: '1.10.4',
-		Modernizr: '2.7.1',
-		MooTools: '1.4.5',
-		RequireJS: '2.1.10',
-		YUI: '3.16.0'
+		Modernizr: '2.8.2',
+		MooTools: '1.5.0',
+		RequireJS: '2.1.14',
+		YUI: '3.17.2'
 	};
 
 	self.preInit = function () {
