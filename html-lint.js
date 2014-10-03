@@ -389,6 +389,11 @@
 			output += '<dt>SWFObject</dt><dd>-</dd>';
 		}
 
+		/* ---- Tealium ---- */
+		if (window.utag) {
+			output += '<dt>Tealium</dt><dd>' + utag.cfg.v + '</dd>';
+		}
+
 		/* ---- Typekit ---- */
 		if (window.Typekit) {
 			output += '<dt>Typekit</dt>';
