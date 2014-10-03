@@ -416,14 +416,9 @@
 
 		/* ---- YUI ---- */
 		if (window.YUI) {
-			output += '<dt>YUI</dt><dd>' + window.YUI.version;
-
-			if (window.YUI.version !== self.utility.YUI) {
-				output += ' ' + self.utility.error('update to ' + self.utility.YUI);
-				errors += 1;
-			}
-
-			output += '</dd>';
+			output += '<dt>YUI</dt><dd>';
+			output += '<dd>' + window.YUI.version + ' ' + self.utility.error('YUI is no longer in development?') + '</dd>';
+			errors += 1;
 		}
 
 		/* ---- YepNope ---- */
@@ -843,8 +838,7 @@
 		jQueryUI: '1.11.0',
 		Modernizr: '2.8.2',
 		MooTools: '1.5.0',
-		RequireJS: '2.1.14',
-		YUI: '3.17.2'
+		RequireJS: '2.1.14'
 	};
 
 	self.preInit = function () {
