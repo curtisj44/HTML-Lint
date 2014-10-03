@@ -417,7 +417,7 @@
 		/* ---- YUI ---- */
 		if (window.YUI) {
 			output += '<dt>YUI</dt>';
-			output += '<dd>' + window.YUI.version + ' ' + self.utility.error('YUI is no longer in development?') + '</dd>';
+			output += '<dd>' + window.YUI.version + ' ' + self.utility.error('YUI is no longer in development') + '</dd>';
 			errors += 1;
 		}
 
