@@ -82,20 +82,23 @@
 
 	self.panel.metaData = function () {
 		var errors = 0,
+			output = '<dl>',
+
 			$head = $('head'),
 			$metaTags = $head.find('meta'),
 			$title = $head.find('title').html(),
 			$charset = $metaTags.filter('meta[charset], meta[http-equiv="content-type"], meta[http-equiv="Content-Type"]'),
 			$description = $metaTags.filter('meta[name="description"], meta[name="Description"]'),
 			$keywords = $metaTags.filter('meta[name="keywords"], meta[name="Keywords"]'),
+			$viewport = $metaTags.filter('meta[name="viewport"]'),
+
 			checkTag = function (tag) {
 				if (!tag) {
 					tag = self.utility.error();
 					errors += 1;
 				}
 				return tag;
-			},
-			output = '<dl>';
+			};
 
 		// title
 		output += '<dt>&lt;title&gt;</dt><dd>' + checkTag($title) + '</dd>';
@@ -122,7 +125,8 @@
 		}
 
 		$metaTags.not('meta[property^="og:"], meta[property^="fb:"]').each(function (index, value) {
-			var $value = $(value);
+			var $value = $(value),
+				contentAttr = $value.attr('content');
 
 			if ($value.attr('name')) {
 				output += '<dt>' + $value.attr('name') + '</dt>';
@@ -138,13 +142,24 @@
 
 			output += '<dd>';
 
-			if ($value.attr('content')) {
+			if (contentAttr) {
 				if ($value.attr('name') === 'msapplication-TileImage') {
-					output += '<img src="' + $value.attr('content') + '" style="background-color:' + $metaTags.filter($('meta[name="msapplication-TileColor"]')).attr('content') + '">';
-				} else if ($value.attr('content').indexOf('http') === 0 || $value.attr('content').indexOf('.txt') > 0) {
-					output += '<a href="' + $value.attr('content') + '">' + $value.attr('content') + '</a>';
+					output += '<img src="' + contentAttr + '" style="background-color:' + $metaTags.filter($('meta[name="msapplication-TileColor"]')).attr('content') + '">';
+				} else if (
+					contentAttr.indexOf('http') === 0 ||
+					contentAttr.indexOf('.txt') > 0
+				) {
+					output += '<a href="' + contentAttr + '">' + contentAttr + '</a>';
 				} else {
-					output += $value.attr('content');
+					output += contentAttr;
+				}
+
+				// viewport
+				if (
+					contentAttr.indexOf('user-scalable=0') > 0 ||
+					contentAttr.indexOf('maximum-scale=1') > 0
+				) {
+					output += ' ' + self.utility.error('don&rsquo;t prevent user zoom');
 				}
 			} else if ($value.attr('charset')) {
 				output += $value.attr('charset');
