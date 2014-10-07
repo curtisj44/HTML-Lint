@@ -154,6 +154,11 @@
 					output += contentAttr;
 				}
 
+				//  minimal-ui
+				if (contentAttr.indexOf('minimal-ui') > 0) {
+					output += ' ' + self.utility.error('<code>minimal-ui</code> has been retired');
+				}
+
 				// viewport
 				if (
 					contentAttr.indexOf('user-scalable=0') > 0 ||
