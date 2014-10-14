@@ -162,6 +162,7 @@
 				// viewport
 				if (
 					contentAttr.indexOf('user-scalable=0') > 0 ||
+					contentAttr.indexOf('user-scalable=no') > 0 ||
 					contentAttr.indexOf('maximum-scale=1') > 0
 				) {
 					output += ' ' + self.utility.error('don&rsquo;t prevent user zoom');
