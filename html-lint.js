@@ -572,6 +572,12 @@
 		'a[href*=">"]': {
 			'label': '<code>a[href*=">"]</code>'
 		},
+		'a[href*="{"]': {
+			'label': '<code>a[href*="{"]</code>'
+		},
+		'a[href*="}"]': {
+			'label': '<code>a[href*="}"]</code>'
+		},
 		'a[target]': {
 			'label': '<code>a[target]</code>'
 		},
