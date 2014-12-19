@@ -866,8 +866,8 @@
 
 		jQueryAdded: false,
 
-		jQuery: ['1.11.1', '2.1.1'],
-		jQueryUI: '1.11.1',
+		jQuery: ['1.11.2', '2.1.3'],
+		jQueryUI: '1.11.2',
 		Modernizr: '2.8.3',
 		MooTools: '1.5.1',
 		RequireJS: '2.1.15'
