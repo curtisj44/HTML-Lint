@@ -381,6 +381,11 @@
 			output += '</dd>';
 		}
 
+		/* ---- New Relic ---- */
+		if (window.NREUM) {
+			output += '<dt>New Relic</dt><dd>-</dd>';
+		}
+
 		/* ---- Prototype ---- */
 		if (window.Prototype) {
 			output += '<dt>Prototype</dt>';
