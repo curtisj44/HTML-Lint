@@ -782,75 +782,75 @@
 			'label': 'Bad attribute: <code>vlink</code>'
 		},
 
-		// Event Handlers
-		'[onAbort]': {
-			'label': 'Bad attribute: <code>onAbort</code>'
+		// --- Inline event handlers ----
+		'[onabort]': {
+			'label': 'Bad attribute: <code>onabort</code>'
 		},
-		'[onBlur]': {
-			'label': 'Bad attribute: <code>onBlur</code>'
+		'[onblur]': {
+			'label': 'Bad attribute: <code>onblur</code>'
 		},
-		'[onChange]': {
-			'label': 'Bad attribute: <code>onChange</code>'
+		'[onchange]': {
+			'label': 'Bad attribute: <code>onchange</code>'
 		},
-		'[onClick]': {
-			'label': 'Bad attribute: <code>onClick</code>'
+		'[onclick]': {
+			'label': 'Bad attribute: <code>onclick</code>'
 		},
-		'[onDblClick]': {
-			'label': 'Bad attribute: <code>onDblClick</code>'
+		'[ondblclick]': {
+			'label': 'Bad attribute: <code>ondblclick</code>'
 		},
-		'[onDragDrop]': {
-			'label': 'Bad attribute: <code>onDragDrop</code>'
+		'[ondragdrop]': {
+			'label': 'Bad attribute: <code>ondragdrop</code>'
 		},
-		'[onError]': {
-			'label': 'Bad attribute: <code>onError</code>'
+		'[onerror]': {
+			'label': 'Bad attribute: <code>onerror</code>'
 		},
-		'[onFocus]': {
-			'label': 'Bad attribute: <code>onFocus</code>'
+		'[onfocus]': {
+			'label': 'Bad attribute: <code>onfocus</code>'
 		},
-		'[onKeyDown]': {
-			'label': 'Bad attribute: <code>onKeyDown</code>'
+		'[onkeydown]': {
+			'label': 'Bad attribute: <code>onkeydown</code>'
 		},
-		'[onKeyPress]': {
-			'label': 'Bad attribute: <code>onKeyPress</code>'
+		'[onkeypress]': {
+			'label': 'Bad attribute: <code>onkeypress</code>'
 		},
-		'[onKeyUp]': {
-			'label': 'Bad attribute: <code>onKeyUp</code>'
+		'[onkeyup]': {
+			'label': 'Bad attribute: <code>onkeyup</code>'
 		},
-		'[onLoad]': {
-			'label': 'Bad attribute: <code>onLoad</code>'
+		'[onload]': {
+			'label': 'Bad attribute: <code>onload</code>'
 		},
-		'[onMouseDown]': {
-			'label': 'Bad attribute: <code>onMouseDown</code>'
+		'[onmousedown]': {
+			'label': 'Bad attribute: <code>onmousedown</code>'
 		},
-		'[onMouseMove]': {
-			'label': 'Bad attribute: <code>onMouseMove</code>'
+		'[onmousemove]': {
+			'label': 'Bad attribute: <code>onmousemove</code>'
 		},
-		'[onMouseOut]': {
-			'label': 'Bad attribute: <code>onMouseOut</code>'
+		'[onmouseout]': {
+			'label': 'Bad attribute: <code>onmouseout</code>'
 		},
-		'[onMouseOver]': {
-			'label': 'Bad attribute: <code>onMouseOver</code>'
+		'[onmouseover]': {
+			'label': 'Bad attribute: <code>onmouseover</code>'
 		},
-		'[onMouseUp]': {
-			'label': 'Bad attribute: <code>onMouseUp</code>'
+		'[onmouseup]': {
+			'label': 'Bad attribute: <code>onmouseup</code>'
 		},
-		'[onMove]': {
-			'label': 'Bad attribute: <code>onMove</code>'
+		'[onmove]': {
+			'label': 'Bad attribute: <code>onmove</code>'
 		},
-		'[onReset]': {
-			'label': 'Bad attribute: <code>onReset</code>'
+		'[onreset]': {
+			'label': 'Bad attribute: <code>onreset</code>'
 		},
-		'[onResize]': {
-			'label': 'Bad attribute: <code>onResize</code>'
+		'[onresize]': {
+			'label': 'Bad attribute: <code>onresize</code>'
 		},
-		'[onSelect]': {
-			'label': 'Bad attribute: <code>onSelect</code>'
+		'[onselect]': {
+			'label': 'Bad attribute: <code>onselect</code>'
 		},
-		'[onSubmit]': {
-			'label': 'Bad attribute: <code>onSubmit</code>'
+		'[onsubmit]': {
+			'label': 'Bad attribute: <code>onsubmit</code>'
 		},
-		'[onUnload]': {
-			'label': 'Bad attribute: <code>onUnload</code>'
+		'[onunload]': {
+			'label': 'Bad attribute: <code>onunload</code>'
 		},
 
 		// Ids & Classes
