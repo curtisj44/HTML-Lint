@@ -783,74 +783,237 @@
 		},
 
 		// --- Inline event handlers ----
+
 		'[onabort]': {
-			'label': 'Bad attribute: <code>onabort</code>'
+			'label': 'Inline event handler: <code>onabort</code>'
+		},
+		'[onautocomplete]': {
+			'label': 'Inline event handler: <code>onautocomplete</code>'
+		},
+		'[onautocompleteerror]': {
+			'label': 'Inline event handler: <code>onautocompleteerror</code>'
+		},
+		'[onafterprint]': {
+			'label': 'Inline event handler: <code>onafterprint</code>'
+		},
+		'[onbeforeprint]': {
+			'label': 'Inline event handler: <code>onbeforeprint</code>'
+		},
+		'[onbeforeunload]': {
+			'label': 'Inline event handler: <code>onbeforeunload</code>'
 		},
 		'[onblur]': {
-			'label': 'Bad attribute: <code>onblur</code>'
+			'label': 'Inline event handler: <code>onblur</code>'
+		},
+		'[oncancel]': {
+			'label': 'Inline event handler: <code>oncancel</code>'
+		},
+		'[oncanplay]': {
+			'label': 'Inline event handler: <code>oncanplay</code>'
+		},
+		'[oncanplaythrough]': {
+			'label': 'Inline event handler: <code>oncanplaythrough</code>'
 		},
 		'[onchange]': {
-			'label': 'Bad attribute: <code>onchange</code>'
+			'label': 'Inline event handler: <code>onchange</code>'
 		},
 		'[onclick]': {
-			'label': 'Bad attribute: <code>onclick</code>'
+			'label': 'Inline event handler: <code>onclick</code>'
+		},
+		'[onclose]': {
+			'label': 'Inline event handler: <code>onclose</code>'
+		},
+		'[oncontextmenu]': {
+			'label': 'Inline event handler: <code>oncontextmenu</code>'
+		},
+		'[oncuechange]': {
+			'label': 'Inline event handler: <code>oncuechange</code>'
 		},
 		'[ondblclick]': {
-			'label': 'Bad attribute: <code>ondblclick</code>'
+			'label': 'Inline event handler: <code>ondblclick</code>'
+		},
+		'[ondrag]': {
+			'label': 'Inline event handler: <code>ondrag</code>'
 		},
 		'[ondragdrop]': {
-			'label': 'Bad attribute: <code>ondragdrop</code>'
+			'label': 'Inline event handler: <code>ondragdrop</code>'
+		},
+		'[ondragend]': {
+			'label': 'Inline event handler: <code>ondragend</code>'
+		},
+		'[ondragenter]': {
+			'label': 'Inline event handler: <code>ondragenter</code>'
+		},
+		'[ondragexit]': {
+			'label': 'Inline event handler: <code>ondragexit</code>'
+		},
+		'[ondragleave]': {
+			'label': 'Inline event handler: <code>ondragleave</code>'
+		},
+		'[ondragover]': {
+			'label': 'Inline event handler: <code>ondragover</code>'
+		},
+		'[ondragstart]': {
+			'label': 'Inline event handler: <code>ondragstart</code>'
+		},
+		'[ondrop]': {
+			'label': 'Inline event handler: <code>ondrop</code>'
+		},
+		'[ondurationchange]': {
+			'label': 'Inline event handler: <code>ondurationchange</code>'
+		},
+		'[onemptied]': {
+			'label': 'Inline event handler: <code>onemptied</code>'
+		},
+		'[onended]': {
+			'label': 'Inline event handler: <code>onended</code>'
 		},
 		'[onerror]': {
-			'label': 'Bad attribute: <code>onerror</code>'
+			'label': 'Inline event handler: <code>onerror</code>'
 		},
 		'[onfocus]': {
-			'label': 'Bad attribute: <code>onfocus</code>'
+			'label': 'Inline event handler: <code>onfocus</code>'
+		},
+		'[onhashchange]': {
+			'label': 'Inline event handler: <code>onhashchange</code>'
+		},
+		'[oninput]': {
+			'label': 'Inline event handler: <code>oninput</code>'
+		},
+		'[oninvalid]': {
+			'label': 'Inline event handler: <code>oninvalid</code>'
 		},
 		'[onkeydown]': {
-			'label': 'Bad attribute: <code>onkeydown</code>'
+			'label': 'Inline event handler: <code>onkeydown</code>'
 		},
 		'[onkeypress]': {
-			'label': 'Bad attribute: <code>onkeypress</code>'
+			'label': 'Inline event handler: <code>onkeypress</code>'
 		},
 		'[onkeyup]': {
-			'label': 'Bad attribute: <code>onkeyup</code>'
+			'label': 'Inline event handler: <code>onkeyup</code>'
+		},
+		'[onlanguagechange]': {
+			'label': 'Inline event handler: <code>onlanguagechange</code>'
 		},
 		'[onload]': {
-			'label': 'Bad attribute: <code>onload</code>'
+			'label': 'Inline event handler: <code>onload</code>'
+		},
+		'[onloadeddata]': {
+			'label': 'Inline event handler: <code>onloadeddata</code>'
+		},
+		'[onloadedmetadata]': {
+			'label': 'Inline event handler: <code>onloadedmetadata</code>'
+		},
+		'[onloadstart]': {
+			'label': 'Inline event handler: <code>onloadstart</code>'
+		},
+		'[onmessage]': {
+			'label': 'Inline event handler: <code>onmessage</code>'
 		},
 		'[onmousedown]': {
-			'label': 'Bad attribute: <code>onmousedown</code>'
+			'label': 'Inline event handler: <code>onmousedown</code>'
+		},
+		'[onmouseenter]': {
+			'label': 'Inline event handler: <code>onmouseenter</code>'
+		},
+		'[onmouseleave]': {
+			'label': 'Inline event handler: <code>onmouseleave</code>'
 		},
 		'[onmousemove]': {
-			'label': 'Bad attribute: <code>onmousemove</code>'
+			'label': 'Inline event handler: <code>onmousemove</code>'
 		},
 		'[onmouseout]': {
-			'label': 'Bad attribute: <code>onmouseout</code>'
+			'label': 'Inline event handler: <code>onmouseout</code>'
 		},
 		'[onmouseover]': {
-			'label': 'Bad attribute: <code>onmouseover</code>'
+			'label': 'Inline event handler: <code>onmouseover</code>'
 		},
 		'[onmouseup]': {
-			'label': 'Bad attribute: <code>onmouseup</code>'
+			'label': 'Inline event handler: <code>onmouseup</code>'
+		},
+		'[onmousewheel]': {
+			'label': 'Inline event handler: <code>onmousewheel</code>'
 		},
 		'[onmove]': {
-			'label': 'Bad attribute: <code>onmove</code>'
+			'label': 'Inline event handler: <code>onmove</code>'
+		},
+		'[onoffline]': {
+			'label': 'Inline event handler: <code>onoffline</code>'
+		},
+		'[ononline]': {
+			'label': 'Inline event handler: <code>ononline</code>'
+		},
+		'[onpagehide]': {
+			'label': 'Inline event handler: <code>onpagehide</code>'
+		},
+		'[onpageshow]': {
+			'label': 'Inline event handler: <code>onpageshow</code>'
+		},
+		'[onpause]': {
+			'label': 'Inline event handler: <code>onpause</code>'
+		},
+		'[onplay]': {
+			'label': 'Inline event handler: <code>onplay</code>'
+		},
+		'[onplaying]': {
+			'label': 'Inline event handler: <code>onplaying</code>'
+		},
+		'[onpopstate]': {
+			'label': 'Inline event handler: <code>onpopstate</code>'
+		},
+		'[onprogress]': {
+			'label': 'Inline event handler: <code>onprogress</code>'
 		},
 		'[onreset]': {
-			'label': 'Bad attribute: <code>onreset</code>'
+			'label': 'Inline event handler: <code>onreset</code>'
 		},
 		'[onresize]': {
-			'label': 'Bad attribute: <code>onresize</code>'
+			'label': 'Inline event handler: <code>onresize</code>'
+		},
+		'[onscroll]': {
+			'label': 'Inline event handler: <code>onscroll</code>'
+		},
+		'[onseeked]': {
+			'label': 'Inline event handler: <code>onseeked</code>'
+		},
+		'[onseeking]': {
+			'label': 'Inline event handler: <code>onseeking</code>'
 		},
 		'[onselect]': {
-			'label': 'Bad attribute: <code>onselect</code>'
+			'label': 'Inline event handler: <code>onselect</code>'
+		},
+		'[onshow]': {
+			'label': 'Inline event handler: <code>onshow</code>'
+		},
+		'[onsort]': {
+			'label': 'Inline event handler: <code>onsort</code>'
+		},
+		'[onstalled]': {
+			'label': 'Inline event handler: <code>onstalled</code>'
+		},
+		'[onstorage]': {
+			'label': 'Inline event handler: <code>onstorage</code>'
 		},
 		'[onsubmit]': {
-			'label': 'Bad attribute: <code>onsubmit</code>'
+			'label': 'Inline event handler: <code>onsubmit</code>'
+		},
+		'[onsuspend]': {
+			'label': 'Inline event handler: <code>onsuspend</code>'
+		},
+		'[ontimeupdate]': {
+			'label': 'Inline event handler: <code>ontimeupdate</code>'
+		},
+		'[ontoggle]': {
+			'label': 'Inline event handler: <code>ontoggle</code>'
 		},
 		'[onunload]': {
-			'label': 'Bad attribute: <code>onunload</code>'
+			'label': 'Inline event handler: <code>onunload</code>'
+		},
+		'[onvolumechange]': {
+			'label': 'Inline event handler: <code>onvolumechange</code>'
+		},
+		'[onwaiting]': {
+			'label': 'Inline event handler: <code>onwaiting</code>'
 		},
 
 		// Ids & Classes
