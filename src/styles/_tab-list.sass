@@ -1,0 +1,71 @@
+#html-lint
+	.html-lint-tab-list
+		-moz-box-sizing:    border-box
+		-webkit-box-sizing: border-box
+		box-sizing:         border-box
+		overflow: hidden
+		padding: 1em 3%
+		border-bottom: 1px solid rgba(0, 0, 0, .7)
+		-webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, .1)
+		box-shadow:         0 1px 0 rgba(255, 255, 255, .1)
+		list-style: none
+
+		@media (min-width:480px)
+			float: left
+			overflow: visible
+			padding: 0
+			width: 30%
+			border-bottom: 0
+			-webkit-box-shadow: none
+			box-shadow:         none
+
+		@media (min-width:600px)
+			width: 20%
+
+		li
+			float: left
+			margin: -1px 0 0 -1px
+			width: 50%
+
+			@media (min-width:480px)
+				float: none
+				margin-left: 0
+				width: 100%
+
+		a
+			display: block
+			position: relative
+			padding: .5em 15%
+			text-decoration: none
+			text-transform: capitalize
+
+			@media (min-width:480px)
+				border-width: 1px 0
+
+			&.selected
+				background: #037bf0
+
+				@media (min-width:480px)
+					position: relative
+
+				&:after,
+				&:before
+					@media (min-width:480px)
+						position: absolute
+						top: 50%
+						right: -1px
+						margin: -10px 0 0
+						border-top: 8px solid transparent
+						border-right: 8px solid #fff
+						border-bottom: 8px solid transparent
+						content: ''
+
+				&:before
+					@media (min-width:480px)
+						right: 0
+						border-right-color: rgba(0, 0, 0, .8)
+
+				// TODO - check that these selectors still works
+				:active:after,
+				:active:before
+					margin-top: -11px
