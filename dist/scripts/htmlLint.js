@@ -1,7 +1,7 @@
-(function (self) {
+(function (htmlLint) {
 	'use strict';
 
-	self.addPanel = function (name, output, errors) {
+	htmlLint.addPanel = function (name, output, errors) {
 		var $htmlLint = $('#html-lint'),
 			nameRevised = name.replace(' ', '').toLowerCase(),
 			$panel = $htmlLint.find('[data-panel="' + nameRevised + '"]');
@@ -22,30 +22,39 @@
 			}
 		}
 	};
+}(window.htmlLint = window.htmlLint || {}));
+(function (htmlLint) {
+	'use strict';
 
-	self.close = function () {
+	htmlLint.close = function () {
 		var $closeButton = $('.html-lint-close');
 
 		$closeButton.bind('click', function () {
-			self.closeAction($closeButton);
+			htmlLint.closeAction($closeButton);
 			return false;
 		});
 
 		$(document).bind('keyup', function (e) {
 			if (e.keyCode === 27) {
-				self.closeAction($closeButton);
+				htmlLint.closeAction($closeButton);
 			}
 		});
 	};
+}(window.htmlLint = window.htmlLint || {}));
+(function (htmlLint) {
+	'use strict';
 
-	self.closeAction = function ($closeButton) {
+	htmlLint.closeAction = function ($closeButton) {
 		$closeButton.parent().fadeOut(250, function () {
 			$(this).remove();
 			$('#html-lint-css, #html-lint-jquery, #html-lint-js').remove();
 		});
 	};
+}(window.htmlLint = window.htmlLint || {}));
+(function (htmlLint) {
+	'use strict';
 
-	self.editFlash = function () {
+	htmlLint.editFlash = function () {
 		var $flashObjects = $('object, embed');
 
 		if ($flashObjects.length > 0 && $flashObjects.find('param[name="wmode"]').attr('value') !== 'opaque') {
@@ -57,8 +66,11 @@
 			$flashObjects.attr('wmode', 'opaque').hide().show();
 		}
 	};
+}(window.htmlLint = window.htmlLint || {}));
+(function (htmlLint) {
+	'use strict';
 
-	self.handleErrors = function (tests) {
+	htmlLint.handleErrors = function (tests) {
 		var errors = 0,
 			currentErrors,
 			output = '';
@@ -68,19 +80,61 @@
 
 			if (currentErrors > 0) {
 				errors += currentErrors;
-				output += '<p><i>' + self.utility.error(currentErrors) + '</i>' + test.label + '</p>';
+				output += '<p><i>' + htmlLint.utility.error(currentErrors) + '</i>' + test.label + '</p>';
 				//$(index).addClass('html-lint-error-highlight').attr('data-html-lint', test.label);
 
 				console.warn(index, $(index));
 			}
 		});
 
-		self.addPanel('Tests', output, errors);
+		htmlLint.addPanel('Tests', output, errors);
 	};
+}(window.htmlLint = window.htmlLint || {}));
+(function (htmlLint) {
+	'use strict';
 
-	self.panel = {};
+	htmlLint.init = function () {
+		if (typeof $ === 'undefined') {
+			$ = jQuery;
+		}
 
-	self.panel.metaData = function () {
+		htmlLint.editFlash();
+
+		var output = '<div id="html-lint" style="display:none">' +
+				'<h1>HTML-Lint</h1>' +
+				'<h2>Total Errors</h2>' +
+				'<button class="html-lint-button html-lint-close">&times;</button>' +
+				'<ol class="html-lint-tab-list"></ol>' +
+				'</div>';
+
+		if ($('#html-lint').length > 0) {
+			$('#html-lint').fadeOut(250, function () {
+				// TODO - make DRYer
+				$('body').append(output);
+			});
+		} else {
+			// TODO - make DRYer
+			$('body').append(output);
+		}
+
+		$.each(htmlLint.panel, function (index, value) {
+			htmlLint.panel[index]();
+		});
+
+		htmlLint.close();
+		htmlLint.tabSetup();
+
+		$('#html-lint').fadeIn(250, function () {
+			$(this).removeAttr('style');
+		});
+	};
+}(window.htmlLint = window.htmlLint || {}));
+(function (htmlLint) {
+	'use strict';
+
+	htmlLint.panel = {};
+
+	htmlLint.panel.metaData = function () {
 		var errors = 0,
 			output = '<dl>',
 
@@ -94,7 +148,7 @@
 
 			checkTag = function (tag) {
 				if (!tag) {
-					tag = self.utility.error();
+					tag = htmlLint.utility.error();
 					errors += 1;
 				}
 				return tag;
@@ -105,22 +159,22 @@
 
 		// charset
 		if ($charset.length < 1) {
-			output += '<dt>charset</dt><dd>' + self.utility.error() + '</dd>';
+			output += '<dt>charset</dt><dd>' + htmlLint.utility.error() + '</dd>';
 			errors += 1;
 		} else if ($charset[0] !== $head.children()[0]) {
-			output += '<dt>Character Encoding</dt><dd>' + self.utility.error('not first child of <code>&lt;head&gt;</code>') + '</dd>';
+			output += '<dt>Character Encoding</dt><dd>' + htmlLint.utility.error('not first child of <code>&lt;head&gt;</code>') + '</dd>';
 			errors += 1;
 		}
 
 		// description
 		if ($description.length < 1) {
-			output += '<dt>description</dt><dd>' + self.utility.error() + '</dd>';
+			output += '<dt>description</dt><dd>' + htmlLint.utility.error() + '</dd>';
 			errors += 1;
 		}
 
 		// keywords
 		if ($keywords.length < 1) {
-			output += '<dt>keywords</dt><dd>' + self.utility.error() + '</dd>';
+			output += '<dt>keywords</dt><dd>' + htmlLint.utility.error() + '</dd>';
 			errors += 1;
 		}
 
@@ -156,7 +210,7 @@
 
 				//  minimal-ui
 				if (contentAttr.indexOf('minimal-ui') > 0) {
-					output += ' ' + self.utility.error('<code>minimal-ui</code> has been retired');
+					output += ' ' + htmlLint.utility.error('<code>minimal-ui</code> has been retired');
 				}
 
 				// viewport
@@ -165,12 +219,12 @@
 					contentAttr.indexOf('user-scalable=no') > 0 ||
 					contentAttr.indexOf('maximum-scale=1') > 0
 				) {
-					output += ' ' + self.utility.error('don&rsquo;t prevent user zoom');
+					output += ' ' + htmlLint.utility.error('don&rsquo;t prevent user zoom');
 				}
 			} else if ($value.attr('charset')) {
 				output += $value.attr('charset');
 			} else {
-				output += self.utility.error('missing value');
+				output += htmlLint.utility.error('missing value');
 				errors += 1;
 			}
 
@@ -179,10 +233,10 @@
 
 		output += '</dl>';
 
-		self.addPanel('Meta Data', output, errors);
+		htmlLint.addPanel('Meta Data', output, errors);
 	};
 
-	self.panel.openGraph = function () {
+	htmlLint.panel.openGraph = function () {
 		var errors = 0,
 			$head = $('head'),
 			$metaOG = $head.find('meta[property^="og:"]'),
@@ -203,7 +257,7 @@
 							if ($content.indexOf('.gif') !== -1 || $content.indexOf('.jpg') !== -1 || $content.indexOf('.png') !== -1) {
 								output += '<dd><img src="' + $content + '" alt="' + $content + '" /></dd>';
 							} else {
-								output += '<dd>' + self.utility.error() + ' = ' + $content + '</dd>';
+								output += '<dd>' + htmlLint.utility.error() + ' = ' + $content + '</dd>';
 							}
 						} else if ($property === 'og:url') {
 							output += '<dd><a href="' + $content + '">' + $content + '</a></dd>';
@@ -211,7 +265,7 @@
 							output += '<dd>' + $content + '</dd>';
 						}
 					} else {
-						output += '<dd>' + self.utility.error('missing value') + '</dd>';
+						output += '<dd>' + htmlLint.utility.error('missing value') + '</dd>';
 						errors += 1;
 					}
 				});
@@ -242,22 +296,22 @@
 							output += '<dd>' + $content + '</dd>';
 						}
 					} else {
-						output += '<dd>' + self.utility.error('missing value') + '</dd>';
+						output += '<dd>' + htmlLint.utility.error('missing value') + '</dd>';
 						errors += 1;
 					}
 				});
 			}
 		} else {
-			output += '<dt>Open Graph</dt><dd>' + self.utility.error('missing tags') + '</dd>';
+			output += '<dt>Open Graph</dt><dd>' + htmlLint.utility.error('missing tags') + '</dd>';
 			errors += 1;
 		}
 
 		output += '</dl>';
 
-		self.addPanel('Open Graph', output, errors);
+		htmlLint.addPanel('Open Graph', output, errors);
 	};
 
-	self.panel.overview = function () {
+	htmlLint.panel.overview = function () {
 		var errors = 0,
 			$appleTouchIcons = $('link[rel*="apple-touch-icon"]'),
 			$shortcutIcons = $('link[rel="shortcut icon"], link[rel="icon"]'),
@@ -280,22 +334,22 @@
 
 		// no apple-touch-icon
 		if ($appleTouchIcons.length < 0) {
-			output += '<dt>apple-touch-icon</dt><dd>' + self.utility.error() + '</dd>';
+			output += '<dt>apple-touch-icon</dt><dd>' + htmlLint.utility.error() + '</dd>';
 			errors += 1;
 		}
 
 		// no shortcut icon
 		if ($shortcutIcons.length < 0) {
-			output += '<dt>shortcut icon</dt><dd>' + self.utility.error() + '</dd>';
+			output += '<dt>shortcut icon</dt><dd>' + htmlLint.utility.error() + '</dd>';
 			errors += 1;
 		}
 
 		output += '</dl>';
 
-		self.addPanel('Overview', output, errors);
+		htmlLint.addPanel('Overview', output, errors);
 	};
 
-	self.panel.technology = function () {
+	htmlLint.panel.technology = function () {
 		var errors = 0,
 			output = '<dl>';
 
@@ -309,7 +363,7 @@
 		/* ---- Cufon ---- */
 		if (window.Cufon) {
 			output += '<dt>Cufon</dt>';
-			output += '<dd>' + self.utility.error('obsolete') + '</dd>';
+			output += '<dd>' + htmlLint.utility.error('obsolete') + '</dd>';
 			errors += 1;
 		}
 
@@ -324,11 +378,11 @@
 		}
 
 		/* ---- jQuery ---- */
-		if (!(self.utility.jQueryAdded)) {
+		if (!(htmlLint.utility.jQueryAdded)) {
 			output += '<dt>jQuery</dt><dd>' + $.fn.jquery;
 
-			if ($.fn.jquery !== self.utility.jQuery[0] && $.fn.jquery !== self.utility.jQuery[1]) {
-				output += ' ' + self.utility.error('update to ' + self.utility.jQuery[0] + ' or ' + self.utility.jQuery[1]);
+			if ($.fn.jquery !== htmlLint.utility.jQuery[0] && $.fn.jquery !== htmlLint.utility.jQuery[1]) {
+				output += ' ' + htmlLint.utility.error('update to ' + htmlLint.utility.jQuery[0] + ' or ' + htmlLint.utility.jQuery[1]);
 				errors += 1;
 			}
 
@@ -339,8 +393,8 @@
 		if ($.ui) {
 			output += '<dt>jQuery UI</dt><dd>' + $.ui.version;
 
-			if ($.ui.version !== self.utility.jQueryUI) {
-				output += ' ' + self.utility.error('update to ' + self.utility.jQueryUI);
+			if ($.ui.version !== htmlLint.utility.jQueryUI) {
+				output += ' ' + htmlLint.utility.error('update to ' + htmlLint.utility.jQueryUI);
 				errors += 1;
 			}
 
@@ -361,8 +415,8 @@
 		if (window.Modernizr) {
 			output += '<dt>Modernizr</dt><dd>' + Modernizr._version;
 
-			if (Modernizr._version !== self.utility.Modernizr) {
-				output += ' ' + self.utility.error('update to ' + self.utility.Modernizr);
+			if (Modernizr._version !== htmlLint.utility.Modernizr) {
+				output += ' ' + htmlLint.utility.error('update to ' + htmlLint.utility.Modernizr);
 				errors += 1;
 			}
 
@@ -373,8 +427,8 @@
 		if (window.MooTools) {
 			output += '<dt>MooTools</dt><dd>' + MooTools.version;
 
-			if (MooTools.version !== self.utility.MooTools) {
-				output += ' ' + self.utility.error('update to ' + self.utility.MooTools);
+			if (MooTools.version !== htmlLint.utility.MooTools) {
+				output += ' ' + htmlLint.utility.error('update to ' + htmlLint.utility.MooTools);
 				errors += 1;
 			}
 
@@ -389,7 +443,7 @@
 		/* ---- Prototype ---- */
 		if (window.Prototype) {
 			output += '<dt>Prototype</dt>';
-			output += '<dd>' + window.Prototype.Version + ' ' + self.utility.error('who uses Prototype anymore?') + '</dd>';
+			output += '<dd>' + window.Prototype.Version + ' ' + htmlLint.utility.error('who uses Prototype anymore?') + '</dd>';
 			errors += 1;
 		}
 
@@ -397,8 +451,8 @@
 		if (window.require) {
 			output += '<dt>RequireJS</dt><dd>' + require.version;
 
-			if (require.version !== self.utility.RequireJS) {
-				output += ' ' + self.utility.error('update to ' + self.utility.RequireJS);
+			if (require.version !== htmlLint.utility.RequireJS) {
+				output += ' ' + htmlLint.utility.error('update to ' + htmlLint.utility.RequireJS);
 				errors += 1;
 			}
 
@@ -448,7 +502,7 @@
 		/* ---- YUI ---- */
 		if (window.YUI) {
 			output += '<dt>YUI</dt>';
-			output += '<dd>' + window.YUI.version + ' ' + self.utility.error('YUI is no longer in development') + '</dd>';
+			output += '<dd>' + window.YUI.version + ' ' + htmlLint.utility.error('YUI is no longer in development') + '</dd>';
 			errors += 1;
 		}
 
@@ -463,37 +517,49 @@
 			output = '';
 		}
 
-		self.addPanel('Technology', output, errors);
+		htmlLint.addPanel('Technology', output, errors);
 	};
 
-	self.panel.tests = function () {
-		self.handleErrors(self.test);
+	htmlLint.panel.tests = function () {
+		htmlLint.handleErrors(htmlLint.test);
+	};
+}(window.htmlLint = window.htmlLint || {}));
+
+(function (htmlLint) {
+	'use strict';
+
+	htmlLint.preInit = function () {
+		var link,
+			script;
+
+		// Add CSS
+		if (document.getElementById('html-lint-css') === null) {
+			link = document.createElement('link');
+			link.href = htmlLint.utility.css;
+			link.id = 'html-lint-css';
+			link.rel = 'stylesheet';
+			document.body.appendChild(link);
+		}
+
+		// Add jQuery
+		if (typeof jQuery !== 'undefined' && !!jQuery.fn && parseInt(jQuery.fn.jquery.replace(/\./g, ''), 10) > 164) {
+			htmlLint.init();
+		} else {
+			htmlLint.utility.jQueryAdded = true;
+			script = document.createElement('script');
+			script.onload = htmlLint.init;
+			script.id = 'html-lint-jquery';
+			script.src = '//ajax.googleapis.com/ajax/libs/jquery/' + htmlLint.utility.jQuery[0] + '/jquery.min.js';
+			document.body.appendChild(script);
+		}
 	};
 
-	self.tabSetup = function () {
-		var errors = 0,
-			$htmlLint = $('#html-lint'),
-			$tabList = $htmlLint.find('.html-lint-tab-list'),
-			$tabPanels = $htmlLint.find('.html-lint-tab-panel');
+	htmlLint.preInit();
+}(window.htmlLint = window.htmlLint || {}));
+(function (htmlLint) {
+	'use strict';
 
-		// tab button
-		$tabList.find('a').bind('click', function () {
-			self.tabAction($(this).attr('href'), $tabList, $tabPanels);
-			return false;
-		});
-
-		// open first panel
-		$tabList.find('li:first-child a').trigger('click');
-
-		// total error count
-		$.each($tabList.find('.html-lint-error-count'), function (index, value) {
-			errors += parseInt($(value).html(), 10);
-		});
-
-		$htmlLint.find('h2').append(self.utility.error(errors));
-	};
-
-	self.tabAction = function ($href, $tabList, $tabPanels) {
+	htmlLint.tabAction = function ($href, $tabList, $tabPanels) {
 		var $panelName = $href.replace('#', ''),
 			$tabListCurrent = $tabList.find('a[href="' + $href + '"]'),
 			$tabPanelCurrent = $tabPanels.filter('[data-panel="' + $panelName + '"]');
@@ -508,8 +574,37 @@
 			$tabPanelCurrent.addClass('selected');
 		}
 	};
+}(window.htmlLint = window.htmlLint || {}));
+(function (htmlLint) {
+	'use strict';
 
-	self.test = {
+	htmlLint.tabSetup = function () {
+		var errors = 0,
+			$htmlLint = $('#html-lint'),
+			$tabList = $htmlLint.find('.html-lint-tab-list'),
+			$tabPanels = $htmlLint.find('.html-lint-tab-panel');
+
+		// tab button
+		$tabList.find('a').bind('click', function () {
+			htmlLint.tabAction($(this).attr('href'), $tabList, $tabPanels);
+			return false;
+		});
+
+		// open first panel
+		$tabList.find('li:first-child a').trigger('click');
+
+		// total error count
+		$.each($tabList.find('.html-lint-error-count'), function (index, value) {
+			errors += parseInt($(value).html(), 10);
+		});
+
+		$htmlLint.find('h2').append(htmlLint.utility.error(errors));
+	};
+}(window.htmlLint = window.htmlLint || {}));
+(function (htmlLint) {
+	'use strict';
+
+	htmlLint.test = {
 		// ---- Tags ----
 		'a:empty, b:empty, abbr:empty, acronym:empty, button:empty, dd:empty, div:empty, dl:empty, dt:empty, h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, form:empty, fieldset:empty, label:empty, li:empty, ol:empty, p:empty, span:empty, strong:empty, ul:empty': {
 			'label': 'empty tag'
@@ -1024,8 +1119,11 @@
 			'label': 'Bad Class: <code>MsoNormal</code>'
 		}
 	};
+}(window.htmlLint = window.htmlLint || {}));
+(function (htmlLint) {
+	'use strict';
 
-	self.utility = {
+	htmlLint.utility = {
 		css: '//' + ((document.getElementById('html-lint-js').getAttribute('src').indexOf('?dev') > 0) ? 'dl.dropbox.com/u/8864275' : 'curtisj44.github.io') + '/HTML-Lint/html-lint.css',
 
 		error: function (message) {
@@ -1040,68 +1138,4 @@
 		MooTools: '1.5.1',
 		RequireJS: '2.1.15'
 	};
-
-	self.preInit = function () {
-		var link,
-			script;
-
-		// Add CSS
-		if (document.getElementById('html-lint-css') === null) {
-			link = document.createElement('link');
-			link.href = self.utility.css;
-			link.id = 'html-lint-css';
-			link.rel = 'stylesheet';
-			document.body.appendChild(link);
-		}
-
-		// Add jQuery
-		if (typeof jQuery !== 'undefined' && !!jQuery.fn && parseInt(jQuery.fn.jquery.replace(/\./g, ''), 10) > 164) {
-			self.init();
-		} else {
-			self.utility.jQueryAdded = true;
-			script = document.createElement('script');
-			script.onload = self.init;
-			script.id = 'html-lint-jquery';
-			script.src = '//ajax.googleapis.com/ajax/libs/jquery/' + self.utility.jQuery[0] + '/jquery.min.js';
-			document.body.appendChild(script);
-		}
-	};
-
-	self.init = function () {
-		if (typeof $ === 'undefined') {
-			$ = jQuery;
-		}
-
-		self.editFlash();
-
-		var output = '<div id="html-lint" style="display:none">' +
-				'<h1>HTML-Lint</h1>' +
-				'<h2>Total Errors</h2>' +
-				'<button class="html-lint-button html-lint-close">&times;</button>' +
-				'<ol class="html-lint-tab-list"></ol>' +
-				'</div>';
-
-		if ($('#html-lint').length > 0) {
-			$('#html-lint').fadeOut(250, function () {
-				// TODO - make DRYer
-				$('body').append(output);
-			});
-		} else {
-			// TODO - make DRYer
-			$('body').append(output);
-		}
-
-		$.each(self.panel, function (index, value) {
-			self.panel[index]();
-		});
-
-		self.close();
-		self.tabSetup();
-
-		$('#html-lint').fadeIn(250, function () {
-			$(this).removeAttr('style');
-		});
-	};
-
-	self.preInit();
-}(window.HtmlLint = window.HtmlLint || {}));
+}(window.htmlLint = window.htmlLint || {}));
