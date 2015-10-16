@@ -553,8 +553,6 @@
 			document.body.appendChild(script);
 		}
 	};
-
-	htmlLint.preInit();
 }(window.htmlLint = window.htmlLint || {}));
 (function (htmlLint) {
 	'use strict';
@@ -1138,4 +1136,8 @@
 		MooTools: '1.5.1',
 		RequireJS: '2.1.15'
 	};
+
+	// TODO - organize this better
+	htmlLint.preInit();
+
 }(window.htmlLint = window.htmlLint || {}));

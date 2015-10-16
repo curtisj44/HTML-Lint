@@ -26,6 +26,4 @@
 			document.body.appendChild(script);
 		}
 	};
-
-	htmlLint.preInit();
 }(window.htmlLint = window.htmlLint || {}));

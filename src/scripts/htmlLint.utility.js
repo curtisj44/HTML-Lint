@@ -16,4 +16,8 @@
 		MooTools: '1.5.1',
 		RequireJS: '2.1.15'
 	};
+
+	// TODO - organize this better
+	htmlLint.preInit();
+
 }(window.htmlLint = window.htmlLint || {}));
