@@ -3,7 +3,6 @@ var gulp = require('gulp'),
 	autoprefixer = require('gulp-autoprefixer'),
 	concat = require('gulp-concat'),
 	sass = require('gulp-sass');
-	// uglify = require('gulp-sass');
 
 gulp.task('styles', function () {
 	gulp.src('./src/styles/**/*.sass')
@@ -17,14 +16,7 @@ gulp.task('styles', function () {
 
 gulp.task('scripts', function () {
 	gulp.src('./src/scripts/**/*.js')
-		.pipe(concat('html-lint.js'))
-		// .pipe(gulp.dest('./dist/scripts/'))
-		// .pipe(uglify())
-		// .pipe(uglify({ mangle: { toplevel: true } })
-		// 	.on('error', gulpUtil.log))
-		// .pipe(rename({
-		// 	suffix: '.min'
-		// }))
+		.pipe(concat('htmlLint.js'))
 		.pipe(gulp.dest('./dist/scripts/'));
 });
 
