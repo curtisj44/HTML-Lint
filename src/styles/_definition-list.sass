@@ -2,12 +2,12 @@
 	dl
 		margin: 0 3%
 
-		@media (min-width:600px)
+		@media #{$M}
 			overflow: hidden
 
 	dt,
 	dd
-		@media (min-width:600px)
+		@media #{$M}
 			float: left
 			clear: none
 			margin: 0 0 1em
@@ -17,7 +17,7 @@
 		border-top: 1px solid #eee
 		font-weight: bold
 
-		@media (min-width:600px)
+		@media #{$M}
 			clear: both
 			padding-right: 1%
 			width: 24%
@@ -27,12 +27,12 @@
 			border: 0
 
 			+ dd
-				@media (min-width:600px)
+				@media #{$M}
 					padding: 0
 					border: 0
 
 	dd
-		@media (min-width:600px)
+		@media #{$M}
 			padding: 1em 0 0
 			width: 75%
 			border-top: 1px solid #eee

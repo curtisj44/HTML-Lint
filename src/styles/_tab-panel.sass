@@ -6,7 +6,7 @@
 		background: #fff
 		background: linear-gradient(to top, rgba(255,255,255,1) 70%, rgba(240,240,240,1) 100%)
 
-		@media (min-width:480px)
+		@media #{$S}
 			float: right
 			padding-right: 3%
 			padding-left: 3%
@@ -14,7 +14,7 @@
 			border-left: 1px solid rgba(0, 0, 0, .8)
 			min-height: 300px
 
-		@media (min-width:600px)
+		@media #{$M}
 			width: 80%
 
 		&.selected

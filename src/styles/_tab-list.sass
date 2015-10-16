@@ -7,7 +7,7 @@
 		box-shadow: 0 1px 0 rgba(255, 255, 255, .1)
 		list-style: none
 
-		@media (min-width:480px)
+		@media #{$S}
 			float: left
 			overflow: visible
 			padding: 0
@@ -15,7 +15,7 @@
 			border-bottom: 0
 			box-shadow: none
 
-		@media (min-width:600px)
+		@media #{$M}
 			width: 20%
 
 		li
@@ -23,7 +23,7 @@
 			margin: -1px 0 0 -1px
 			width: 50%
 
-			@media (min-width:480px)
+			@media #{$S}
 				float: none
 				margin-left: 0
 				width: 100%
@@ -35,18 +35,18 @@
 			text-decoration: none
 			text-transform: capitalize
 
-			@media (min-width:480px)
+			@media #{$S}
 				border-width: 1px 0
 
 			&.selected
 				background: #037bf0
 
-				@media (min-width:480px)
+				@media #{$S}
 					position: relative
 
 				&:after,
 				&:before
-					@media (min-width:480px)
+					@media #{$S}
 						position: absolute
 						top: 50%
 						right: -1px
@@ -57,7 +57,7 @@
 						content: ''
 
 				&:before
-					@media (min-width:480px)
+					@media #{$S}
 						right: 0
 						border-right-color: rgba(0, 0, 0, .8)
 
