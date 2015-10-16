@@ -549,7 +549,7 @@
 			script = document.createElement('script');
 			script.onload = htmlLint.init;
 			script.id = 'html-lint-jquery';
-			script.src = '//ajax.googleapis.com/ajax/libs/jquery/' + htmlLint.utility.jQuery[0] + '/jquery.min.js';
+			script.src = 'https://ajax.googleapis.com/ajax/libs/jquery/' + htmlLint.utility.jQuery[0] + '/jquery.min.js';
 			document.body.appendChild(script);
 		}
 	};
