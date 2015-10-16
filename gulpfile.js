@@ -11,13 +11,13 @@ gulp.task('styles', function () {
 			browsers: ['last 5 versions'],
 			cascade: false
 		}))
-		.pipe(gulp.dest('./dist/styles'));
+		.pipe(gulp.dest('./dist'));
 });
 
 gulp.task('scripts', function () {
 	gulp.src('./src/scripts/**/*.js')
 		.pipe(concat('htmlLint.js'))
-		.pipe(gulp.dest('./dist/scripts/'));
+		.pipe(gulp.dest('./dist'));
 });
 
 gulp.task('default', ['scripts', 'styles']);
