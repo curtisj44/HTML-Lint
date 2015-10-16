@@ -1,6 +1,4 @@
 #html-lint {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   position: absolute;
   z-index: 1000000090;
@@ -11,14 +9,10 @@
   min-height: 200px;
   border: 1px solid #000;
   border-color: rgba(0, 0, 0, 0.8);
-  -webkit-box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.4) inset, 0 1px 0 rgba(255, 255, 255, 0.2) inset;
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.4) inset, 0 1px 0 rgba(255, 255, 255, 0.2) inset;
   background: #4a515d;
-  background: -moz-linear-gradient(bottom, rgba(56, 60, 68, 0.9) 100%, rgba(74, 81, 93, 0.9) 80%, rgba(74, 81, 93, 0.9) 7%, rgba(74, 81, 93, 0.7) 15px, rgba(100, 100, 100, 0.8) 0%);
-  background: -ms-linear-gradient(bottom, rgba(56, 60, 68, 0.9) 100%, rgba(74, 81, 93, 0.9) 80%, rgba(74, 81, 93, 0.9) 7%, rgba(74, 81, 93, 0.7) 15px, rgba(100, 100, 100, 0.8) 0%);
-  background: -o-linear-gradient(bottom, rgba(56, 60, 68, 0.9) 100%, rgba(74, 81, 93, 0.9) 80%, rgba(74, 81, 93, 0.9) 7%, rgba(74, 81, 93, 0.7) 15px, rgba(100, 100, 100, 0.8) 0%);
-  background: -webkit-linear-gradient(bottom, rgba(56, 60, 68, 0.9) 100%, rgba(74, 81, 93, 0.9) 80%, rgba(74, 81, 93, 0.9) 7%, rgba(74, 81, 93, 0.7) 15px, rgba(100, 100, 100, 0.8) 0%);
-  background: linear-gradient(bottom, rgba(56, 60, 68, 0.9) 100%, rgba(74, 81, 93, 0.9) 80%, rgba(74, 81, 93, 0.9) 7%, rgba(74, 81, 93, 0.7) 15px, rgba(100, 100, 100, 0.8) 0%);
+  background: -webkit-linear-gradient(top, rgba(56, 60, 68, 0.9) 100%, rgba(74, 81, 93, 0.9) 80%, rgba(74, 81, 93, 0.9) 7%, rgba(74, 81, 93, 0.7) 15px, rgba(100, 100, 100, 0.8) 0%);
+  background: linear-gradient(to bottom, rgba(56, 60, 68, 0.9) 100%, rgba(74, 81, 93, 0.9) 80%, rgba(74, 81, 93, 0.9) 7%, rgba(74, 81, 93, 0.7) 15px, rgba(100, 100, 100, 0.8) 0%);
   color: #fff;
   font: normal 14px/1.5 "Helvetica Neue", Helvetica, Arial, sans-serif;
   direction: ltr;
@@ -33,12 +27,9 @@
       right: 20px;
       width: 80%;
       max-width: 800px;
-      -webkit-border-radius: 4px;
       border-radius: 4px; } }
 
 #html-lint * {
-  -moz-box-sizing: content-box;
-  -webkit-box-sizing: content-box;
   box-sizing: content-box;
   position: static;
   margin: 0;
@@ -48,7 +39,6 @@
   height: auto;
   min-height: 0;
   border: 0;
-  -webkit-box-shadow: none;
   box-shadow: none;
   background: none;
   color: #000;
@@ -97,7 +87,6 @@
   padding: .5em 3%;
   width: 94%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.7);
-  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
   font-weight: bold;
   color: #fff !important; }
@@ -153,7 +142,6 @@
 #html-lint .html-lint-button {
   position: relative;
   border: 1px solid rgba(0, 0, 0, 0.7);
-  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.8);
@@ -174,20 +162,16 @@
   right: 3%;
   padding: 0.2em 0.5em 0.3em;
   border-top-width: 0;
-  -webkit-border-radius: 0 0 4px 4px;
   border-radius: 0 0 4px 4px;
   font-weight: bold;
   font-size: 19px;
   line-height: 1; }
 
 #html-lint .html-lint-tab-list {
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   overflow: hidden;
   padding: 1em 3%;
   border-bottom: 1px solid rgba(0, 0, 0, 0.7);
-  -webkit-box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
   list-style: none; }
   @media (min-width: 480px) {
@@ -197,7 +181,6 @@
       padding: 0;
       width: 30%;
       border-bottom: 0;
-      -webkit-box-shadow: none;
       box-shadow: none; } }
   @media (min-width: 600px) {
     #html-lint .html-lint-tab-list {
@@ -246,16 +229,11 @@
 
 #html-lint .html-lint-tab-panel {
   display: none;
-  -moz-box-sizing: border-box;
-  -webkit-box-sizing: border-box;
   box-sizing: border-box;
   padding: 2em 3% 1em;
   background: #fff;
-  background: -moz-linear-gradient(top, white 70%, #f0f0f0 100%);
-  background: -ms-linear-gradient(top, white 70%, #f0f0f0 100%);
-  background: -o-linear-gradient(top, white 70%, #f0f0f0 100%);
-  background: -webkit-linear-gradient(top, white 70%, #f0f0f0 100%);
-  background: linear-gradient(top, white 70%, #f0f0f0 100%); }
+  background: -webkit-linear-gradient(bottom, white 70%, #f0f0f0 100%);
+  background: linear-gradient(to top, white 70%, #f0f0f0 100%); }
   @media (min-width: 480px) {
     #html-lint .html-lint-tab-panel {
       float: right;
@@ -280,9 +258,7 @@
 .html-lint-error-highlight {
   padding: 0 3px;
   border: 1px solid rgba(70, 5, 5, 0.6);
-  -webkit-border-radius: 3px;
   border-radius: 3px;
-  -webkit-box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
   box-shadow: 0 1px 0 rgba(0, 0, 0, 0.2), 0 1px 0 rgba(255, 255, 255, 0.2) inset;
   background: rgba(200, 0, 0, 0.8);
   color: #fff;
