@@ -11,7 +11,8 @@
   "devDependencies": {
     "gulp": "^3.9.0",
     "gulp-autoprefixer": "^3.0.2",
-    "gulp-sass": "^2.0.4"
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.0.4",
   },
   "engines": {
     "node": ">=0.10.31"
