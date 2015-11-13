@@ -170,6 +170,10 @@
 		'th[scope=""]': {
 			'label': '<code>th[scope=""]</code>'
 		},
+
+		':not("canvas, img, object, svg")[height]': {
+			'label': 'Invalid attribute: <code>height</code>'
+		},
 		':not("canvas, img, object, svg")[width]': {
 			'label': 'Invalid attribute: <code>width</code>'
 		},
