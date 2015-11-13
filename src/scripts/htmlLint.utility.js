@@ -2,7 +2,7 @@
 	'use strict';
 
 	htmlLint.utility = {
-		css: 'https://raw.githubusercontent.com/curtisj44/HTML-Lint/new-structure/dist/html-lint.css',
+		css: 'https://curtisj44.github.io/HTML-Lint/dist/html-lint.css',
 
 		error: function (message) {
 			return '<span class="html-lint-error">' + (message || 'missing tag') + '</span>';
