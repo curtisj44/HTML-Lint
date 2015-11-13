@@ -548,7 +548,8 @@
 		}
 
 		// Add jQuery
-		if (typeof jQuery !== 'undefined' && !!jQuery.fn && parseInt(jQuery.fn.jquery.replace(/\./g, ''), 10) > 164) {
+		// if (typeof jQuery !== 'undefined' && !!jQuery.fn && parseInt(jQuery.fn.jquery.replace(/\./g, ''), 10) > 164) {
+		if (typeof $ !== 'undefined' && !!$.fn && parseInt($.fn.jquery.replace(/\./g, ''), 10) > 164) {
 			htmlLint.init();
 		} else {
 			htmlLint.utility.jQueryAdded = true;
