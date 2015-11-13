@@ -1,7 +1,7 @@
 #html-lint {
   box-sizing: border-box;
   position: absolute;
-  z-index: 1000000090;
+  z-index: 2147483647;
   top: 0;
   overflow: hidden;
   width: 100%;

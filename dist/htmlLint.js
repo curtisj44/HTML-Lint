@@ -220,9 +220,11 @@
 
 				// viewport
 				if (
+					// http://adrianroselli.com/2015/10/dont-disable-zoom.html
 					contentAttr.indexOf('user-scalable=0') > 0 ||
 					contentAttr.indexOf('user-scalable=no') > 0 ||
-					contentAttr.indexOf('maximum-scale=1') > 0
+					contentAttr.indexOf('maximum-scale') > 0 ||
+					contentAttr.indexOf('minimum-scale') > 0
 				) {
 					output += ' ' + htmlLint.utility.error('don&rsquo;t prevent user zoom');
 				}
@@ -777,7 +779,11 @@
 		'th[scope=""]': {
 			'label': '<code>th[scope=""]</code>'
 		},
-		':not("canvas, img, object")[width]': {
+
+		':not("canvas, img, object, svg")[height]': {
+			'label': 'Invalid attribute: <code>height</code>'
+		},
+		':not("canvas, img, object, svg")[width]': {
 			'label': 'Invalid attribute: <code>width</code>'
 		},
 
@@ -1124,6 +1130,7 @@
 		}
 	};
 }(window.htmlLint = window.htmlLint || {}));
+
 (function (htmlLint) {
 	'use strict';
 
