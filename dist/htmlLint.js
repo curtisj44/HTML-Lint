@@ -99,7 +99,7 @@
 	htmlLint.init = function () {
 		var $htmlLint = $('#html-lint'),
 			isMock = window.location.protocol === 'file:' && window.location.pathname.indexOf('/mocks/') > 0,
-			output = '<div id="html-lint" style="display:none">' +
+			output = '<div id="html-lint">' +
 				'<h1>HTML-Lint</h1>' +
 				'<h2>Total Errors</h2>' +
 				'<button class="html-lint-button html-lint-close">&times;</button>' +
