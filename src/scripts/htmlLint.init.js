@@ -11,8 +11,6 @@
 				'<ol class="html-lint-tab-list"></ol>' +
 				'</div>';
 
-		console.log(isMock);
-
 		if (typeof $ === 'undefined') $ = jQuery;
 
 		if (!isMock) {
