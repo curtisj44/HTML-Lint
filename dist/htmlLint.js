@@ -777,7 +777,7 @@
 		'th[scope=""]': {
 			'label': '<code>th[scope=""]</code>'
 		},
-		':not("canvas, img, object")[width]': {
+		':not("canvas, img, object, svg")[width]': {
 			'label': 'Invalid attribute: <code>width</code>'
 		},
 
@@ -1124,6 +1124,7 @@
 		}
 	};
 }(window.htmlLint = window.htmlLint || {}));
+
 (function (htmlLint) {
 	'use strict';
 
