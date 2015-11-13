@@ -5,7 +5,6 @@
 		var $flashObjects = $('object, embed');
 
 		if (
-			$flashObjects &&
 			$flashObjects.length > 0 &&
 			$flashObjects.find('param[name="wmode"]').attr('value') !== 'opaque'
 		) {

@@ -16,7 +16,7 @@
 		if (!isMock) {
 			htmlLint.editFlash();
 
-			if ($htmlLint && $htmlLint.length > 0) {
+			if ($htmlLint.length > 0) {
 				$htmlLint.fadeOut(250, function () {
 					// TODO - make DRYer
 					$('body').append(output);

@@ -58,7 +58,6 @@
 		var $flashObjects = $('object, embed');
 
 		if (
-			$flashObjects &&
 			$flashObjects.length > 0 &&
 			$flashObjects.find('param[name="wmode"]').attr('value') !== 'opaque'
 		) {
@@ -112,7 +111,7 @@
 		if (!isMock) {
 			htmlLint.editFlash();
 
-			if ($htmlLint && $htmlLint.length > 0) {
+			if ($htmlLint.length > 0) {
 				$htmlLint.fadeOut(250, function () {
 					// TODO - make DRYer
 					$('body').append(output);
