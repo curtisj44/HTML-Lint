@@ -14,7 +14,7 @@
 		jQueryUI: '1.11.2',
 		Modernizr: '3.2.0',
 		MooTools: '1.5.1',
-		RequireJS: '2.1.15'
+		RequireJS: '2.1.22'
 	};
 
 	// TODO - organize this better
