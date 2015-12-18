@@ -1,0 +1,38 @@
+#html-lint
+	dl
+		margin: 0 3%
+
+		@media #{$M}
+			overflow: hidden
+
+	dt,
+	dd
+		@media #{$M}
+			float: left
+			clear: none
+			margin: 0 0 1em
+
+	dt
+		padding: 1em 0 0
+		border-top: 1px solid #eee
+		font-weight: bold
+
+		@media #{$M}
+			clear: both
+			padding-right: 1%
+			width: 24%
+
+		&:first-child
+			padding-top: 0
+			border: 0
+
+			+ dd
+				@media #{$M}
+					padding: 0
+					border: 0
+
+	dd
+		@media #{$M}
+			padding: 1em 0 0
+			width: 75%
+			border-top: 1px solid #eee

@@ -1,0 +1,45 @@
+// media queries
+$S: '(min-width:' + (480/16) + 'em)'
+$M: '(min-width:' + (600/16) + 'em)'
+$L: '(min-width:' + (1004/16) + 'em)'
+
+#html-lint
+	box-sizing: border-box
+	position: absolute
+	// max out the z-index
+	z-index: 2147483647
+	top: 0
+	overflow: hidden
+	width: 100%
+	min-width: 200px
+	min-height: 200px
+	border: 1px solid #000
+	border-color: rgba(0, 0, 0, .8)
+	box-shadow: 0 10px 22px rgba(0,0,0,.5), 0 0 1px rgba(255,255,255,.4) inset, 0 1px 0 rgba(255,255,255,.2) inset
+	background: #4a515d
+	background: linear-gradient(to bottom, rgba(56,60,68,.9) 100%, rgba(74,81,93,.9) 80%, rgba(74,81,93,.9) 7%, rgba(74,81,93,.7) 15px, rgba(100,100,100,.8) 0%)
+	color: #fff
+	font: normal 14px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif
+	direction: ltr
+	-ms-text-size-adjust:     100%
+	-webkit-text-size-adjust: 100%
+
+	@media #{$M}
+		word-wrap: break-word
+
+	@media #{$L}
+		top: 20px
+		right: 20px
+		width: 80%
+		max-width: 800px
+		border-radius: 4px
+
+@import 'reset'
+@import 'headings'
+@import 'definition-list'
+@import 'html-lint-button'
+@import 'html-lint-close'
+@import 'tab-list'
+@import 'tab-panel'
+@import 'error'
+@import 'error-count'

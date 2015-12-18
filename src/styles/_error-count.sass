@@ -1,0 +1,18 @@
+#html-lint
+	.html-lint-error-count
+		display: block
+		position: absolute
+		top: 26%
+		right: 14px
+		font-size: 10px
+		transition: .3s all ease-out
+
+		@media #{$S}
+			font-size: 11px
+
+	a:hover .html-lint-error-count,
+	a:focus .html-lint-error-count
+		background: rgba(200, 10, 10, .7)
+
+	a.selected .html-lint-error-count
+		background: rgba(200, 10, 10, .8)
