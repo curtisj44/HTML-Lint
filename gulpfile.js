@@ -15,7 +15,7 @@ var gulp = require('gulp'),
 		styles: './src/styles/**/*.sass'
 	};
 
-gulp.task('default', ['scripts', 'styles']);
+gulp.task('default', ['scripts', 'styles', 'watch']);
 
 gulp.task('clean-styles', function () {
 	return del(['./dist/*.min.css']);
@@ -69,3 +69,7 @@ gulp.task('styles', ['clean-styles'], function () {
 		.pipe(notify('Minified styles: [<%= file.relative %>]'));
 });
 
+gulp.task('watch', function () {
+  gulp.watch(paths.scripts, ['scripts']);
+  gulp.watch(paths.styles, ['styles']);
+});
