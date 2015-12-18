@@ -26,4 +26,4 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 
 ### Tasks
 
-- ```gulp``` → compiles Sass to CSS
+- ```gulp``` → compiles Sass to CSS and concatenates JS
