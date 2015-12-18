@@ -12,7 +12,7 @@
 
 		jQuery: ['1.11.3', '2.1.4'],
 		jQueryUI: '1.11.2',
-		Modernizr: '3.1.0',
+		Modernizr: '3.2.0',
 		MooTools: '1.5.1',
 		RequireJS: '2.1.15'
 	};
