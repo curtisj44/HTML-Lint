@@ -1,0 +1,132 @@
+<!doctype html>
+<html lang="en-US">
+	<head>
+		<meta charset="utf-8">
+		<title>apple.com</title>
+		<meta name="viewport" content="width=device-width, initial-scale=1">
+		<link rel="stylesheet" href="../dist/html-lint.css">
+		<style>
+			html,
+			body {
+				margin: 0;
+				padding: 0;
+			}
+		</style>
+	</head>
+
+	<body>
+		<div id="html-lint">
+			<h1>HTML-Lint</h1>
+
+			<h2>
+				Total Errors
+				<!-- <span class="html-lint-error">180</span> -->
+			</h2>
+
+			<button class="html-lint-button html-lint-close">×</button>
+
+			<ol class="html-lint-tab-list">
+				<li><a href="#metadata" class="html-lint-button selected">Meta Data<b class="html-lint-error html-lint-error-count">2</b></a></li>
+				<li><a href="#opengraph" class="html-lint-button">Open Graph</a></li>
+				<li><a href="#overview" class="html-lint-button">Overview</a></li>
+				<li><a href="#technology" class="html-lint-button">Technology<b class="html-lint-error html-lint-error-count">1</b></a></li>
+				<li><a href="#tests" class="html-lint-button">Tests<b class="html-lint-error html-lint-error-count">177</b></a></li>
+			</ol>
+
+			<div data-panel="metadata" class="html-lint-tab-panel selected">
+				<dl>
+					<dt>&lt;title&gt;</dt>
+					<dd>Apple</dd>
+
+					<dt>Character Encoding</dt>
+					<dd><span class="html-lint-error">not first child of <code>&lt;head&gt;</code></span></dd>
+
+					<dt>keywords</dt>
+					<dd><span class="html-lint-error">missing tag</span></dd>
+
+					<dt>X-UA-Compatible</dt>
+					<dd>IE=EmulateIE7, IE=9</dd>
+
+					<dt>charset</dt>
+					<dd>utf-8</dd>
+
+					<dt>Author</dt>
+					<dd>Apple Inc.</dd>
+
+					<dt>viewport</dt>
+					<dd>width=device-width, initial-scale=1</dd>
+
+					<dt>analytics-track</dt>
+					<dd>Apple - Index/Tab</dd>
+
+					<dt>analytics-s-channel</dt>
+					<dd>homepage</dd>
+
+					<dt>analytics-s-bucket-0</dt>
+					<dd>appleglobal,applehome</dd>
+
+					<dt>analytics-s-bucket-1</dt>
+					<dd>apple{COUNTRY_CODE}global,apple{COUNTRY_CODE}home</dd>
+
+					<dt>analytics-s-bucket-2</dt>
+					<dd>apple{COUNTRY_CODE}global</dd>
+
+					<dt>analytics-s-bucket-store</dt>
+					<dd>applestoreww,applestoreamr,applestoreus</dd>
+
+					<dt>Description</dt>
+					<dd>Apple leads the world in innovation with iPhone, iPad, Mac, Apple Watch, iOS, OS X, watchOS and more. Visit the site to learn, buy, and get support.</dd>
+				</dl>
+			</div>
+
+			<div data-panel="opengraph" class="html-lint-tab-panel">
+				<dl>
+					<dt>og:url</dt>
+					<dd><a href="http://www.apple.com/">http://www.apple.com/</a></dd>
+
+					<dt>og:image</dt>
+					<dd>
+						<!-- <img alt="http://images.apple.com/home/images/og.jpg?201509172153" src="http://images.apple.com/home/images/og.jpg?201509172153"> -->
+						<img alt="http://images.apple.com/home/images/og.jpg?201509172153" src="https://placehold.it/1200">
+					</dd>
+
+					<dt>og:type</dt>
+					<dd>website</dd>
+
+					<dt>og:site_name</dt>
+					<dd>Apple</dd>
+				</dl>
+			</div>
+
+			<div data-panel="overview" class="html-lint-tab-panel">
+				<dl>
+				</dl>
+			</div>
+
+			<div data-panel="technology" class="html-lint-tab-panel">
+				<dl>
+					<dt>RequireJS</dt>
+					<dd>undefined <span class="html-lint-error">update to 2.1.15</span></dd>
+				</dl>
+			</div>
+
+			<div data-panel="tests" class="html-lint-tab-panel">
+				<p><i><span class="html-lint-error">40</span></i>empty tag</p>
+				<p><i><span class="html-lint-error">8</span></i><code>a[href="#"]</code></p>
+				<p><i><span class="html-lint-error">1</span></i><code>&lt;form&gt;</code> missing <code>&lt;fieldset&gt;</code></p>
+				<p><i><span class="html-lint-error">1</span></i><code>type="text"</code> is not needed on <code>&lt;input&gt;</code></p>
+				<p><i><span class="html-lint-error">1</span></i><code>&lt;link&gt;</code> missing <code>rel</code></p>
+				<p><i><span class="html-lint-error">1</span></i><code>media="all"</code> is not needed on <code>&lt;link&gt;</code></p>
+				<p><i><span class="html-lint-error">7</span></i><code>type="text/css"</code> is not needed on <code>&lt;link&gt;</code></p>
+				<p><i><span class="html-lint-error">1</span></i><code>&lt;nav&gt;</code> missing <code>role</code></p>
+				<p><i><span class="html-lint-error">3</span></i><code>script[charset]</code></p>
+				<p><i><span class="html-lint-error">5</span></i><code>type="text/javascript"</code> is not needed on <code>&lt;script&gt;</code></p>
+				<p><i><span class="html-lint-error">1</span></i><code>name=""</code></p>
+				<p><i><span class="html-lint-error">5</span></i>Inline style: <code>border</code></p>
+				<p><i><span class="html-lint-error">103</span></i>Inline event handler: <code>onclick</code></p>
+			</div>
+		</div>
+
+		<script src="../dist/htmlLint.js"></script>
+	</body>
+</html>

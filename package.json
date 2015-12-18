@@ -1,0 +1,21 @@
+{
+  "name": "HTML-Lint",
+  "author": "Curtis Jurgensen",
+  "version": "2.0.0",
+  "description": "A code quality bookmarklet.",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/curtisj44/HTML-Lint.git"
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "gulp": "^3.9.0",
+    "gulp-autoprefixer": "^3.0.2",
+    "gulp-concat": "^2.6.0",
+    "gulp-sass": "^2.0.4",
+  },
+  "engines": {
+    "node": ">=0.10.31"
+  },
+  "main": "gulpfile.js"
+}
