@@ -10,9 +10,9 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 	javascript: (function(){'use strict';var script = document.createElement('script');script.src = 'https://curtisj44.github.io/HTML-Lint/dist/htmlLint.min.js';script.id = 'html-lint-js';document.body.appendChild(script);}());
 	```
 
-2.	Create a new bookmark.
+1.	Create a new bookmark.
 
-3.	Set the name to “HTML-Lint” and paste the above as the URL.
+1.	Set the name to “HTML-Lint” and paste the above as the URL.
 
 
 ## Development
@@ -26,4 +26,4 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 
 ### Tasks
 
-- ```gulp``` → compiles Sass to CSS and concatenates JS
+- ```gulp``` → compiles Sass to CSS, concatenates JS, and watches
