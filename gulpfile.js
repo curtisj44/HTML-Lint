@@ -15,7 +15,7 @@ var gulp = require('gulp'),
 		styles: './src/styles/**/*.sass'
 	};
 
-gulp.task('default', ['scripts', 'styles', 'watch']);
+gulp.task('default', ['build-scripts', 'build-styles']);
 
 gulp.task('clean-styles', function () {
 	return del(['./dist/*.min.css']);
@@ -25,7 +25,7 @@ gulp.task('clean-scripts', function () {
 	return del(['./dist/*.min.js']);
 });
 
-gulp.task('scripts', ['clean-scripts'], function () {
+gulp.task('build-scripts', ['clean-scripts'], function () {
 	gulp
 		.src(paths.scripts)
 		.pipe(concat('htmlLint.js'))
@@ -45,7 +45,7 @@ gulp.task('scripts', ['clean-scripts'], function () {
 		.pipe(notify('Minified scripts: [<%= file.relative %>]'));
 });
 
-gulp.task('styles', ['clean-styles'], function () {
+gulp.task('build-styles', ['clean-styles'], function () {
 	gulp
 		.src(paths.styles)
 		.pipe(sass().on('error', sass.logError))
@@ -69,7 +69,7 @@ gulp.task('styles', ['clean-styles'], function () {
 		.pipe(notify('Minified styles: [<%= file.relative %>]'));
 });
 
-gulp.task('watch', function () {
-  gulp.watch(paths.scripts, ['scripts']);
-  gulp.watch(paths.styles, ['styles']);
+gulp.task('watch', ['default'], function () {
+  gulp.watch(paths.scripts, ['build-scripts']);
+  gulp.watch(paths.styles, ['build-styles']);
 });
