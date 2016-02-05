@@ -35,24 +35,15 @@ var
 	},
 
 	init = function () {
-		// if (err) {
-		// 	console.log(chalk.yellow(err));
-		// } else {
-			// console.log(chalk.magenta(body));
-			// $ = cheerio.load(body.toString());
-			// $ = cheerio.load(body);
-			$ = cheerio.load(fs.readFileSync('temp/' + savedHtml));
+		$ = cheerio.load(fs.readFileSync('temp/' + savedHtml));
 
-			if ($('html').length !== 1) {
-				console.log(chalk.yellow('Error: Something went wrong. Check the URL.'));
-				return;
-			}
+		if ($('html').length !== 1) {
+			console.log(chalk.yellow('Error: Something went wrong. Check the URL.'));
+			return;
+		}
 
-			// console.log(chalk.dim(response.statusCode));
-			// console.log(chalk.dim(response.headers['content-type'] + '\n'));
-			runTests();
-			outputSummary();
-		// }
+		runTests();
+		summarize();
 	},
 
 	addSelectorToOutput = function (index, value) {
@@ -82,7 +73,7 @@ var
 		}
 	},
 
-	outputSummary = function () {
+	summarize = function () {
 		console.log(chalk[errors === 0 ? 'bgGreen' : 'bgRed']('\n HTML-Lint found' + chalk.bold(' ' + errors + ' errors') + ' on ' + url));
 		console.log(output + '\n');
 	};
@@ -92,9 +83,8 @@ if (!url) {
 } else {
 	exec(saveCommand, function (err, stdout, stderr) {
 		if (err) console.log(chalk.yellow('Error: Child process failed with [' + err.code + ']'));
-		// console.log(stdout);
+		console.log(stdout);
 		// console.log(stderr);
-		// console.log(chalk.cyan('Saved HTML from [' + url + '] to [temp/' + savedHtml + ']'));
 		console.log(chalk.cyan('Saved HTML from ' + chalk.bold(url) + ' to ' + chalk.bold('temp/' + savedHtml)));
 		init();
 	});
