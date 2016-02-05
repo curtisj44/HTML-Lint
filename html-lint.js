@@ -1,7 +1,7 @@
 /*jslint node: true */
 'use strict';
 
-// `node html-lint http://s.codepen.io/curtisj44/debug/xbQXbV`
+// usage: `node html-lint http://s.codepen.io/curtisj44/debug/xbQXbV`
 
 var
 	// node
