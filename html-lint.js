@@ -47,7 +47,7 @@ var
 	},
 
 	addSelectorToOutput = function (index, value) {
-		output += '\n   ' + chalk.dim($(value));
+		output += '   ' + chalk.dim($(value)) + '\n';
 	},
 
  	// TODO - this needs a better name
@@ -59,23 +59,23 @@ var
 		// console.log(tests);
 
 		for (var test in tests) {
-			console.log(chalk.dim('test: ' + test));
-			console.log(chalk.dim('label: ' + tests[test].label));
+			// console.log(chalk.dim('test: ' + test));
+			// console.log(chalk.dim('label: ' + tests[test].label));
 
 			currentErrors = $(test).length;
 
 			if (currentErrors > 0) {
 				errors += currentErrors;
-				output += '\n ' + chalk.bold.red(currentErrors) + ' ' + tests[test].label;
-
+				output += ' ' + chalk.bold.red(currentErrors) + ' ' + tests[test].label + '\n';
 				$(test).each(addSelectorToOutput);
 			}
 		}
 	},
 
 	summarize = function () {
-		console.log(chalk[errors === 0 ? 'bgGreen' : 'bgRed']('\n HTML-Lint found' + chalk.bold(' ' + errors + ' errors') + ' on ' + url));
-		console.log(output + '\n');
+		console.log(output);
+		console.log(chalk[errors === 0 ? 'bgGreen' : 'bgRed']('HTML-Lint found' + chalk.bold(' ' + errors + ' errors') + ' on ' + url));
+		console.log('\n');
 	};
 
 if (!url) {
@@ -83,7 +83,7 @@ if (!url) {
 } else {
 	exec(saveCommand, function (err, stdout, stderr) {
 		if (err) console.log(chalk.yellow('Error: Child process failed with [' + err.code + ']'));
-		console.log(stdout);
+		// console.log(stdout);
 		// console.log(stderr);
 		console.log(chalk.cyan('Saved HTML from ' + chalk.bold(url) + ' to ' + chalk.bold('temp/' + savedHtml)));
 		init();
