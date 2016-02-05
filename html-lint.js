@@ -22,7 +22,18 @@ var
 	saveCommand = 'phantomjs lib/save-html.js ' + url + ' ' + saveTo,
 
 	// methods
+
+	// TODO: re-use the tests defined in `htmlLint.test.js`
 	tests = {
+		'a:not([href])': {
+			'label': '`a` missing `href`'
+		},
+		'a[href=""]': {
+			'label': '`a[href=""]`'
+		},
+		'a[href="#"]': {
+			'label': '`a[href="#"]`'
+		},
 		'fieldset:not(:has(legend))': {
 			'label': '`fieldset` missing `legend`'
 		},
@@ -31,6 +42,76 @@ var
 		},
 		'img:not([alt])': {
 			'label': '`img` missing `alt` attribute'
+		},
+		'script[charset]': {
+			'label': '`script[charset]`'
+		},
+		'script[language]': {
+			'label': '`language` attribute is not valid on `script`'
+		},
+		'script[type="text/javascript"]': {
+			'label': '`type="text/javascript"` is not needed on `script`'
+		},
+		'style[media="all"]': {
+			'label': '`media="all"` is not needed on `style`'
+		},
+		'style[type="text/css"]': {
+			'label': '`type="text/css"` is not needed on `style`'
+		},
+
+		'[align]': {
+			'label': 'Invalid attribute: `align`'
+		},
+		'[alink]': {
+			'label': 'Bad attribute: `alink`'
+		},
+		'[background]': {
+			'label': 'Invalid attribute: `background`'
+		},
+		'[bgcolor]': {
+			'label': 'Invalid attribute: `bgcolor`'
+		},
+		'[border]': {
+			'label': 'Bad attribute: `border`'
+		},
+		'[cellpadding]': {
+			'label': 'Bad attribute: `cellpadding`'
+		},
+		'[cellspacing]': {
+			'label': 'Bad attribute: `cellspacing`'
+		},
+		'[class=""]': {
+			'label': '`class=""`'
+		},
+		'[frameborder]': {
+			'label': 'Bad attribute: `frameborder`'
+		},
+		'[halign]': {
+			'label': 'Invalid attribute: `halign`'
+		},
+		'[id=""]': {
+			'label': '`id=""`'
+		},
+		'[link]': {
+			'label': 'Bad attribute: `link`'
+		},
+		'[marginheight]': {
+			'label': 'Bad attribute: `marginheight`'
+		},
+		'[marginwidth]': {
+			'label': 'Bad attribute: `marginwidth`'
+		},
+		'[name=""]': {
+			'label': '`name=""`'
+		},
+		'[shape]': {
+			'label': 'Bad attribute: `shape`'
+		},
+		'[size]': {
+			'label': 'Bad attribute: `size`'
+		},
+		'[src*="javascript:"]': {
+			'label': '`[src*="javascript:"]`'
 		}
 	},
 
