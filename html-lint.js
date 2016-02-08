@@ -31,31 +31,31 @@ var
 			'label': 'empty tag'
 		},
 		'applet': {
-			'label': '<code>&lt;applet&gt;</code>'
+			'label': '`applet`'
 		},
 		'center': {
-			'label': '<code>&lt;center&gt;</code>'
+			'label': '`center`'
 		},
 		'font': {
-			'label': '<code>&lt;font&gt;</code>'
+			'label': '`font`'
 		},
 		'iframe': {
-			'label': '<code>&lt;iframe&gt;</code>'
+			'label': '`iframe`'
 		},
 		'noscript': {
-			'label': '<code>&lt;noscript&gt;</code>'
+			'label': '`noscript`'
 		},
 		's': {
-			'label': '<code>&lt;s&gt;</code>'
+			'label': '`s`'
 		},
 		'strike': {
-			'label': '<code>&lt;strike&gt;</code>'
+			'label': '`strike`'
 		},
 		'u': {
-			'label': '<code>&lt;u&gt;</code>'
+			'label': '`u`'
 		},
 		'br + br': {
-			'label': 'Multiple <code>&lt;br&gt;</code>&rsquo;s (* not quite accurate)'
+			'label': 'Multiple `br`&rsquo;s (* not quite accurate)'
 		},
 
 		// // ---- Attributes ----
@@ -64,485 +64,485 @@ var
 		},
 
 		'abbr:not([title])': {
-			'label': '<code>&lt;abbr&gt;</code> missing <code>title</code>'
+			'label': '`abbr` missing `title`'
 		},
 		'acronym:not([title])': {
-			'label': '<code>&lt;acronym&gt;</code> missing <code>title</code>'
+			'label': '`acronym` missing `title`'
 		},
 		'a:contains("Click here"), a:contains("click here")': {
-			'label': '&ldquo;Click here&rdquo; used as link text'
+			'label': '“Click here” used as link text'
 		},
 		'a:contains("Read more"), a:contains("Read more")': {
-			'label': '&ldquo;Read more&rdquo; used as link text'
+			'label': '“Read more” used as link text'
 		},
 		'a:not([href])': {
-			'label': '<code>&lt;a&gt;</code> missing <code>href</code>'
+			'label': '`a` missing `href`'
 		},
 		'a[href=""]': {
-			'label': '<code>a[href=""]</code>'
+			'label': '`a[href=""]`'
 		},
 		'a[href="#"]': {
-			'label': '<code>a[href="#"]</code>'
+			'label': '`a[href="#"]`'
 		},
 		'a[href*="javascript:"]': {
-			'label': '<code>a[href*="javascript:"]</code>'
+			'label': '`a[href*="javascript:"]`'
 		},
 		'a[href*="<"]': {
-			'label': '<code>a[href*="<"]</code>'
+			'label': '`a[href*="<"]`'
 		},
 		'a[href*=">"]': {
-			'label': '<code>a[href*=">"]</code>'
+			'label': '`a[href*=">"]`'
 		},
 		'a[href*="{"]': {
-			'label': '<code>a[href*="{"]</code>'
+			'label': '`a[href*="{"]`'
 		},
 		'a[href*="}"]': {
-			'label': '<code>a[href*="}"]</code>'
+			'label': '`a[href*="}"]`'
 		},
 		'a[target]': {
-			'label': '<code>a[target]</code>'
+			'label': '`a[target]`'
 		},
 		//'head script:not([src*="hasJS.js"], [src*="swfobject.js"], [src*="google-analytics.com"])': {
-		//	'label': '<code>&lt;script&gt;</code> in the <code>&lt;head&gt;</code>'
+		//	'label': '`script` in the `head`'
 		//},
 		'fieldset:not(:has(legend))': {
-			'label': '<code>&lt;fieldset&gt;</code> missing <code>&lt;legend&gt;</code>'
+			'label': '`fieldset` missing `legend`'
 		},
 		'fieldset > *:not(legend):first-child': {
-			'label': '<code>&lt;fieldset&gt;</code>&rsquo;s first child is not <code>&lt;legend&gt;</code>'
+			'label': '`fieldset`&rsquo;s first child is not `legend`'
 		},
 		'form[action=""]': {
-			'label': '<code>form[action=""]</code>'
+			'label': '`form[action=""]`'
 		},
 		'form[action="#"]': {
-			'label': '<code>form[action="#"]</code>'
+			'label': '`form[action="#"]`'
 		},
 		'form:not(:has(fieldset))': {
-			'label': '<code>&lt;form&gt;</code> missing <code>&lt;fieldset&gt;</code>'
+			'label': '`form` missing `fieldset`'
 		},
 		'input[type="text"]': {
-			'label': '<code>type="text"</code> is not needed on <code>&lt;input&gt;</code>'
+			'label': '`type="text"` is not needed on `input`'
 		},
 		'img:not([alt])': {
-			'label': '<code>&lt;img&gt;</code> missing <code>alt</code> attribute'
+			'label': '`img` missing `alt` attribute'
 		},
 		'img:not(".tracking")[alt=""]': {
-			'label': '<code>img[alt=""]</code>'
+			'label': '`img[alt=""]`'
 		},
 		'img[src=""]': {
-			'label': '<code>img[src=""]</code>'
+			'label': '`img[src=""]`'
 		},
 		'img[width="1"][height="1"]': {
-			'label': 'Tracking pixel <code>img</code>'
+			'label': 'Tracking pixel `img`'
 		},
 		'label:not([for])': {
-			'label': '<code>&lt;label&gt;</code> missing <code>for</code>'
+			'label': '`label` missing `for`'
 		},
 		'body link:not("#html-lint-css")': {
-			'label': '<code>&lt;link&gt;</code> not in <code>&lt;head&gt;</code>'
+			'label': '`link` not in `head`'
 		},
 		'link:not([rel])': {
-			'label': '<code>&lt;link&gt;</code> missing <code>rel</code>'
+			'label': '`link` missing `rel`'
 		},
 		'link[charset]': {
-			'label': '<code>link[charset]</code>'
+			'label': '`link[charset]`'
 		},
 		'link[rel="shortcut icon"][type="image/ico"]': {
-			'label': '<code>type="images/ico"</code> is not needed on <code>&lt;link&gt;</code>'
+			'label': '`type="images/ico"` is not needed on `link`'
 		},
 		'link[rel="stylesheet"][media="all"]': {
-			'label': '<code>media="all"</code> is not needed on <code>&lt;link&gt;</code>'
+			'label': '`media="all"` is not needed on `link`'
 		},
 		'link[rel="stylesheet"][type="text/css"]': {
-			'label': '<code>type="text/css"</code> is not needed on <code>&lt;link&gt;</code>'
+			'label': '`type="text/css"` is not needed on `link`'
 		},
 		'nav:not([role])': {
-			'label': '<code>&lt;nav&gt;</code> missing <code>role</code>'
+			'label': '`nav` missing `role`'
 		},
 		'script[charset]': {
-			'label': '<code>script[charset]</code>'
+			'label': '`script[charset]`'
 		},
 		'script[language]': {
-			'label': '<code>language</code> attribute is not valid on <code>&lt;script&gt;</code>'
+			'label': '`language` attribute is not valid on `script`'
 		},
 		'script[type="text/javascript"]': {
-			'label': '<code>type="text/javascript"</code> is not needed on <code>&lt;script&gt;</code>'
+			'label': '`type="text/javascript"` is not needed on `script`'
 		},
 		'style[media="all"]': {
-			'label': '<code>media="all"</code> is not needed on <code>&lt;style&gt;</code>'
+			'label': '`media="all"` is not needed on `style`'
 		},
 		'style[type="text/css"]': {
-			'label': '<code>type="text/css"</code> is not needed on <code>&lt;style&gt;</code>'
+			'label': '`type="text/css"` is not needed on `style`'
 		},
 		'table:not([summary])': {
-			'label': '<code>&lt;table&gt;</code> missing <code>summary</code>'
+			'label': '`table` missing `summary`'
 		},
 		//'table:not(:has(caption))': {
-		//	'label': '<code>&lt;table&gt;</code> missing <code>&lt;caption&gt;</code>'
+		//	'label': '`table` missing `caption`'
 		//},
 		'table:not(:has(th))': {
-			'label': '<code>&lt;table&gt;</code> missing <code>&lt;th&gt;</code>'
+			'label': '`table` missing `th`'
 		},
 		'table table': {
-			'label': '<code>&lt;table&gt;</code> inside <code>&lt;table&gt;</code>'
+			'label': '`table` inside `table`'
 		},
 
 		// TODO: Currently causes this error: `TypeError: Cannot read property 'type' of undefined`
 		// 'th:not([scope])': {
-		// 	'label': '<code>&lt;th&gt;</code> missing <code>scope</code>'
+		// 	'label': '`th` missing `scope`'
 		// },
 
 		'th[scope=""]': {
-			'label': '<code>th[scope=""]</code>'
+			'label': '`th[scope=""]`'
 		},
 
 		':not("canvas, img, object, svg")[height]': {
-			'label': 'Invalid attribute: <code>height</code>'
+			'label': 'Invalid attribute: `height`'
 		},
 		':not("canvas, img, object, svg")[width]': {
-			'label': 'Invalid attribute: <code>width</code>'
+			'label': 'Invalid attribute: `width`'
 		},
 
 		'[align]': {
-			'label': 'Invalid attribute: <code>align</code>'
+			'label': 'Invalid attribute: `align`'
 		},
 		'[alink]': {
-			'label': 'Bad attribute: <code>alink</code>'
+			'label': 'Bad attribute: `alink`'
 		},
 		'[background]': {
-			'label': 'Invalid attribute: <code>background</code>'
+			'label': 'Invalid attribute: `background`'
 		},
 		'[bgcolor]': {
-			'label': 'Invalid attribute: <code>bgcolor</code>'
+			'label': 'Invalid attribute: `bgcolor`'
 		},
 		'[border]': {
-			'label': 'Bad attribute: <code>border</code>'
+			'label': 'Bad attribute: `border`'
 		},
 		'[cellpadding]': {
-			'label': 'Bad attribute: <code>cellpadding</code>'
+			'label': 'Bad attribute: `cellpadding`'
 		},
 		'[cellspacing]': {
-			'label': 'Bad attribute: <code>cellspacing</code>'
+			'label': 'Bad attribute: `cellspacing`'
 		},
 		'[class=""]': {
-			'label': '<code>class=""</code>'
+			'label': '`class=""`'
 		},
 		'[frameborder]': {
-			'label': 'Bad attribute: <code>frameborder</code>'
+			'label': 'Bad attribute: `frameborder`'
 		},
 		'[halign]': {
-			'label': 'Invalid attribute: <code>halign</code>'
+			'label': 'Invalid attribute: `halign`'
 		},
 		'[id=""]': {
-			'label': '<code>id=""</code>'
+			'label': '`id=""`'
 		},
 		'[link]': {
-			'label': 'Bad attribute: <code>link</code>'
+			'label': 'Bad attribute: `link`'
 		},
 		'[marginheight]': {
-			'label': 'Bad attribute: <code>marginheight</code>'
+			'label': 'Bad attribute: `marginheight`'
 		},
 		'[marginwidth]': {
-			'label': 'Bad attribute: <code>marginwidth</code>'
+			'label': 'Bad attribute: `marginwidth`'
 		},
 		'[name=""]': {
-			'label': '<code>name=""</code>'
+			'label': '`name=""`'
 		},
 		'[shape]': {
-			'label': 'Bad attribute: <code>shape</code>'
+			'label': 'Bad attribute: `shape`'
 		},
 		'[size]': {
-			'label': 'Bad attribute: <code>size</code>'
+			'label': 'Bad attribute: `size`'
 		},
 		'[src*="javascript:"]': {
-			'label': '<code>[src*="javascript:"]</code>'
+			'label': '`[src*="javascript:"]`'
 		},
 		'[style*="background"]': {
-			'label': 'Inline style: <code>background</code>'
+			'label': 'Inline style: `background`'
 		},
 		'[style*="border"]': {
-			'label': 'Inline style: <code>border</code>'
+			'label': 'Inline style: `border`'
 		},
 		'[style*="font"]': {
-			'label': 'Inline style: <code>font</code>'
+			'label': 'Inline style: `font`'
 		},
 		'[style*="letter-spacing"]': {
-			'label': 'Inline style: <code>letter-spacing</code>'
+			'label': 'Inline style: `letter-spacing`'
 		},
 		'[style*="line-height"]': {
-			'label': 'Inline style: <code>line-height</code>'
+			'label': 'Inline style: `line-height`'
 		},
 		'[style*="list-style"]': {
-			'label': 'Inline style: <code>list-style</code>'
+			'label': 'Inline style: `list-style`'
 		},
 		'[style*="outline"]': {
-			'label': 'Inline style: <code>outline</code>'
+			'label': 'Inline style: `outline`'
 		},
 		'[style*="resize"]': {
-			'label': 'Inline style: <code>resize</code>'
+			'label': 'Inline style: `resize`'
 		},
 		'[style*="text"]': {
-			'label': 'Inline style: <code>text</code>'
+			'label': 'Inline style: `text`'
 		},
 		'[style*="vertical"]': {
-			'label': 'Inline style: <code>vertical</code>'
+			'label': 'Inline style: `vertical`'
 		},
 		'[style*="word"]': {
-			'label': 'Inline style: <code>word</code>'
+			'label': 'Inline style: `word`'
 		},
 		'[tabindex]': {
-			'label': 'Bad attribute: <code>tabindex</code>'
+			'label': 'Bad attribute: `tabindex`'
 		},
 		'[title=""]': {
-			'label': '<code>title</code> attribute is empty'
+			'label': '`title` attribute is empty'
 		},
 		'[valign]': {
-			'label': 'Invalid attribute: <code>valign</code>'
+			'label': 'Invalid attribute: `valign`'
 		},
 		'[vlink]': {
-			'label': 'Bad attribute: <code>vlink</code>'
+			'label': 'Bad attribute: `vlink`'
 		},
 
 		// --- Inline event handlers ----
 
 		'[onabort]': {
-			'label': 'Inline event handler: <code>onabort</code>'
+			'label': 'Inline event handler: `onabort`'
 		},
 		'[onautocomplete]': {
-			'label': 'Inline event handler: <code>onautocomplete</code>'
+			'label': 'Inline event handler: `onautocomplete`'
 		},
 		'[onautocompleteerror]': {
-			'label': 'Inline event handler: <code>onautocompleteerror</code>'
+			'label': 'Inline event handler: `onautocompleteerror`'
 		},
 		'[onafterprint]': {
-			'label': 'Inline event handler: <code>onafterprint</code>'
+			'label': 'Inline event handler: `onafterprint`'
 		},
 		'[onbeforeprint]': {
-			'label': 'Inline event handler: <code>onbeforeprint</code>'
+			'label': 'Inline event handler: `onbeforeprint`'
 		},
 		'[onbeforeunload]': {
-			'label': 'Inline event handler: <code>onbeforeunload</code>'
+			'label': 'Inline event handler: `onbeforeunload`'
 		},
 		'[onblur]': {
-			'label': 'Inline event handler: <code>onblur</code>'
+			'label': 'Inline event handler: `onblur`'
 		},
 		'[oncancel]': {
-			'label': 'Inline event handler: <code>oncancel</code>'
+			'label': 'Inline event handler: `oncancel`'
 		},
 		'[oncanplay]': {
-			'label': 'Inline event handler: <code>oncanplay</code>'
+			'label': 'Inline event handler: `oncanplay`'
 		},
 		'[oncanplaythrough]': {
-			'label': 'Inline event handler: <code>oncanplaythrough</code>'
+			'label': 'Inline event handler: `oncanplaythrough`'
 		},
 		'[onchange]': {
-			'label': 'Inline event handler: <code>onchange</code>'
+			'label': 'Inline event handler: `onchange`'
 		},
 		'[onclick]': {
-			'label': 'Inline event handler: <code>onclick</code>'
+			'label': 'Inline event handler: `onclick`'
 		},
 		'[onclose]': {
-			'label': 'Inline event handler: <code>onclose</code>'
+			'label': 'Inline event handler: `onclose`'
 		},
 		'[oncontextmenu]': {
-			'label': 'Inline event handler: <code>oncontextmenu</code>'
+			'label': 'Inline event handler: `oncontextmenu`'
 		},
 		'[oncuechange]': {
-			'label': 'Inline event handler: <code>oncuechange</code>'
+			'label': 'Inline event handler: `oncuechange`'
 		},
 		'[ondblclick]': {
-			'label': 'Inline event handler: <code>ondblclick</code>'
+			'label': 'Inline event handler: `ondblclick`'
 		},
 		'[ondrag]': {
-			'label': 'Inline event handler: <code>ondrag</code>'
+			'label': 'Inline event handler: `ondrag`'
 		},
 		'[ondragdrop]': {
-			'label': 'Inline event handler: <code>ondragdrop</code>'
+			'label': 'Inline event handler: `ondragdrop`'
 		},
 		'[ondragend]': {
-			'label': 'Inline event handler: <code>ondragend</code>'
+			'label': 'Inline event handler: `ondragend`'
 		},
 		'[ondragenter]': {
-			'label': 'Inline event handler: <code>ondragenter</code>'
+			'label': 'Inline event handler: `ondragenter`'
 		},
 		'[ondragexit]': {
-			'label': 'Inline event handler: <code>ondragexit</code>'
+			'label': 'Inline event handler: `ondragexit`'
 		},
 		'[ondragleave]': {
-			'label': 'Inline event handler: <code>ondragleave</code>'
+			'label': 'Inline event handler: `ondragleave`'
 		},
 		'[ondragover]': {
-			'label': 'Inline event handler: <code>ondragover</code>'
+			'label': 'Inline event handler: `ondragover`'
 		},
 		'[ondragstart]': {
-			'label': 'Inline event handler: <code>ondragstart</code>'
+			'label': 'Inline event handler: `ondragstart`'
 		},
 		'[ondrop]': {
-			'label': 'Inline event handler: <code>ondrop</code>'
+			'label': 'Inline event handler: `ondrop`'
 		},
 		'[ondurationchange]': {
-			'label': 'Inline event handler: <code>ondurationchange</code>'
+			'label': 'Inline event handler: `ondurationchange`'
 		},
 		'[onemptied]': {
-			'label': 'Inline event handler: <code>onemptied</code>'
+			'label': 'Inline event handler: `onemptied`'
 		},
 		'[onended]': {
-			'label': 'Inline event handler: <code>onended</code>'
+			'label': 'Inline event handler: `onended`'
 		},
 		'[onerror]': {
-			'label': 'Inline event handler: <code>onerror</code>'
+			'label': 'Inline event handler: `onerror`'
 		},
 		'[onfocus]': {
-			'label': 'Inline event handler: <code>onfocus</code>'
+			'label': 'Inline event handler: `onfocus`'
 		},
 		'[onhashchange]': {
-			'label': 'Inline event handler: <code>onhashchange</code>'
+			'label': 'Inline event handler: `onhashchange`'
 		},
 		'[oninput]': {
-			'label': 'Inline event handler: <code>oninput</code>'
+			'label': 'Inline event handler: `oninput`'
 		},
 		'[oninvalid]': {
-			'label': 'Inline event handler: <code>oninvalid</code>'
+			'label': 'Inline event handler: `oninvalid`'
 		},
 		'[onkeydown]': {
-			'label': 'Inline event handler: <code>onkeydown</code>'
+			'label': 'Inline event handler: `onkeydown`'
 		},
 		'[onkeypress]': {
-			'label': 'Inline event handler: <code>onkeypress</code>'
+			'label': 'Inline event handler: `onkeypress`'
 		},
 		'[onkeyup]': {
-			'label': 'Inline event handler: <code>onkeyup</code>'
+			'label': 'Inline event handler: `onkeyup`'
 		},
 		'[onlanguagechange]': {
-			'label': 'Inline event handler: <code>onlanguagechange</code>'
+			'label': 'Inline event handler: `onlanguagechange`'
 		},
 		'[onload]': {
-			'label': 'Inline event handler: <code>onload</code>'
+			'label': 'Inline event handler: `onload`'
 		},
 		'[onloadeddata]': {
-			'label': 'Inline event handler: <code>onloadeddata</code>'
+			'label': 'Inline event handler: `onloadeddata`'
 		},
 		'[onloadedmetadata]': {
-			'label': 'Inline event handler: <code>onloadedmetadata</code>'
+			'label': 'Inline event handler: `onloadedmetadata`'
 		},
 		'[onloadstart]': {
-			'label': 'Inline event handler: <code>onloadstart</code>'
+			'label': 'Inline event handler: `onloadstart`'
 		},
 		'[onmessage]': {
-			'label': 'Inline event handler: <code>onmessage</code>'
+			'label': 'Inline event handler: `onmessage`'
 		},
 		'[onmousedown]': {
-			'label': 'Inline event handler: <code>onmousedown</code>'
+			'label': 'Inline event handler: `onmousedown`'
 		},
 		'[onmouseenter]': {
-			'label': 'Inline event handler: <code>onmouseenter</code>'
+			'label': 'Inline event handler: `onmouseenter`'
 		},
 		'[onmouseleave]': {
-			'label': 'Inline event handler: <code>onmouseleave</code>'
+			'label': 'Inline event handler: `onmouseleave`'
 		},
 		'[onmousemove]': {
-			'label': 'Inline event handler: <code>onmousemove</code>'
+			'label': 'Inline event handler: `onmousemove`'
 		},
 		'[onmouseout]': {
-			'label': 'Inline event handler: <code>onmouseout</code>'
+			'label': 'Inline event handler: `onmouseout`'
 		},
 		'[onmouseover]': {
-			'label': 'Inline event handler: <code>onmouseover</code>'
+			'label': 'Inline event handler: `onmouseover`'
 		},
 		'[onmouseup]': {
-			'label': 'Inline event handler: <code>onmouseup</code>'
+			'label': 'Inline event handler: `onmouseup`'
 		},
 		'[onmousewheel]': {
-			'label': 'Inline event handler: <code>onmousewheel</code>'
+			'label': 'Inline event handler: `onmousewheel`'
 		},
 		'[onmove]': {
-			'label': 'Inline event handler: <code>onmove</code>'
+			'label': 'Inline event handler: `onmove`'
 		},
 		'[onoffline]': {
-			'label': 'Inline event handler: <code>onoffline</code>'
+			'label': 'Inline event handler: `onoffline`'
 		},
 		'[ononline]': {
-			'label': 'Inline event handler: <code>ononline</code>'
+			'label': 'Inline event handler: `ononline`'
 		},
 		'[onpagehide]': {
-			'label': 'Inline event handler: <code>onpagehide</code>'
+			'label': 'Inline event handler: `onpagehide`'
 		},
 		'[onpageshow]': {
-			'label': 'Inline event handler: <code>onpageshow</code>'
+			'label': 'Inline event handler: `onpageshow`'
 		},
 		'[onpause]': {
-			'label': 'Inline event handler: <code>onpause</code>'
+			'label': 'Inline event handler: `onpause`'
 		},
 		'[onplay]': {
-			'label': 'Inline event handler: <code>onplay</code>'
+			'label': 'Inline event handler: `onplay`'
 		},
 		'[onplaying]': {
-			'label': 'Inline event handler: <code>onplaying</code>'
+			'label': 'Inline event handler: `onplaying`'
 		},
 		'[onpopstate]': {
-			'label': 'Inline event handler: <code>onpopstate</code>'
+			'label': 'Inline event handler: `onpopstate`'
 		},
 		'[onprogress]': {
-			'label': 'Inline event handler: <code>onprogress</code>'
+			'label': 'Inline event handler: `onprogress`'
 		},
 		'[onreset]': {
-			'label': 'Inline event handler: <code>onreset</code>'
+			'label': 'Inline event handler: `onreset`'
 		},
 		'[onresize]': {
-			'label': 'Inline event handler: <code>onresize</code>'
+			'label': 'Inline event handler: `onresize`'
 		},
 		'[onscroll]': {
-			'label': 'Inline event handler: <code>onscroll</code>'
+			'label': 'Inline event handler: `onscroll`'
 		},
 		'[onseeked]': {
-			'label': 'Inline event handler: <code>onseeked</code>'
+			'label': 'Inline event handler: `onseeked`'
 		},
 		'[onseeking]': {
-			'label': 'Inline event handler: <code>onseeking</code>'
+			'label': 'Inline event handler: `onseeking`'
 		},
 		'[onselect]': {
-			'label': 'Inline event handler: <code>onselect</code>'
+			'label': 'Inline event handler: `onselect`'
 		},
 		'[onshow]': {
-			'label': 'Inline event handler: <code>onshow</code>'
+			'label': 'Inline event handler: `onshow`'
 		},
 		'[onsort]': {
-			'label': 'Inline event handler: <code>onsort</code>'
+			'label': 'Inline event handler: `onsort`'
 		},
 		'[onstalled]': {
-			'label': 'Inline event handler: <code>onstalled</code>'
+			'label': 'Inline event handler: `onstalled`'
 		},
 		'[onstorage]': {
-			'label': 'Inline event handler: <code>onstorage</code>'
+			'label': 'Inline event handler: `onstorage`'
 		},
 		'[onsubmit]': {
-			'label': 'Inline event handler: <code>onsubmit</code>'
+			'label': 'Inline event handler: `onsubmit`'
 		},
 		'[onsuspend]': {
-			'label': 'Inline event handler: <code>onsuspend</code>'
+			'label': 'Inline event handler: `onsuspend`'
 		},
 		'[ontimeupdate]': {
-			'label': 'Inline event handler: <code>ontimeupdate</code>'
+			'label': 'Inline event handler: `ontimeupdate`'
 		},
 		'[ontoggle]': {
-			'label': 'Inline event handler: <code>ontoggle</code>'
+			'label': 'Inline event handler: `ontoggle`'
 		},
 		'[onunload]': {
-			'label': 'Inline event handler: <code>onunload</code>'
+			'label': 'Inline event handler: `onunload`'
 		},
 		'[onvolumechange]': {
-			'label': 'Inline event handler: <code>onvolumechange</code>'
+			'label': 'Inline event handler: `onvolumechange`'
 		},
 		'[onwaiting]': {
-			'label': 'Inline event handler: <code>onwaiting</code>'
+			'label': 'Inline event handler: `onwaiting`'
 		},
 
 		// Ids & Classes
 		'#ContentWrapper': {
-			'label': 'Bad Id: <code>ContentWrapper</code>'
+			'label': 'Bad Id: `ContentWrapper`'
 		},
 		'.MsoNormal': {
-			'label': 'Bad Class: <code>MsoNormal</code>'
+			'label': 'Bad Class: `MsoNormal`'
 		}
 	},
 
