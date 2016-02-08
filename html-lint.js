@@ -14,6 +14,7 @@ var
 
 	// variables
 	$,
+	currentErrors,
 	errors = 0,
 	output = '',
 	url = process.argv[2],
@@ -127,65 +128,34 @@ var
 		summarize();
 	},
 
-	addSelectorToOutput = function (index, value, currentErrors) {
+	addSelectorToOutput = function (index, value) {
 		var
 			postFormatting = '',
-			preFormatting = '  ├─ ',
+			preFormatting = chalk.cyan(' ├─ '),
 			oneBasedIndex = index + 1;
 
 		if (oneBasedIndex === currentErrors) {
 			postFormatting = '\n';
-			preFormatting = '  └─ ';
+			preFormatting = chalk.cyan(' └─ ');
 		}
 
-		output += chalk.dim(preFormatting + (oneBasedIndex) + ' ' + $(value) + ' ' + chalk.cyan(currentErrors) + '\n' + postFormatting);
-
-
-//  ──┬─ 1 `fieldset` missing `legend`
-//    └─ 1 <fieldset>
-//      <input>
-//    <img id="added" src=""></fieldset>
-//
-//  ├─┬─ 1 `fieldset` first child is not `legend`
-//  │ └─ 1 <input>
-//  │
-//  └─┬─ 3 `img` missing `alt` attribute
-//    ├─ 1 <img src="https://placehold.it/100x50/333">
-//    ├─ 2 <img src="https://placehold.it/100x100">
-//    └─ 3 <img id="added" src="">
-
-// HTML-Lint found 5 errors on http://s.codepen.io/curtisj44/debug/xbQXbV
-
-
-
- // 3 `img` missing `alt` attribute
- // ├─[1] <img src="https://placehold.it/100x50/333">
- // ├─[2] <img src="https://placehold.it/100x100">
- // ├─[3] <img id="added" src="">
-
+		output += chalk.dim(preFormatting + chalk.cyan(oneBasedIndex) + ' ' + $(value) + '\n' + postFormatting);
 	},
 
  	// TODO - this needs a better name
 	runTests = function () {
 		console.log(chalk.cyan('Running tests...\n'));
-
-		var currentErrors;
-
 		// console.log(tests);
 
 		for (var test in tests) {
 			// console.log(chalk.dim('test: ' + test));
 			// console.log(chalk.dim('label: ' + tests[test].label));
-
 			currentErrors = $(test).length;
 
 			if (currentErrors > 0) {
 				errors += currentErrors;
-				output += ' ─┬─ ' + chalk.bold.red(currentErrors) + ' ' + tests[test].label + '\n';
-				// $(test).each(addSelectorToOutput);
-				$(test).each(function (index, value) {
-					addSelectorToOutput(index, value, currentErrors);
-				});
+				output += ' ' + chalk.bold.red(currentErrors) + ' ' + tests[test].label + '\n';
+				$(test).each(addSelectorToOutput);
 			}
 		}
 	},
