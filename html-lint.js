@@ -22,7 +22,7 @@ var
 	url = process.argv[2],
 	verboseFlag = '--verbose',
 
-	saveTo = (process.argv[3] !== verboseFlag) ? process.argv[3] : 'test',
+	saveTo = (process.argv[3] && process.argv[3] !== verboseFlag) ? process.argv[3] : 'saved',
 	savedHtml = saveTo + '.html',
 	saveCommand = 'phantomjs lib/save-html.js ' + url + ' ' + saveTo,
 
