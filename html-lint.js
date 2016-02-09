@@ -2,6 +2,7 @@
 'use strict';
 
 // usage: `node html-lint http://s.codepen.io/curtisj44/debug/xbQXbV`
+// usage: `node html-lint http://s.codepen.io/curtisj44/debug/xbQXbV --verbose`
 
 var
 	// node
@@ -16,9 +17,12 @@ var
 	$,
 	currentErrors,
 	errors = 0,
+	isVerbose = false,
 	output = '',
 	url = process.argv[2],
-	saveTo = process.argv[3] || 'test',
+	verboseFlag = '--verbose',
+
+	saveTo = (process.argv[3] !== verboseFlag) ? process.argv[3] : 'test',
 	savedHtml = saveTo + '.html',
 	saveCommand = 'phantomjs lib/save-html.js ' + url + ' ' + saveTo,
 
@@ -554,6 +558,7 @@ var
 			return;
 		}
 
+		detectVerboseFlag();
 		runTests();
 		summarize();
 	},
@@ -585,9 +590,15 @@ var
 			if (currentErrors > 0) {
 				errors += currentErrors;
 				output += ' ' + chalk.bold.red(currentErrors) + ' ' + tests[test].label + '\n';
-				$(test).each(addSelectorToOutput);
+				if (isVerbose) $(test).each(addSelectorToOutput);
 			}
 		}
+	},
+
+	detectVerboseFlag = function () {
+		process.argv.forEach(function (value, index, array) {
+			isVerbose = value === verboseFlag;
+		});
 	},
 
 	summarize = function () {
