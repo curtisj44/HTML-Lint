@@ -59,7 +59,7 @@ var
 			'label': '`u`'
 		},
 		'br + br': {
-			'label': 'Multiple `br`&rsquo;s (* not quite accurate)'
+			'label': 'Multiple `br`’s (* not quite accurate)'
 		},
 
 		// // ---- Attributes ----
@@ -113,7 +113,7 @@ var
 			'label': '`fieldset` missing `legend`'
 		},
 		'fieldset > *:not(legend):first-child': {
-			'label': '`fieldset`&rsquo;s first child is not `legend`'
+			'label': '`fieldset`’s first child is not `legend`'
 		},
 		'form[action=""]': {
 			'label': '`form[action=""]`'
