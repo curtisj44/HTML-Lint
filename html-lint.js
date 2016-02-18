@@ -8,6 +8,7 @@ var
 	// node
 	exec = require('child_process').exec,
 	fs = require('fs'),
+	spawn = require('child_process').spawn,
 
 	// dependencies
 	chalk = require('chalk'),
@@ -610,10 +611,19 @@ var
 if (!url) {
 	console.log(chalk.yellow('Error: No URL provided'));
 } else {
-	exec(saveCommand, function (err, stdout, stderr) {
-		if (err) console.log(chalk.yellow('Error: Child process failed with [' + err.code + ']'));
-		// console.log(stdout);
-		// console.log(stderr);
+	var saveHtml = spawn('phantomjs', ['lib/save-html.js', url, saveTo]);
+
+	saveHtml.stdout.on('data', function (data) {
+		console.log('' + data);
+	});
+
+	saveHtml.stderr.on('data', function (data) {
+		console.log('stderr: ' + data);
+	});
+
+	saveHtml.on('exit', function (code) {
+		// console.log('child process exited with code ' + code);
+		// if (err) console.log(chalk.yellow('Error: Child process failed with [' + err.code + ']'));
 		console.log(chalk.cyan('Saved HTML from ' + chalk.bold(url) + ' to ' + chalk.bold(savedHtml)));
 		init();
 	});
