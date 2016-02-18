@@ -577,7 +577,7 @@ var
 		output += chalk.dim(preFormatting + chalk.cyan(oneBasedIndex) + ' ' + $(value) + '\n' + postFormatting);
 	},
 
- 	// TODO - this needs a better name
+	// TODO - this needs a better name
 	runTests = function () {
 		console.log(chalk.cyan('Running tests...\n'));
 		// console.log(tests);
