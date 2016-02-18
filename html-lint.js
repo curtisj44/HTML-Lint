@@ -1,4 +1,4 @@
-/*jslint node: true */
+/* jslint node: true */
 'use strict';
 
 // usage: `node html-lint http://s.codepen.io/curtisj44/debug/xbQXbV`
