@@ -603,7 +603,7 @@ var
 
 	summarize = function () {
 		console.log(output);
-		console.log(chalk[errors === 0 ? 'bgGreen' : 'bgRed']('HTML-Lint found' + chalk.bold(' ' + errors + ' errors') + ' on ' + url));
+		console.log(chalk[errors === 0 ? 'bgGreen' : 'bgRed'](' HTML-Lint found' + chalk.bold(' ' + errors + ' errors') + ' on ' + url + ' '));
 		console.log('\n');
 	};
 
