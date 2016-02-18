@@ -611,17 +611,17 @@ if (!url) {
 	console.log(chalk.yellow('Error: No URL provided'));
 } else {
 	saveHtml.stdout.on('data', function (data) {
-		console.log('' + data);
+		console.log(chalk.yellow(data.toString().replace(/[\n\r]/g, '')));
 	});
 
 	saveHtml.stderr.on('data', function (data) {
-		console.log('stderr: ' + data);
+		console.log(chalk.red('stderr: ' + data));
 	});
 
 	saveHtml.on('exit', function (code) {
 		// console.log('child process exited with code ' + code);
 		// if (err) console.log(chalk.yellow('Error: Child process failed with [' + err.code + ']'));
-		console.log(chalk.cyan('Saved HTML from ' + chalk.bold(url) + ' to ' + chalk.bold(savedHtml)));
+		console.log(chalk.yellow('Saved HTML from ' + chalk.bold(url) + ' to ' + chalk.bold(savedHtml)));
 		init();
 	});
 }
