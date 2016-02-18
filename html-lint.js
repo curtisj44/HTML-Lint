@@ -200,10 +200,10 @@ var
 			'label': '`th[scope=""]`'
 		},
 
-		':not("canvas, img, object, svg")[height]': {
+		':not("canvas, img, object, rect, svg")[height]': {
 			'label': 'Invalid attribute: `height`'
 		},
-		':not("canvas, img, object, svg")[width]': {
+		':not("canvas, img, object, rect, svg")[width]': {
 			'label': 'Invalid attribute: `width`'
 		},
 
