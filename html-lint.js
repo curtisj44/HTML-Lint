@@ -23,7 +23,7 @@ var
 	verboseFlag = '--verbose',
 
 	saveTo = (process.argv[3] && process.argv[3] !== verboseFlag) ? process.argv[3] : 'saved',
-	savedHtml = saveTo + '.html',
+	savedHtml = 'temp/' + saveTo + '.html',
 	saveCommand = 'phantomjs lib/save-html.js ' + url + ' ' + saveTo,
 
 	// methods
@@ -551,7 +551,7 @@ var
 	},
 
 	init = function () {
-		$ = cheerio.load(fs.readFileSync('temp/' + savedHtml));
+		$ = cheerio.load(fs.readFileSync(savedHtml));
 
 		if ($('html').length !== 1) {
 			console.log(chalk.yellow('Error: Something went wrong. Check the URL.'));
@@ -614,7 +614,7 @@ if (!url) {
 		if (err) console.log(chalk.yellow('Error: Child process failed with [' + err.code + ']'));
 		// console.log(stdout);
 		// console.log(stderr);
-		console.log(chalk.cyan('Saved HTML from ' + chalk.bold(url) + ' to ' + chalk.bold('temp/' + savedHtml)));
+		console.log(chalk.cyan('Saved HTML from ' + chalk.bold(url) + ' to ' + chalk.bold(savedHtml)));
 		init();
 	});
 }
