@@ -24,6 +24,7 @@ var
 
 	saveTo = (process.argv[3] && process.argv[3] !== verboseFlag) ? process.argv[3] : 'saved',
 	savedHtml = 'temp/' + saveTo + '.html',
+	saveHtml = spawn('phantomjs', ['lib/save-html.js', url, saveTo]),
 
 	// methods
 
@@ -609,8 +610,6 @@ var
 if (!url) {
 	console.log(chalk.yellow('Error: No URL provided'));
 } else {
-	var saveHtml = spawn('phantomjs', ['lib/save-html.js', url, saveTo]);
-
 	saveHtml.stdout.on('data', function (data) {
 		console.log('' + data);
 	});
