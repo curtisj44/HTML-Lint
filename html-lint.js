@@ -6,7 +6,6 @@
 
 var
 	// node
-	exec = require('child_process').exec,
 	fs = require('fs'),
 	spawn = require('child_process').spawn,
 
