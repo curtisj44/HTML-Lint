@@ -18,7 +18,10 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 
 ### Option 2: CLI
 
-TBD
+![Sample verbose output](cli-output-verbose.jpg)
+
+In progress&hellip;
+
 <!-- Usage: `node html-lint http://s.codepen.io/curtisj44/debug/xbQXbV [name-of-file] --verbose` -->
 
 ## Development
