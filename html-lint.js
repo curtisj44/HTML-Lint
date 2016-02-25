@@ -17,6 +17,8 @@ var
 	$,
 	currentErrors,
 	errors = 0,
+	passing = 0,
+
 	isVerbose = false,
 	output = '',
 	url = process.argv[2],
@@ -591,6 +593,8 @@ var
 				errors += currentErrors;
 				output += ' ' + chalk.bold.red(currentErrors) + ' ' + tests[test].label + '\n';
 				if (isVerbose) $(test).each(addSelectorToOutput);
+			} else {
+				passing++;
 			}
 		}
 	},
@@ -603,6 +607,7 @@ var
 
 	summarize = function () {
 		console.log(output);
+		console.log(chalk.dim(' ' + passing + ' tests passing \n'));
 		console.log(chalk[errors === 0 ? 'bgGreen' : 'bgRed'](' HTML-Lint found' + chalk.bold(' ' + errors + ' errors') + ' on ' + url + ' '));
 		console.log('\n');
 	};
