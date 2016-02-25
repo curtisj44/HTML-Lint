@@ -4,6 +4,8 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 
 ## How to Use:
 
+### Option 1: Bookmarklet
+
 1.	Copy the code below:
 
 	```javascript
@@ -14,15 +16,10 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 
 1.	Set the name to “HTML-Lint” and paste the above as the URL.
 
-<!--
-## How to Use:
-
-### Option 1: Bookmarklet
-
 ### Option 2: CLI
-// usage: `node html-lint http://s.codepen.io/curtisj44/debug/xbQXbV [name-of-file] --verbose`
--->
 
+TBD
+<!-- Usage: `node html-lint http://s.codepen.io/curtisj44/debug/xbQXbV [name-of-file] --verbose` -->
 
 ## Development
 
