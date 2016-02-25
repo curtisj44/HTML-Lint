@@ -100,7 +100,7 @@
 			'label': '<code>type="text"</code> is not needed on <code>&lt;input&gt;</code>'
 		},
 		'img:not([alt])': {
-			'label': '<code>&lt;img&gt;</code> missing <code>alt</code>'
+			'label': '<code>&lt;img&gt;</code> missing <code>alt</code> attribute'
 		},
 		'img:not(".tracking")[alt=""]': {
 			'label': '<code>img[alt=""]</code>'
@@ -171,10 +171,10 @@
 			'label': '<code>th[scope=""]</code>'
 		},
 
-		':not("canvas, img, object, svg")[height]': {
+		':not("canvas, img, object, rect, svg")[height]': {
 			'label': 'Invalid attribute: <code>height</code>'
 		},
-		':not("canvas, img, object, svg")[width]': {
+		':not("canvas, img, object, rect, svg")[width]': {
 			'label': 'Invalid attribute: <code>width</code>'
 		},
 

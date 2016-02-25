@@ -4,6 +4,8 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 
 ## How to Use:
 
+### Option 1: Bookmarklet
+
 1.	Copy the code below:
 
 	```javascript
@@ -14,12 +16,19 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 
 1.	Set the name to “HTML-Lint” and paste the above as the URL.
 
+### Option 2: CLI
+
+![Sample verbose output](cli-output-verbose.jpg)
+
+In progress&hellip;
+
+<!-- Usage: `node html-lint http://s.codepen.io/curtisj44/debug/xbQXbV [name-of-file] --verbose` -->
 
 ## Development
 
 ### Getting Started
 
-1. Have the following requirements installed: [Node](http://nodejs.org/) and [NPM](https://www.npmjs.org/)
+1. Have the following requirements installed: [Node](http://nodejs.org/), [NPM](https://www.npmjs.org/), and [PhantomJS](http://phantomjs.org/)
 1. Clone the repo: ```git clone https://github.com/curtisj44/HTML-Lint.git```
 1. Run ```npm install```
 1. Run ```gulp```
