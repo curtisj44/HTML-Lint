@@ -1143,10 +1143,10 @@
 
 		jQueryAdded: false,
 
-		jQuery: ['1.11.3', '2.1.4'],
-		jQueryUI: '1.11.2',
-		Modernizr: '3.2.0',
-		MooTools: '1.5.1',
+		jQuery: ['1.12.1', '2.2.1'],
+		jQueryUI: '1.11.4',
+		Modernizr: '3.3.1',
+		MooTools: '1.6.0',
 		RequireJS: '2.1.22'
 	};
 
