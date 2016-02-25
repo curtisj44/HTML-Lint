@@ -7,21 +7,19 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 ### Option 1: Bookmarklet
 
 1. Copy the code below:
-
 	```javascript
 	javascript: (function(){'use strict';var script = document.createElement('script');script.src = 'https://curtisj44.github.io/HTML-Lint/dist/htmlLint.min.js';script.id = 'html-lint-js';document.body.appendChild(script);}());
 	```
-
 1. Create a new bookmark.
-
 1. Set the name to “HTML-Lint” and paste the above as the URL.
 
 ### Option 2: CLI
 
 ![Sample verbose output](cli-output-verbose.jpg)
 
-In progress&hellip;
+Available on NPM: [npmjs.com/package/html-lint](https://www.npmjs.com/package/html-lint): `npm install html-lint`.
 
+<!-- add "usage" instructions -->
 <!-- Usage: `node html-lint http://s.codepen.io/curtisj44/debug/xbQXbV [name-of-file] --verbose` -->
 
 ## Development
