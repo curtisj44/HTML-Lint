@@ -28,7 +28,7 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 
 ### Getting Started
 
-1. Have the following requirements installed: [Node](http://nodejs.org/) and [NPM](https://www.npmjs.org/)
+1. Have the following requirements installed: [Node](http://nodejs.org/), [NPM](https://www.npmjs.org/), and [PhantomJS](http://phantomjs.org/)
 1. Clone the repo: ```git clone https://github.com/curtisj44/HTML-Lint.git```
 1. Run ```npm install```
 1. Run ```gulp```
