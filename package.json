@@ -6,9 +6,13 @@
   "keywords": [
     "a11y",
     "accessibility",
+    "audit",
     "html",
     "lint",
-    "linter"
+    "linter",
+    "markup",
+    "report",
+    "tool"
   ],
   "repository": {
     "type": "git",
