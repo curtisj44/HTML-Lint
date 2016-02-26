@@ -1,7 +1,7 @@
 {
   "name": "html-lint",
   "author": "Curtis Jurgensen",
-  "version": "2.1.8",
+  "version": "2.1.9",
   "description": "A code quality bookmarklet and command-line tool.",
   "keywords": [
     "a11y",
@@ -37,6 +37,6 @@
   "engines": {
     "node": ">=0.10.31"
   },
-  "main": "gulpfile.js",
+  "main": "html-lint.js",
   "preferGlobal": "true"
 }
