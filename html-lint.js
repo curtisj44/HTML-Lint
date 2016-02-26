@@ -27,7 +27,7 @@ var
 
 	saveTo = (process.argv[3] && process.argv[3] !== verboseFlag) ? process.argv[3] : 'saved',
 	savedHtml = 'temp/' + saveTo + '.html',
-	saveHtml = spawn('phantomjs', ['lib/save-html.js', url, saveTo]),
+	saveHtml = spawn('phantomjs', [__dirname + '/lib/save-html.js', url, saveTo]),
 
 	// methods
 
