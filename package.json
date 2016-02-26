@@ -1,16 +1,31 @@
 {
-  "name": "HTML-Lint",
+  "name": "html-lint",
   "author": "Curtis Jurgensen",
-  "version": "2.1.0",
-  "description": "A code quality bookmarklet.",
+  "version": "2.1.12",
+  "description": "A code quality bookmarklet and command-line tool.",
+  "keywords": [
+    "a11y",
+    "accessibility",
+    "audit",
+    "html",
+    "lint",
+    "linter",
+    "markup",
+    "report",
+    "tool"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/curtisj44/HTML-Lint.git"
   },
-  "dependencies": {},
-  "devDependencies": {
+  "bin": {
+    "html-lint" : "html-lint.js"
+  },
+  "dependencies": {
     "chalk": "*",
-    "cheerio": "*",
+    "cheerio": "*"
+  },
+  "devDependencies": {
     "del": "2.2.0",
     "gulp": "3.9.0",
     "gulp-autoprefixer": "3.1.0",
@@ -23,5 +38,6 @@
   "engines": {
     "node": ">=0.10.31"
   },
-  "main": "gulpfile.js"
+  "main": "html-lint.js",
+  "preferGlobal": "true"
 }
