@@ -38,5 +38,5 @@
     "node": ">=0.10.31"
   },
   "main": "html-lint.js",
-  "preferGlobal": "true"
+  "preferGlobal": true
 }
