@@ -8,7 +8,7 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 
 1. Copy the code below:
 
-	```javascript
+	```js
 	javascript: (function(){'use strict';var script = document.createElement('script');script.src = 'https://curtisj44.github.io/HTML-Lint/dist/htmlLint.min.js';script.id = 'html-lint-js';document.body.appendChild(script);}());
 	```
 1. Create a new bookmark.
@@ -18,10 +18,29 @@ HTML-Lint is a code quality bookmarklet designed to supplement HTML validation b
 
 ![Sample verbose output](cli-output-verbose.jpg)
 
-Available on NPM: [npmjs.com/package/html-lint](https://www.npmjs.com/package/html-lint): `npm install html-lint`.
+Available on NPM: [npmjs.com/package/html-lint](https://www.npmjs.com/package/html-lint): `npm install html-lint -g`.
 
-<!-- add "usage" instructions -->
-<!-- Usage: `node html-lint http://s.codepen.io/curtisj44/debug/xbQXbV [name-of-file] --verbose` -->
+#### Usage
+
+```
+html-lint <url> <filename>
+```
+
+#### Options
+
+```
+--verbose    Enable verbose output
+```
+
+#### Examples
+
+```
+html-lint http://www.google.com
+html-lint http://www.google.com --verbose
+html-lint http://www.google.com foo
+```
+
+---
 
 ## Development
 
