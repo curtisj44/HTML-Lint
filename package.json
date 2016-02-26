@@ -3,6 +3,13 @@
   "author": "Curtis Jurgensen",
   "version": "2.1.4",
   "description": "A code quality bookmarklet and command-line tool.",
+  "keywords": [
+    "a11y",
+    "accessibility",
+    "html",
+    "lint",
+    "linter"
+  ],
   "repository": {
     "type": "git",
     "url": "https://github.com/curtisj44/HTML-Lint.git"
