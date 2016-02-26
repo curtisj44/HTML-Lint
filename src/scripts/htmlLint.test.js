@@ -105,6 +105,16 @@
 		'img:not(".tracking")[alt=""]': {
 			'label': '<code>img[alt=""]</code>'
 		},
+
+		// > Describe the image briefly, but avoid the phrase “image of” or “graphic of”. Because screen readers already know it is a graphic.
+		// https://www.marcozehe.de/2015/12/14/the-web-accessibility-basics/
+		'img[alt*="graphic of"]': {
+			'label': '"graphic of" used in `img` `alt`'
+		},
+		'img[alt*="image of"]': {
+			'label': '"image of" used in `img` `alt`'
+		},
+
 		'img[src=""]': {
 			'label': '<code>img[src=""]</code>'
 		},
