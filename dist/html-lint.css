@@ -53,7 +53,8 @@
 
 #html-lint *:after,
 #html-lint *:before {
-  height: 0; }
+  height: 0;
+  content: normal; }
 
 #html-lint a {
   text-decoration: underline; }
