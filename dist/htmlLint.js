@@ -1154,7 +1154,7 @@
 
 		jQueryAdded: false,
 
-		jQuery: ['1.12.1', '2.2.1'],
+		jQuery: ['1.12.4', '2.2.4'],
 		jQueryUI: '1.11.4',
 		Modernizr: '3.3.1',
 		MooTools: '1.6.0',
