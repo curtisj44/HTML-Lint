@@ -608,6 +608,7 @@
 		$htmlLint.find('h2').append(htmlLint.utility.error(errors));
 	};
 }(window.htmlLint = window.htmlLint || {}));
+// TODO: keep in sync with `/lib/tests.js`
 (function (htmlLint) {
 	'use strict';
 

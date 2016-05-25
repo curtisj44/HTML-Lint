@@ -1,3 +1,4 @@
+// TODO: keep in sync with `/lib/tests.js`
 (function (htmlLint) {
 	'use strict';
 
