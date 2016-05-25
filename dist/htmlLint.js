@@ -608,6 +608,7 @@
 		$htmlLint.find('h2').append(htmlLint.utility.error(errors));
 	};
 }(window.htmlLint = window.htmlLint || {}));
+// TODO: keep in sync with `/lib/tests.js`
 (function (htmlLint) {
 	'use strict';
 
@@ -723,6 +724,9 @@
 		},
 		'img[alt*="image of"]': {
 			'label': '"image of" used in `img` `alt`'
+		},
+		'img[alt*="picture of"]': {
+			'label': '"picture of" used in `img` `alt`'
 		},
 
 		'img[src=""]': {
@@ -1154,7 +1158,7 @@
 
 		jQueryAdded: false,
 
-		jQuery: ['1.12.1', '2.2.1'],
+		jQuery: ['1.12.4', '2.2.4'],
 		jQueryUI: '1.11.4',
 		Modernizr: '3.3.1',
 		MooTools: '1.6.0',

@@ -1,3 +1,4 @@
+// TODO: keep in sync with `/lib/tests.js`
 (function (htmlLint) {
 	'use strict';
 
@@ -113,6 +114,9 @@
 		},
 		'img[alt*="image of"]': {
 			'label': '"image of" used in `img` `alt`'
+		},
+		'img[alt*="picture of"]': {
+			'label': '"picture of" used in `img` `alt`'
 		},
 
 		'img[src=""]': {
