@@ -1,4 +1,5 @@
 #html-lint {
+  display: block;
   box-sizing: border-box;
   position: absolute;
   z-index: 2147483647;
