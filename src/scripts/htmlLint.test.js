@@ -154,6 +154,10 @@
 		'meta[http-equiv="X-UA-Compatible"]': {
 			'label': 'Specifying a legacy document mode via <code>X-UA-Compatible</code> is considered deprecated and should no longer be used'
 		},
+		// https://developer.apple.com/library/ios/releasenotes/General/RN-iOSSDK-8.0/
+		'meta[name="viewport"][content*="minimal-ui"]': {
+			'label': '<code>minimal-ui</code> has been retired'
+		},
 		'nav:not([role])': {
 			'label': '<code>&lt;nav&gt;</code> missing <code>role</code>'
 		},
