@@ -203,7 +203,7 @@
 
 			if (contentAttr) {
 				if ($value.attr('name') === 'msapplication-TileImage') {
-					output += '<img src="' + contentAttr + '" style="background-color:' + $metaTags.filter($('meta[name="msapplication-TileColor"]')).attr('content') + '">';
+					output += '<img src="' + contentAttr + '" style="background-color:' + $metaTags.filter($('meta[name="msapplication-TileColor"]')).attr('content') + '" alt="msapplication-TileImage">';
 				} else if (
 					contentAttr.indexOf('http') === 0 ||
 					contentAttr.indexOf('.txt') > 0
@@ -946,8 +946,14 @@
 		'[oncontextmenu]': {
 			'label': 'Inline event handler: <code>oncontextmenu</code>'
 		},
+		'[oncopy]': {
+			'label': 'Non-standard, inline event handler: <code>oncopy</code>'
+		},
 		'[oncuechange]': {
 			'label': 'Inline event handler: <code>oncuechange</code>'
+		},
+		'[oncut]': {
+			'label': 'Non-standard, inline event handler: <code>oncut</code>'
 		},
 		'[ondblclick]': {
 			'label': 'Inline event handler: <code>ondblclick</code>'
@@ -1069,6 +1075,9 @@
 		'[onpageshow]': {
 			'label': 'Inline event handler: <code>onpageshow</code>'
 		},
+		'[onpaste]': {
+			'label': 'Non-standard, inline event handler: <code>onpaste</code>'
+		},
 		'[onpause]': {
 			'label': 'Inline event handler: <code>onpause</code>'
 		},
@@ -1142,6 +1151,11 @@
 		},
 		'.MsoNormal': {
 			'label': 'Bad Class: <code>MsoNormal</code>'
+		},
+
+		// http://guides.rubyonrails.org/i18n.html#adding-translations
+		'.translation_missing, [placeholder*="translation_missing"]': {
+			'label': 'Missing Rails i18n string'
 		}
 	};
 }(window.htmlLint = window.htmlLint || {}));
@@ -1158,11 +1172,11 @@
 
 		jQueryAdded: false,
 
-		jQuery: ['1.12.4', '2.2.4'],
-		jQueryUI: '1.11.4',
+		jQuery: ['1.12.4', '3.0.0'],
+		jQueryUI: '1.12.0',
 		Modernizr: '3.3.1',
 		MooTools: '1.6.0',
-		RequireJS: '2.1.22'
+		RequireJS: '2.2.0'
 	};
 
 	// TODO - organize this better

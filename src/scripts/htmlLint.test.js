@@ -541,6 +541,11 @@
 		},
 		'.MsoNormal': {
 			'label': 'Bad Class: <code>MsoNormal</code>'
+		},
+
+		// http://guides.rubyonrails.org/i18n.html#adding-translations
+		'.translation_missing, [placeholder*="translation_missing"]': {
+			'label': 'Missing Rails i18n string'
 		}
 	};
 }(window.htmlLint = window.htmlLint || {}));
