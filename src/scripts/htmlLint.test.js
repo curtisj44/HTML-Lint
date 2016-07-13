@@ -241,6 +241,10 @@
 		'[name=""]': {
 			'label': '<code>name=""</code>'
 		},
+		// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role
+		'[role="button"]': {
+			'label': '<code>[role="button"]</code>'
+		},
 		'[shape]': {
 			'label': 'Bad attribute: <code>shape</code>'
 		},
