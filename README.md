@@ -29,7 +29,7 @@ html-lint <url> <filename>
 
 #### Options
 
-```
+```bash
 --verbose    Enable verbose output
 ```
 
