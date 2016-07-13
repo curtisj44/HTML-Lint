@@ -8,9 +8,9 @@ HTML-Lint is a tool designed to supplement HTML validation by identify coding pr
 
 1. Copy the code below:
 
-	```js
-	javascript: (function(){'use strict';var script = document.createElement('script');script.src = 'https://curtisj44.github.io/HTML-Lint/dist/htmlLint.min.js';script.id = 'html-lint-js';document.body.appendChild(script);}());
-	```
+  ```js
+    javascript: (function(){'use strict';var script = document.createElement('script');script.src = 'https://curtisj44.github.io/HTML-Lint/dist/htmlLint.min.js';script.id = 'html-lint-js';document.body.appendChild(script);}());
+  ```
 
 1. Create a new bookmark.
 1. Set the name to “HTML-Lint” and paste the above as the URL.
@@ -23,22 +23,22 @@ Available on NPM: [npmjs.com/package/html-lint](https://www.npmjs.com/package/ht
 
 #### Usage
 
-```shell
-html-lint <url> <filename>
+```
+  html-lint <url> <filename>
 ```
 
 #### Options
 
-```bash
---verbose    Enable verbose output
+```
+  --verbose    Enable verbose output
 ```
 
 #### Examples
 
 ```
-html-lint http://www.google.com
-html-lint http://www.google.com --verbose
-html-lint http://www.google.com foo
+  html-lint http://www.google.com
+  html-lint http://www.google.com --verbose
+  html-lint http://www.google.com foo
 ```
 
 ---
