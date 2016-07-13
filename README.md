@@ -56,3 +56,13 @@ html-lint http://www.google.com foo
 
 - `gulp` → compiles Sass to CSS, concatenates JS, minifies CSS and JS, and watches
 - `gulp watch` → runs default `gulp` task and then watches for changes
+
+<!--
+### Publishing
+
+Poorly hidden notes to myself:
+
+1. Run `npm version <update_type>` to bump the version and tag the release
+1. Merge `master` into `gh-pages` to update the bookmarklet
+1. Run `npm publish` to push the latest to NPM
+-->
