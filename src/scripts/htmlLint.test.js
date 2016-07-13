@@ -146,6 +146,10 @@
 		'link[rel="stylesheet"][type="text/css"]': {
 			'label': '<code>type="text/css"</code> is not needed on <code>&lt;link&gt;</code>'
 		},
+		// https://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396
+		'meta[http-equiv="X-UA-Compatible"]': {
+			'label': 'Specifying a legacy document mode via <code>X-UA-Compatible</code> is considered deprecated and should no longer be used'
+		},
 		'nav:not([role])': {
 			'label': '<code>&lt;nav&gt;</code> missing <code>role</code>'
 		},
