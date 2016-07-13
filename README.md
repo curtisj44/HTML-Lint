@@ -23,7 +23,7 @@ Available on NPM: [npmjs.com/package/html-lint](https://www.npmjs.com/package/ht
 
 #### Usage
 
-```
+```shell
 html-lint <url> <filename>
 ```
 
