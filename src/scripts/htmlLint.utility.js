@@ -10,11 +10,11 @@
 
 		jQueryAdded: false,
 
-		jQuery: ['1.12.4', '2.2.4'],
-		jQueryUI: '1.11.4',
+		jQuery: ['1.12.4', '3.0.0'],
+		jQueryUI: '1.12.0',
 		Modernizr: '3.3.1',
 		MooTools: '1.6.0',
-		RequireJS: '2.1.22'
+		RequireJS: '2.2.0'
 	};
 
 	// TODO - organize this better

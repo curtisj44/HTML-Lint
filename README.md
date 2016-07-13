@@ -8,9 +8,10 @@ HTML-Lint is a tool designed to supplement HTML validation by identify coding pr
 
 1. Copy the code below:
 
-	```js
-	javascript: (function(){'use strict';var script = document.createElement('script');script.src = 'https://curtisj44.github.io/HTML-Lint/dist/htmlLint.min.js';script.id = 'html-lint-js';document.body.appendChild(script);}());
-	```
+  ```js
+  javascript: (function(){'use strict';var script = document.createElement('script');script.src = 'https://curtisj44.github.io/HTML-Lint/dist/htmlLint.min.js';script.id = 'html-lint-js';document.body.appendChild(script);}());
+  ```
+
 1. Create a new bookmark.
 1. Set the name to “HTML-Lint” and paste the above as the URL.
 
@@ -47,11 +48,21 @@ html-lint http://www.google.com foo
 ### Getting Started
 
 1. Have the following requirements installed: [Node](http://nodejs.org/), [NPM](https://www.npmjs.org/), and [PhantomJS](http://phantomjs.org/)
-1. Clone the repo: ```git clone https://github.com/curtisj44/HTML-Lint.git```
-1. Run ```npm install```
-1. Run ```gulp```
+1. Clone the repo: `git clone https://github.com/curtisj44/HTML-Lint.git`
+1. Run `npm install`
+1. Run `gulp`
 
 ### Tasks
 
-- ```gulp``` → compiles Sass to CSS, concatenates JS, minifies CSS and JS, and watches
-- ```gulp watch``` → runs default `gulp` task and then watches for changes
+- `gulp` → compiles Sass to CSS, concatenates JS, minifies CSS and JS, and watches
+- `gulp watch` → runs default `gulp` task and then watches for changes
+
+<!--
+### Publishing
+
+Poorly hidden notes to myself:
+
+1. Run `npm version <update_type>` to bump the version and tag the release
+1. Merge `master` into `gh-pages` to update the bookmarklet
+1. Run `npm publish` to push the latest to NPM
+-->

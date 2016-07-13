@@ -125,6 +125,10 @@
 		'img[width="1"][height="1"]': {
 			'label': 'Tracking pixel <code>img</code>'
 		},
+		// `button` provides more styling options, pseudo elements, and embedding of more than a text string
+		'input[type="submit"]': {
+			'label': 'Prefer <code>&lt;button type="submit"&gt;</code> over <code>&lt;input type="submit"&gt;</code>'
+		},
 		'label:not([for])': {
 			'label': '<code>&lt;label&gt;</code> missing <code>for</code>'
 		},
@@ -145,6 +149,14 @@
 		},
 		'link[rel="stylesheet"][type="text/css"]': {
 			'label': '<code>type="text/css"</code> is not needed on <code>&lt;link&gt;</code>'
+		},
+		// https://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396
+		'meta[http-equiv="X-UA-Compatible"]': {
+			'label': 'Specifying a legacy document mode via <code>X-UA-Compatible</code> is considered deprecated and should no longer be used'
+		},
+		// https://developer.apple.com/library/ios/releasenotes/General/RN-iOSSDK-8.0/
+		'meta[name="viewport"][content*="minimal-ui"]': {
+			'label': '<code>minimal-ui</code> has been retired'
 		},
 		'nav:not([role])': {
 			'label': '<code>&lt;nav&gt;</code> missing <code>role</code>'
@@ -236,6 +248,10 @@
 		},
 		'[name=""]': {
 			'label': '<code>name=""</code>'
+		},
+		// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role
+		'[role="button"]': {
+			'label': '<code>[role="button"]</code>'
 		},
 		'[shape]': {
 			'label': 'Bad attribute: <code>shape</code>'
@@ -336,8 +352,14 @@
 		'[oncontextmenu]': {
 			'label': 'Inline event handler: <code>oncontextmenu</code>'
 		},
+		'[oncopy]': {
+			'label': 'Non-standard, inline event handler: <code>oncopy</code>'
+		},
 		'[oncuechange]': {
 			'label': 'Inline event handler: <code>oncuechange</code>'
+		},
+		'[oncut]': {
+			'label': 'Non-standard, inline event handler: <code>oncut</code>'
 		},
 		'[ondblclick]': {
 			'label': 'Inline event handler: <code>ondblclick</code>'
@@ -459,6 +481,9 @@
 		'[onpageshow]': {
 			'label': 'Inline event handler: <code>onpageshow</code>'
 		},
+		'[onpaste]': {
+			'label': 'Non-standard, inline event handler: <code>onpaste</code>'
+		},
 		'[onpause]': {
 			'label': 'Inline event handler: <code>onpause</code>'
 		},
@@ -532,6 +557,11 @@
 		},
 		'.MsoNormal': {
 			'label': 'Bad Class: <code>MsoNormal</code>'
+		},
+
+		// http://guides.rubyonrails.org/i18n.html#adding-translations
+		'.translation_missing, [placeholder*="translation_missing"]': {
+			'label': 'Missing Rails i18n string'
 		}
 	};
 }(window.htmlLint = window.htmlLint || {}));
