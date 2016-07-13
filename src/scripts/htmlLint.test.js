@@ -125,6 +125,10 @@
 		'img[width="1"][height="1"]': {
 			'label': 'Tracking pixel <code>img</code>'
 		},
+		// `button` provides more styling options, pseudo elements, and embedding of more than a text string
+		'input[type="submit"]': {
+			'label': 'Prefer <code>&lt;button type="submit"&gt;</code> over <code>&lt;input type="submit"&gt;</code>'
+		},
 		'label:not([for])': {
 			'label': '<code>&lt;label&gt;</code> missing <code>for</code>'
 		},
