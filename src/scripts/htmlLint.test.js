@@ -336,8 +336,14 @@
 		'[oncontextmenu]': {
 			'label': 'Inline event handler: <code>oncontextmenu</code>'
 		},
+		'[oncopy]': {
+			'label': 'Non-standard, inline event handler: <code>oncopy</code>'
+		},
 		'[oncuechange]': {
 			'label': 'Inline event handler: <code>oncuechange</code>'
+		},
+		'[oncut]': {
+			'label': 'Non-standard, inline event handler: <code>oncut</code>'
 		},
 		'[ondblclick]': {
 			'label': 'Inline event handler: <code>ondblclick</code>'
@@ -458,6 +464,9 @@
 		},
 		'[onpageshow]': {
 			'label': 'Inline event handler: <code>onpageshow</code>'
+		},
+		'[onpaste]': {
+			'label': 'Non-standard, inline event handler: <code>onpaste</code>'
 		},
 		'[onpause]': {
 			'label': 'Inline event handler: <code>onpause</code>'
