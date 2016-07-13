@@ -67,7 +67,7 @@
 
 			if (contentAttr) {
 				if ($value.attr('name') === 'msapplication-TileImage') {
-					output += '<img src="' + contentAttr + '" style="background-color:' + $metaTags.filter($('meta[name="msapplication-TileColor"]')).attr('content') + '">';
+					output += '<img src="' + contentAttr + '" style="background-color:' + $metaTags.filter($('meta[name="msapplication-TileColor"]')).attr('content') + '" alt="msapplication-TileImage">';
 				} else if (
 					contentAttr.indexOf('http') === 0 ||
 					contentAttr.indexOf('.txt') > 0
