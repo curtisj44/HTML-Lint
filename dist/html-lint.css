@@ -12,7 +12,6 @@
   border-color: rgba(0, 0, 0, 0.8);
   box-shadow: 0 10px 22px rgba(0, 0, 0, 0.5), 0 0 1px rgba(255, 255, 255, 0.4) inset, 0 1px 0 rgba(255, 255, 255, 0.2) inset;
   background: #4a515d;
-  background: -webkit-linear-gradient(top, rgba(56, 60, 68, 0.9) 100%, rgba(74, 81, 93, 0.9) 80%, rgba(74, 81, 93, 0.9) 7%, rgba(74, 81, 93, 0.7) 15px, rgba(100, 100, 100, 0.8) 0%);
   background: linear-gradient(to bottom, rgba(56, 60, 68, 0.9) 100%, rgba(74, 81, 93, 0.9) 80%, rgba(74, 81, 93, 0.9) 7%, rgba(74, 81, 93, 0.7) 15px, rgba(100, 100, 100, 0.8) 0%);
   color: #fff;
   font: normal 14px/1.5 'Helvetica Neue', Helvetica, Arial, sans-serif;
@@ -147,7 +146,6 @@
   box-shadow: 0 1px 0 rgba(255, 255, 255, 0.1);
   background: rgba(255, 255, 255, 0.1);
   color: rgba(255, 255, 255, 0.8);
-  -webkit-transition: .2s all ease-out;
   transition: .2s all ease-out;
   cursor: pointer; }
   #html-lint .html-lint-button:hover, #html-lint .html-lint-button:focus {
@@ -232,7 +230,6 @@
   box-sizing: border-box;
   padding: 2em 3% 1em;
   background: #fff;
-  background: -webkit-linear-gradient(bottom, white 70%, #f0f0f0 100%);
   background: linear-gradient(to top, white 70%, #f0f0f0 100%); }
   @media (min-width: 30em) {
     #html-lint .html-lint-tab-panel {
@@ -276,7 +273,6 @@
   top: 26%;
   right: 14px;
   font-size: 10px;
-  -webkit-transition: .3s all ease-out;
   transition: .3s all ease-out; }
   @media (min-width: 30em) {
     #html-lint .html-lint-error-count {

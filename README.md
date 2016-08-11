@@ -31,6 +31,7 @@ html-lint <url> <filename>
 
 ```
 --verbose    Enable verbose output
+--bail       Return a non-zero exit code if errors are found
 ```
 
 #### Examples

@@ -21,10 +21,14 @@ var
 	passing = 0,
 
 	isVerbose = false,
+  isBail = false,
+  ERROR_LINTING_FAILURE = 1,
+  ERROR_HTML_FILE_NOT_FOUND = 127,
 	output = '',
 	tests = require('./lib/tests'),
 	url = process.argv[2],
 	verboseFlag = '--verbose',
+	bailFlag = '--bail',
 
 	saveTo = (process.argv[3] && process.argv[3] !== verboseFlag) ? process.argv[3] : 'saved',
 	savedPath = 'temp/' + saveTo,
@@ -34,12 +38,19 @@ var
 	init = function () {
 		$ = cheerio.load(fs.readFileSync(savedPath + '.html'));
 
+    detectBailFlag();
+
 		if ($('html').length !== 1) {
 			console.log(chalk.yellow('Error: Something went wrong. Check the URL.'));
+      // If we had errors and should bail, exit immediately with a
+      // non-zero return code
+      if (isBail) {
+        process.exit(ERROR_HTML_FILE_NOT_FOUND);
+      }
 			return;
 		}
 
-		detectVerboseFlag();
+    detectVerboseFlag();
 		runTests();
 		summarize();
 	},
@@ -84,6 +95,12 @@ var
 		});
 	},
 
+  detectBailFlag = function () {
+		process.argv.forEach(function (value, index, array) {
+			isBail = value === bailFlag;
+		});
+	},
+
 	summarize = function () {
 		console.log(output);
 		console.log(chalk.dim(' ' + passing + ' tests passing \n'));
@@ -108,5 +125,10 @@ if (!url) {
 		console.log(chalk.yellow('Saved HTML' + ' to: ' + chalk.bold(__dirname + '/' + savedPath + '.html')));
 		console.log(chalk.yellow('Saved PNG' + ' to:  ' + chalk.bold(__dirname + '/' + savedPath + '.png')));
 		init();
+    // If we had errors and should bail, exit immediately with a
+    // non-zero return code
+    if (isBail && errors > 0) {
+      process.exit(ERROR_LINTING_FAILURE);
+    }
 	});
 }
