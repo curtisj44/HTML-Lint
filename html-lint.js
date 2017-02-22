@@ -87,8 +87,13 @@ var
 
 	detectFlags = function () {
 		process.argv.forEach(function (value, index, array) {
-			isStrict = value === strictFlag;
-			isVerbose = value === verboseFlag;
+			if (!isStrict) {
+				isStrict = value === strictFlag;
+			}
+
+			if (!isVerbose) {
+				isVerbose = value === verboseFlag;
+			}
 		});
 	},
 
