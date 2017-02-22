@@ -112,11 +112,20 @@
 		'img[alt*="graphic of"]': {
 			'label': '"graphic of" used in `img` `alt`'
 		},
+		'img[alt*="Graphic of"]': {
+			'label': '"Graphic of" used in `img` `alt`'
+		},
 		'img[alt*="image of"]': {
 			'label': '"image of" used in `img` `alt`'
 		},
+		'img[alt*="Image of"]': {
+			'label': '"Image of" used in `img` `alt`'
+		},
 		'img[alt*="picture of"]': {
 			'label': '"picture of" used in `img` `alt`'
+		},
+		'img[alt*="Picture of"]': {
+			'label': '"Picture of" used in `img` `alt`'
 		},
 
 		'img[src=""]': {
