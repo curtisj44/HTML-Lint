@@ -64,6 +64,5 @@ html-lint http://www.google.com foo
 Poorly hidden notes to myself:
 
 1. Run `npm version [major|minor|patch]` to bump the version and tag the release
-1. Merge `master` into `gh-pages` to update the bookmarklet
 1. Run `npm publish` to push the latest to NPM
 -->
