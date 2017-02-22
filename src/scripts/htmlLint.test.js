@@ -560,7 +560,7 @@
 		},
 
 		// http://guides.rubyonrails.org/i18n.html#adding-translations
-		'.translation_missing, [placeholder*="translation_missing"]': {
+		'.translation_missing, [alt*="translation_missing"], [placeholder*="translation_missing"]': {
 			'label': 'Missing Rails i18n string'
 		}
 	};
