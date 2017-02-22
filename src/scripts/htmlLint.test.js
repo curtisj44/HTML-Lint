@@ -97,6 +97,13 @@
 		'form:not(:has(fieldset))': {
 			'label': '<code>&lt;form&gt;</code> missing <code>&lt;fieldset&gt;</code>'
 		},
+
+		// application caching feature via the `manifest` attribute is deprecated and highly discouraged:
+		// https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache
+		'html[manifest]': {
+			'label': '<code>manifest</code> attribute is deprecated'
+		},
+
 		'input[type="text"]': {
 			'label': '<code>type="text"</code> is not needed on <code>&lt;input&gt;</code>'
 		},
