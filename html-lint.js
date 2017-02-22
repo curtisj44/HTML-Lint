@@ -20,11 +20,17 @@ var
 	errors = 0,
 	passing = 0,
 
+	ERROR_LINTING_FAILURE = 1,
+	ERROR_HTML_FILE_NOT_FOUND = 127,
+
+	isStrict = false,
 	isVerbose = false,
+	strictFlag = '--strict',
+	verboseFlag = '--verbose',
+
 	output = '',
 	tests = require('./lib/tests'),
 	url = process.argv[2],
-	verboseFlag = '--verbose',
 
 	saveTo = (process.argv[3] && process.argv[3] !== verboseFlag) ? process.argv[3] : 'saved',
 	savedPath = 'temp/' + saveTo,
@@ -33,13 +39,14 @@ var
 	// methods
 	init = function () {
 		$ = cheerio.load(fs.readFileSync(savedPath + '.html'));
+		detectFlags();
 
 		if ($('html').length !== 1) {
 			console.log(chalk.yellow('Error: Something went wrong. Check the URL.'));
+			if (isStrict) process.exit(ERROR_HTML_FILE_NOT_FOUND);
 			return;
 		}
 
-		detectVerboseFlag();
 		runTests();
 		summarize();
 	},
@@ -78,9 +85,15 @@ var
 		}
 	},
 
-	detectVerboseFlag = function () {
+	detectFlags = function () {
 		process.argv.forEach(function (value, index, array) {
-			isVerbose = value === verboseFlag;
+			if (!isStrict) {
+				isStrict = value === strictFlag;
+			}
+
+			if (!isVerbose) {
+				isVerbose = value === verboseFlag;
+			}
 		});
 	},
 
@@ -89,6 +102,9 @@ var
 		console.log(chalk.dim(' ' + passing + ' tests passing \n'));
 		console.log(chalk[errors === 0 ? 'bgGreen' : 'bgRed'](' HTML-Lint found' + chalk.bold(' ' + errors + ' errors') + ' on ' + url + ' '));
 		console.log('\n');
+
+		// Exit immediately with a non-zero return code
+		if (isStrict && errors > 0) process.exit(ERROR_LINTING_FAILURE);
 	};
 
 if (!url) {
