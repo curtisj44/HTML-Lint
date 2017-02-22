@@ -10,7 +10,7 @@
 
 		jQueryAdded: false,
 
-		jQuery: ['1.12.4', '3.0.0'],
+		jQuery: ['1.12.4', '3.1.1'],
 		jQueryUI: '1.12.0',
 		Modernizr: '3.3.1',
 		MooTools: '1.6.0',
