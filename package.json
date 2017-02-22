@@ -1,7 +1,7 @@
 {
   "name": "html-lint",
   "author": "Curtis Jurgensen",
-  "version": "2.1.15",
+  "version": "2.2.0",
   "description": "A code quality bookmarklet and command-line tool.",
   "keywords": [
     "a11y",
