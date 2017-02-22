@@ -30,8 +30,8 @@ html-lint <url> <filename>
 #### Options
 
 ```
+--strict     Return a non-zero exit code if lint errors are found
 --verbose    Enable verbose output
---bail       Return a non-zero exit code if errors are found
 ```
 
 #### Examples
