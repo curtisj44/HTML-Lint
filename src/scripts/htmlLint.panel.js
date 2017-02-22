@@ -41,12 +41,6 @@
 			errors += 1;
 		}
 
-		// keywords
-		if ($keywords.length < 1) {
-			output += '<dt>keywords</dt><dd>' + htmlLint.utility.error() + '</dd>';
-			errors += 1;
-		}
-
 		$metaTags.not('meta[property^="og:"], meta[property^="fb:"]').each(function (index, value) {
 			var $value = $(value),
 				contentAttr = $value.attr('content');
