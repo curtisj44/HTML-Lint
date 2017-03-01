@@ -893,10 +893,18 @@
 		'[name=""]': {
 			'label': '<code>name=""</code>'
 		},
+
+		// "defer" is a deprecated value for the SVG attribute `preserveAspectRatio`
+		// https://bugzilla.mozilla.org/show_bug.cgi?id=1280425
+		'[preserveAspectRatio*="defer"]': {
+			'label': '“defer” is a deprecated value for the SVG attribute <code>preserveAspectRatio</code>'
+		},
+
 		// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role
 		'[role="button"]': {
 			'label': '<code>[role="button"]</code>'
 		},
+
 		'[shape]': {
 			'label': 'Bad attribute: <code>shape</code>'
 		},
