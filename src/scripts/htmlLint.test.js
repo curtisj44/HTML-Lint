@@ -128,6 +128,12 @@
 		'img[alt*="Image of"]': {
 			'label': '"Image of" used in `img` `alt`'
 		},
+		'img[alt*="photo of"]': {
+			'label': '"photo of" used in `img` `alt`'
+		},
+		'img[alt*="Photo of"]': {
+			'label': '"Photo of" used in `img` `alt`'
+		},
 		'img[alt*="picture of"]': {
 			'label': '"picture of" used in `img` `alt`'
 		},
