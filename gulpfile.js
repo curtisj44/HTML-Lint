@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 
 	// dependencies
 	autoprefixer = require('gulp-autoprefixer'),
+	babel = require('gulp-babel'),
 	concat = require('gulp-concat'),
 	del = require('del'),
 	minifier = require('gulp-minifier'),
@@ -28,6 +29,7 @@ gulp.task('clean-scripts', function () {
 gulp.task('build-scripts', ['clean-scripts'], function () {
 	gulp
 		.src(paths.scripts)
+		.pipe(babel())
 		.pipe(concat('htmlLint.js'))
 		.pipe(gulp.dest('./dist'))
 		.pipe(notify('Compiled scripts: [<%= file.relative %>]'))
