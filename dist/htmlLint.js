@@ -947,6 +947,9 @@
 		'[style*="outline"]': {
 			'label': 'Inline style: <code>outline</code>'
 		},
+		'[style*="overflow"]': {
+			'label': 'Inline style: <code>overflow</code>'
+		},
 		'[style*="resize"]': {
 			'label': 'Inline style: <code>resize</code>'
 		},
@@ -955,6 +958,9 @@
 		},
 		'[style*="vertical"]': {
 			'label': 'Inline style: <code>vertical</code>'
+		},
+		'[style*="white-space"]': {
+			'label': 'Inline style: <code>white-space</code>'
 		},
 		'[style*="word"]': {
 			'label': 'Inline style: <code>word</code>'
