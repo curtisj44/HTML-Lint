@@ -375,6 +375,12 @@
 			output += '<dt>Google Analytics</dt><dd>-</dd>';
 		}
 
+		/* ---- Hotjar ---- */
+		// https://docs.hotjar.com/docs/hotjar-tracking-code
+		if (window.hj) {
+			output += '<dt>Hotjar</dt><dd>-</dd>';
+		}
+
 		/* ---- jQuery ---- */
 		if (!htmlLint.utility.jQueryAdded) {
 			output += '<dt>jQuery</dt><dd>' + $.fn.jquery;
