@@ -867,6 +867,12 @@
 			'label': '<code>class=""</code>'
 		},
 
+		// React’s JSX uses a `className` attribute instead of the standard `class` attribute.
+		// This could cause confusion when switch context between HTML and JSX.
+		'[className]': {
+			'label': 'Bad attribute: <code>className</code>'
+		},
+
 		// https://www.w3.org/TR/filter-effects/#AccessBackgroundImage
 		'[enable-background]': {
 			'label': '<code>enable-background</code> attribute is deprecated'
