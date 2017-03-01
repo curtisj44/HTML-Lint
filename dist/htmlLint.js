@@ -438,6 +438,11 @@
 			output += '<dt>New Relic</dt><dd>-</dd>';
 		}
 
+		/* ---- Optimizely ---- */
+		if (window.optly) {
+			output += '<dt>Optimizely</dt><dd>-</dd>';
+		}
+
 		/* ---- Prototype ---- */
 		if (window.Prototype) {
 			output += '<dt>Prototype</dt>';
