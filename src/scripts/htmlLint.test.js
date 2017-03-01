@@ -202,10 +202,15 @@
 			'label': '<code>&lt;table&gt;</code> missing <code>summary</code>'
 		},
 
+		// > It is purely advisory and has no influence on rendering or processing.
+		// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/version
+		'svg[version]': {
+			'label': '<code>version</code> attribute on <code>svg</code> is not needed'
+		},
+
 		//'table:not(:has(caption))': {
 		//	'label': '<code>&lt;table&gt;</code> missing <code>&lt;caption&gt;</code>'
 		//},
-
 		'table:not(:has(th))': {
 			'label': '<code>&lt;table&gt;</code> missing <code>&lt;th&gt;</code>'
 		},
