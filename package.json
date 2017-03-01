@@ -18,6 +18,7 @@
     "type": "git",
     "url": "https://github.com/curtisj44/HTML-Lint.git"
   },
+  "license" : "MIT",
   "bin": {
     "html-lint": "html-lint.js"
   },
