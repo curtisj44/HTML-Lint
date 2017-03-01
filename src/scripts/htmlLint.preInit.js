@@ -1,7 +1,7 @@
 (function (htmlLint) {
 	'use strict';
 
-	htmlLint.preInit = function () {
+	htmlLint.preInit = () => {
 		var link,
 			script;
 

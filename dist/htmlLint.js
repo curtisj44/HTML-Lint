@@ -1,10 +1,12 @@
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.addPanel = function (name, output, errors) {
 		var $htmlLint = $('#html-lint'),
-			nameRevised = name.replace(' ', '').toLowerCase(),
-			$panel = $htmlLint.find('[data-panel="' + nameRevised + '"]');
+		    nameRevised = name.replace(' ', '').toLowerCase(),
+		    $panel = $htmlLint.find('[data-panel="' + nameRevised + '"]');
 
 		if ($panel.length > 0) {
 			$panel.remove();
@@ -22,45 +24,50 @@
 			}
 		}
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.close = function () {
 		var $closeButton = $('.html-lint-close');
 
-		$closeButton.bind('click', function () {
+		$closeButton.on('click', function () {
 			htmlLint.closeAction($closeButton);
 			return false;
 		});
 
-		$(document).bind('keyup', function (e) {
+		$(document).on('keyup', function (e) {
 			if (e.keyCode === 27) {
 				htmlLint.closeAction($closeButton);
 			}
 		});
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
+	var _this = this;
+
 	htmlLint.closeAction = function ($closeButton) {
 		$closeButton.parent().fadeOut(250, function () {
-			$(this).remove();
+			$(_this).remove();
 			$('#html-lint-css, #html-lint-jquery, #html-lint-js').remove();
 		});
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.editFlash = function () {
 		var $flashObjects = $('object, embed');
 
-		if (
-			$flashObjects.length > 0 &&
-			$flashObjects.find('param[name="wmode"]').attr('value') !== 'opaque'
-		) {
+		if ($flashObjects.length > 0 && $flashObjects.find('param[name="wmode"]').attr('value') !== 'opaque') {
 			$('<param />', {
 				name: 'wmode',
 				value: 'opaque'
@@ -69,14 +76,16 @@
 			$flashObjects.attr('wmode', 'opaque').hide().show();
 		}
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.handleErrors = function (tests) {
 		var errors = 0,
-			currentErrors,
-			output = '';
+		    currentErrors,
+		    output = '';
 
 		$.each(tests, function (index, test) {
 			currentErrors = $(index).length;
@@ -92,19 +101,18 @@
 
 		htmlLint.addPanel('Tests', output, errors);
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
+	var _this = this;
+
 	htmlLint.init = function () {
 		var $htmlLint = $('#html-lint'),
-			isMock = window.location.protocol === 'file:' && window.location.pathname.indexOf('/mocks/') > 0,
-			output = '<div id="html-lint">' +
-				'<h1>HTML-Lint</h1>' +
-				'<h2>Total Errors</h2>' +
-				'<button class="html-lint-button html-lint-close">&times;</button>' +
-				'<ol class="html-lint-tab-list"></ol>' +
-				'</div>';
+		    isMock = window.location.protocol === 'file:' && window.location.pathname.indexOf('/mocks/') > 0,
+		    output = '<div id="html-lint">' + '<h1>HTML-Lint</h1>' + '<h2>Total Errors</h2>' + '<button class="html-lint-button html-lint-close">&times;</button>' + '<ol class="html-lint-tab-list"></ol>' + '</div>';
 
 		if (typeof $ === 'undefined') $ = jQuery;
 
@@ -126,38 +134,40 @@
 			});
 
 			$htmlLint.fadeIn(250, function () {
-				$(this).removeAttr('style');
+				$(_this).removeAttr('style');
 			});
 		}
 
 		htmlLint.close();
 		htmlLint.tabSetup();
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
+
+	var _this = this;
 
 	htmlLint.panel = {};
 
 	htmlLint.panel.metaData = function () {
 		var errors = 0,
-			output = '<dl>',
-
-			$head = $('head'),
-			$metaTags = $head.find('meta'),
-			$title = $head.find('title').html(),
-			$charset = $metaTags.filter('meta[charset], meta[http-equiv="content-type"], meta[http-equiv="Content-Type"]'),
-			$description = $metaTags.filter('meta[name="description"], meta[name="Description"]'),
-			$keywords = $metaTags.filter('meta[name="keywords"], meta[name="Keywords"]'),
-			$viewport = $metaTags.filter('meta[name="viewport"]'),
-
-			checkTag = function (tag) {
-				if (!tag) {
-					tag = htmlLint.utility.error();
-					errors += 1;
-				}
-				return tag;
-			};
+		    output = '<dl>',
+		    $head = $('head'),
+		    $metaTags = $head.find('meta'),
+		    $title = $head.find('title').html(),
+		    $charset = $metaTags.filter('meta[charset], meta[http-equiv="content-type"], meta[http-equiv="Content-Type"]'),
+		    $description = $metaTags.filter('meta[name="description"], meta[name="Description"]'),
+		    $keywords = $metaTags.filter('meta[name="keywords"], meta[name="Keywords"]'),
+		    $viewport = $metaTags.filter('meta[name="viewport"]'),
+		    checkTag = function checkTag(tag) {
+			if (!tag) {
+				tag = htmlLint.utility.error();
+				errors += 1;
+			}
+			return tag;
+		};
 
 		// title
 		output += '<dt>&lt;title&gt;</dt><dd>' + checkTag($title) + '</dd>';
@@ -179,7 +189,7 @@
 
 		$metaTags.not('meta[property^="og:"], meta[property^="fb:"]').each(function (index, value) {
 			var $value = $(value),
-				contentAttr = $value.attr('content');
+			    contentAttr = $value.attr('content');
 
 			if ($value.attr('name')) {
 				output += '<dt>' + $value.attr('name') + '</dt>';
@@ -198,10 +208,7 @@
 			if (contentAttr) {
 				if ($value.attr('name') === 'msapplication-TileImage') {
 					output += '<img src="' + contentAttr + '" style="background-color:' + $metaTags.filter($('meta[name="msapplication-TileColor"]')).attr('content') + '" alt="msapplication-TileImage">';
-				} else if (
-					contentAttr.indexOf('http') === 0 ||
-					contentAttr.indexOf('.txt') > 0
-				) {
+				} else if (contentAttr.indexOf('http') === 0 || contentAttr.indexOf('.txt') > 0) {
 					output += '<a href="' + contentAttr + '">' + contentAttr + '</a>';
 				} else {
 					output += contentAttr;
@@ -214,12 +221,8 @@
 
 				// viewport
 				if (
-					// http://adrianroselli.com/2015/10/dont-disable-zoom.html
-					contentAttr.indexOf('user-scalable=0') > 0 ||
-					contentAttr.indexOf('user-scalable=no') > 0 ||
-					contentAttr.indexOf('maximum-scale') > 0 ||
-					contentAttr.indexOf('minimum-scale') > 0
-				) {
+				// http://adrianroselli.com/2015/10/dont-disable-zoom.html
+				contentAttr.indexOf('user-scalable=0') > 0 || contentAttr.indexOf('user-scalable=no') > 0 || contentAttr.indexOf('maximum-scale') > 0 || contentAttr.indexOf('minimum-scale') > 0) {
 					output += ' ' + htmlLint.utility.error('don&rsquo;t prevent user zoom');
 				}
 			} else if ($value.attr('charset')) {
@@ -239,17 +242,17 @@
 
 	htmlLint.panel.openGraph = function () {
 		var errors = 0,
-			$head = $('head'),
-			$metaOG = $head.find('meta[property^="og:"]'),
-			$metaFB = $head.find('meta[property^="fb:"]'),
-			output = '<dl>';
+		    $head = $('head'),
+		    $metaOG = $head.find('meta[property^="og:"]'),
+		    $metaFB = $head.find('meta[property^="fb:"]'),
+		    output = '<dl>';
 
 		if ($metaOG.length !== 0 || $metaFB.length !== 0) {
 			// OG
 			if ($metaOG.length !== 0) {
 				$metaOG.each(function () {
-					var $property = $(this).attr('property'),
-						$content = $(this).attr('content');
+					var $property = $(_this).attr('property'),
+					    $content = $(_this).attr('content');
 
 					output += '<dt>' + $property + '</dt>';
 
@@ -275,10 +278,10 @@
 			// FB
 			if ($metaFB.length !== 0) {
 				$metaFB.each(function () {
-					var $property = $(this).attr('property'),
-						$content = $(this).attr('content'),
-						adminIds,
-						adminLinks = '';
+					var $property = $(_this).attr('property'),
+					    $content = $(_this).attr('content'),
+					    adminIds,
+					    adminLinks = '';
 
 					output += '<dt>' + $property + '</dt>';
 
@@ -314,22 +317,16 @@
 
 	htmlLint.panel.overview = function () {
 		var errors = 0,
-			$appleTouchIcons = $('link[rel*="apple-touch-icon"]'),
-			$shortcutIcons = $('link[rel="shortcut icon"], link[rel="icon"]'),
-			$icons = $appleTouchIcons.add($shortcutIcons),
-			output = '<dl>';
+		    $appleTouchIcons = $('link[rel*="apple-touch-icon"]'),
+		    $shortcutIcons = $('link[rel="shortcut icon"], link[rel="icon"]'),
+		    $icons = $appleTouchIcons.add($shortcutIcons),
+		    output = '<dl>';
 
 		if ($icons.length > 0) {
 			$icons.each(function (index, value) {
 				var $value = $(value);
 
-				output += '<dt>' +
-					$value.attr('rel') +
-					($value.attr('sizes') ? ' (' + $value.attr('sizes') + ')' : '') +
-					'</dt>' +
-					'<dd>' +
-					'<img src="' + $value.attr('href') + '" alt="' + $value.attr('rel') + '" />' +
-					'</dd>';
+				output += '<dt>' + $value.attr('rel') + ($value.attr('sizes') ? ' (' + $value.attr('sizes') + ')' : '') + '</dt>' + '<dd>' + '<img src="' + $value.attr('href') + '" alt="' + $value.attr('rel') + '" />' + '</dd>';
 			});
 		}
 
@@ -352,7 +349,7 @@
 
 	htmlLint.panel.technology = function () {
 		var errors = 0,
-			output = '<dl>';
+		    output = '<dl>';
 
 		// TODO - write this all better
 
@@ -379,7 +376,7 @@
 		}
 
 		/* ---- jQuery ---- */
-		if (!(htmlLint.utility.jQueryAdded)) {
+		if (!htmlLint.utility.jQueryAdded) {
 			output += '<dt>jQuery</dt><dd>' + $.fn.jquery;
 
 			if ($.fn.jquery !== htmlLint.utility.jQuery[0] && $.fn.jquery !== htmlLint.utility.jQuery[1]) {
@@ -524,14 +521,14 @@
 	htmlLint.panel.tests = function () {
 		htmlLint.handleErrors(htmlLint.test);
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
 
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.preInit = function () {
-		var link,
-			script;
+		var link, script;
 
 		// Add CSS
 		if (document.getElementById('html-lint-css') === null) {
@@ -555,15 +552,16 @@
 			document.body.appendChild(script);
 		}
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
 
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.tabAction = function ($href, $tabList, $tabPanels) {
 		var $panelName = $href.replace('#', ''),
-			$tabListCurrent = $tabList.find('a[href="' + $href + '"]'),
-			$tabPanelCurrent = $tabPanels.filter('[data-panel="' + $panelName + '"]');
+		    $tabListCurrent = $tabList.find('a[href="' + $href + '"]'),
+		    $tabPanelCurrent = $tabPanels.filter('[data-panel="' + $panelName + '"]');
 
 		if (!$tabListCurrent.hasClass('selected')) {
 			// tab button
@@ -575,18 +573,20 @@
 			$tabPanelCurrent.addClass('selected');
 		}
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.tabSetup = function () {
 		var errors = 0,
-			$htmlLint = $('#html-lint'),
-			$tabList = $htmlLint.find('.html-lint-tab-list'),
-			$tabPanels = $htmlLint.find('.html-lint-tab-panel');
+		    $htmlLint = $('#html-lint'),
+		    $tabList = $htmlLint.find('.html-lint-tab-list'),
+		    $tabPanels = $htmlLint.find('.html-lint-tab-panel');
 
 		// tab button
-		$tabList.find('a').bind('click', function () {
+		$tabList.find('a').on('click', function () {
 			htmlLint.tabAction($(this).attr('href'), $tabList, $tabPanels);
 			return false;
 		});
@@ -601,7 +601,9 @@
 
 		$htmlLint.find('h2').append(htmlLint.utility.error(errors));
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 // TODO: keep in sync with `/lib/tests.js`
 (function (htmlLint) {
 	'use strict';
@@ -1201,7 +1203,8 @@
 			'label': 'Missing Rails i18n string'
 		}
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
 
 (function (htmlLint) {
 	'use strict';
@@ -1209,7 +1212,7 @@
 	htmlLint.utility = {
 		css: 'https://curtisj44.github.io/HTML-Lint/dist/html-lint.min.css',
 
-		error: function (message) {
+		error: function error(message) {
 			return '<span class="html-lint-error">' + (message || 'missing tag') + '</span>';
 		},
 
@@ -1224,5 +1227,4 @@
 
 	// TODO - organize this better
 	htmlLint.preInit();
-
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});

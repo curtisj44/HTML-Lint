@@ -1,7 +1,7 @@
 (function (htmlLint) {
 	'use strict';
 
-	htmlLint.editFlash = function () {
+	htmlLint.editFlash = () => {
 		var $flashObjects = $('object, embed');
 
 		if (
