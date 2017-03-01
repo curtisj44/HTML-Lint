@@ -255,6 +255,12 @@
 		'[class=""]': {
 			'label': '<code>class=""</code>'
 		},
+
+		// https://www.w3.org/TR/filter-effects/#AccessBackgroundImage
+		'[enable-background]': {
+			'label': '<code>enable-background</code> attribute is deprecated'
+		},
+
 		'[frameborder]': {
 			'label': 'Bad attribute: <code>frameborder</code>'
 		},
