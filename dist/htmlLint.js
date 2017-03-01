@@ -841,10 +841,10 @@
 			'label': '<code>th[scope=""]</code>'
 		},
 
-		':not("canvas, img, object, rect, svg")[height]': {
+		':not("canvas, img, mask, object, rect, svg")[height]': {
 			'label': 'Invalid attribute: <code>height</code>'
 		},
-		':not("canvas, img, object, rect, svg")[width]': {
+		':not("canvas, img, mask, object, rect, svg")[width]': {
 			'label': 'Invalid attribute: <code>width</code>'
 		},
 
