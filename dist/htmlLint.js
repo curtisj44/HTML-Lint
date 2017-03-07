@@ -148,7 +148,7 @@
 		},
 		// `button` provides more styling options, pseudo elements, and embedding of more than a text string
 		'input[type="submit"]': {
-			'label': 'Prefer `<button type="submit">` over `<input type="submit">`'
+			'label': 'Prefer `button[type="submit"]` over `input[type="submit"]`'
 		},
 		'label:not([for])': {
 			'label': '`label` missing `for`'
