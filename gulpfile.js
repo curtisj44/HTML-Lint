@@ -12,8 +12,8 @@ var gulp = require('gulp'),
 
 	// paths
 	paths = {
-		// scripts: './src/bookmarklet/scripts/**/*.js',
 		scripts: [
+			'./lib/tests.js',
 			'./src/bookmarklet/scripts/htmlLint.addPanel.js',
 			'./src/bookmarklet/scripts/htmlLint.close.js',
 			'./src/bookmarklet/scripts/htmlLint.closeAction.js',
@@ -24,8 +24,7 @@ var gulp = require('gulp'),
 			'./src/bookmarklet/scripts/htmlLint.preInit.js',
 			'./src/bookmarklet/scripts/htmlLint.tabAction.js',
 			'./src/bookmarklet/scripts/htmlLint.tabSetup.js',
-			'./src/bookmarklet/scripts/htmlLint.utility.js',
-			'./lib/tests.js'
+			'./src/bookmarklet/scripts/htmlLint.utility.js'
 		],
 		styles: './src/bookmarklet/styles/**/*.sass'
 	};

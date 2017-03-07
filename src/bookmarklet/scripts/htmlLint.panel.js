@@ -396,7 +396,7 @@
 		htmlLint.addPanel('Technology', output, errors);
 	};
 
-	htmlLint.panel.tests = () => {
-		htmlLint.handleErrors(htmlLint.test);
+	htmlLint.panel.tests = function () {
+		htmlLint.handleErrors(htmlLint.tests);
 	};
 }(window.htmlLint = window.htmlLint || {}));
