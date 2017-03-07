@@ -29,12 +29,12 @@ var
 	verboseFlag = '--verbose',
 
 	output = '',
-	tests = require('./lib/tests'),
+	tests = require('./lib/tests').tests,
 	url = process.argv[2],
 
 	saveTo = (process.argv[3] && process.argv[3] !== verboseFlag) ? process.argv[3] : 'saved',
 	savedPath = 'temp/' + saveTo,
-	saveHtml = spawn('phantomjs', [__dirname + '/lib/save-html.js', url, saveTo]),
+	saveHtml = spawn('phantomjs', [__dirname + '/src/cli/save-html.js', url, saveTo]),
 
 	// methods
 	init = function () {
@@ -68,16 +68,15 @@ var
 	// TODO - this needs a better name
 	runTests = function () {
 		console.log(chalk.cyan('Running tests...\n'));
-		// console.log(tests.collection);
 
-		for (var test in tests.collection) {
+		for (var test in tests) {
 			// console.log(chalk.dim('test: ' + test));
-			// console.log(chalk.dim('label: ' + tests.collection[test].label));
+			// console.log(chalk.dim('label: ' + tests[test].label));
 			currentErrors = $(test).length;
 
 			if (currentErrors > 0) {
 				errors += currentErrors;
-				output += ' ' + chalk.bold.red(currentErrors) + ' ' + tests.collection[test].label + '\n';
+				output += ' ' + chalk.bold.red(currentErrors) + ' ' + tests[test].label + '\n';
 				if (isVerbose) $(test).each(addSelectorToOutput);
 			} else {
 				passing++;

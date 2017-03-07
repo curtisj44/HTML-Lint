@@ -4,8 +4,8 @@
 
 // TODO: add note in README.md that this makes PhantomJS a required global dependency
 
-// usage: `phantomjs lib/save-html.js http://s.codepen.io/curtisj44/debug/xbQXbV`
-// usage: `phantomjs lib/save-html.js http://s.codepen.io/curtisj44/debug/xbQXbV test`
+// usage: `phantomjs src/cli/save-html.js http://s.codepen.io/curtisj44/debug/xbQXbV`
+// usage: `phantomjs src/cli/save-html.js http://s.codepen.io/curtisj44/debug/xbQXbV test`
 
 var
 	// node
