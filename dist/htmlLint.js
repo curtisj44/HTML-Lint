@@ -931,6 +931,7 @@ var tests = {
 		'label': '`name=""`'
 	},
 
+	// "defer" is a deprecated value for the SVG attribute `preserveAspectRatio`
 	// https://bugzilla.mozilla.org/show_bug.cgi?id=1280425
 	'[preserveAspectRatio*="defer"]': {
 		'label': '“defer” is a deprecated value for the SVG attribute `preserveAspectRatio`'
