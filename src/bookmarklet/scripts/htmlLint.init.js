@@ -1,7 +1,7 @@
 (function (htmlLint) {
 	'use strict';
 
-	htmlLint.init = () => {
+	htmlLint.init = function () {
 		var $htmlLint = $('#html-lint'),
 			isMock = window.location.protocol === 'file:' && window.location.pathname.indexOf('/mocks/') > 0,
 			output = '<div id="html-lint">' +
@@ -17,7 +17,7 @@
 			htmlLint.editFlash();
 
 			if ($htmlLint.length > 0) {
-				$htmlLint.fadeOut(250, () => {
+				$htmlLint.fadeOut(250, function () {
 					// TODO - make DRYer
 					$('body').append(output);
 				});
@@ -26,11 +26,14 @@
 				$('body').append(output);
 			}
 
-			$.each(htmlLint.panel, (index, value) => {
+			console.log(htmlLint.panel);
+
+			$.each(htmlLint.panel, function (index, value) {
 				htmlLint.panel[index]();
+				console.log(index);
 			});
 
-			$htmlLint.fadeIn(250, () => {
+			$htmlLint.fadeIn(250, function () {
 				$(this).removeAttr('style');
 			});
 		}

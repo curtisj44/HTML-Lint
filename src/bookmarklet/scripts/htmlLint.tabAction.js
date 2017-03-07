@@ -1,7 +1,7 @@
 (function (htmlLint) {
 	'use strict';
 
-	htmlLint.tabAction = ($href, $tabList, $tabPanels) => {
+	htmlLint.tabAction = function ($href, $tabList, $tabPanels) {
 		var $panelName = $href.replace('#', ''),
 			$tabListCurrent = $tabList.find('a[href="' + $href + '"]'),
 			$tabPanelCurrent = $tabPanels.filter('[data-panel="' + $panelName + '"]');

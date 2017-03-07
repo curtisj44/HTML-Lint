@@ -1,15 +1,15 @@
 (function (htmlLint) {
 	'use strict';
 
-	htmlLint.close = () => {
+	htmlLint.close = function () {
 		var $closeButton = $('.html-lint-close');
 
-		$closeButton.on('click', () => {
+		$closeButton.on('click', function () {
 			htmlLint.closeAction($closeButton);
 			return false;
 		});
 
-		$(document).on('keyup', (e) => {
+		$(document).on('keyup', function (e) {
 			if (e.keyCode === 27) {
 				htmlLint.closeAction($closeButton);
 			}

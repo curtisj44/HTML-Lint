@@ -1,7 +1,7 @@
 (function (htmlLint) {
 	'use strict';
 
-	htmlLint.tabSetup = () => {
+	htmlLint.tabSetup = function () {
 		var errors = 0,
 			$htmlLint = $('#html-lint'),
 			$tabList = $htmlLint.find('.html-lint-tab-list'),
@@ -17,7 +17,7 @@
 		$tabList.find('li:first-child a').trigger('click');
 
 		// total error count
-		$.each($tabList.find('.html-lint-error-count'), (index, value) => {
+		$.each($tabList.find('.html-lint-error-count'), function (index, value) {
 			errors += parseInt($(value).html(), 10);
 		});
 

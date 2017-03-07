@@ -4,7 +4,7 @@
 	htmlLint.utility = {
 		css: 'https://curtisj44.github.io/HTML-Lint/dist/html-lint.min.css',
 
-		error: (message) => {
+		error: function (message) {
 			return '<span class="html-lint-error">' + (message || 'missing tag') + '</span>';
 		},
 

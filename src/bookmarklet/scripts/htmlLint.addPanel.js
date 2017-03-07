@@ -1,7 +1,7 @@
 (function (htmlLint) {
 	'use strict';
 
-	htmlLint.addPanel = (name, output, errors) => {
+	htmlLint.addPanel = function (name, output, errors) {
 		var $htmlLint = $('#html-lint'),
 			nameRevised = name.replace(' ', '').toLowerCase(),
 			$panel = $htmlLint.find('[data-panel="' + nameRevised + '"]');

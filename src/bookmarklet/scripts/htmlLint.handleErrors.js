@@ -1,12 +1,12 @@
 (function (htmlLint) {
 	'use strict';
 
-	htmlLint.handleErrors = (tests) => {
+	htmlLint.handleErrors = function (tests) {
 		var errors = 0,
 			currentErrors,
 			output = '';
 
-		$.each(tests, (index, test) => {
+		$.each(tests, function (index, test) {
 			currentErrors = $(index).length;
 
 			if (currentErrors > 0) {

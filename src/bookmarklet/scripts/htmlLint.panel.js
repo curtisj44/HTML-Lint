@@ -3,7 +3,7 @@
 
 	htmlLint.panel = {};
 
-	htmlLint.panel.metaData = () => {
+	htmlLint.panel.metaData = function () {
 		var errors = 0,
 			output = '<dl>',
 
@@ -15,7 +15,7 @@
 			$keywords = $metaTags.filter('meta[name="keywords"], meta[name="Keywords"]'),
 			$viewport = $metaTags.filter('meta[name="viewport"]'),
 
-			checkTag = (tag) => {
+			checkTag = function (tag) {
 				if (!tag) {
 					tag = htmlLint.utility.error();
 					errors += 1;
@@ -41,7 +41,7 @@
 			errors += 1;
 		}
 
-		$metaTags.not('meta[property^="og:"], meta[property^="fb:"]').each((index, value) => {
+		$metaTags.not('meta[property^="og:"], meta[property^="fb:"]').each(function (index, value) {
 			var $value = $(value),
 				contentAttr = $value.attr('content');
 
@@ -101,7 +101,7 @@
 		htmlLint.addPanel('Meta Data', output, errors);
 	};
 
-	htmlLint.panel.openGraph = () => {
+	htmlLint.panel.openGraph = function () {
 		var errors = 0,
 			$head = $('head'),
 			$metaOG = $head.find('meta[property^="og:"]'),
@@ -111,7 +111,7 @@
 		if ($metaOG.length !== 0 || $metaFB.length !== 0) {
 			// OG
 			if ($metaOG.length !== 0) {
-				$metaOG.each(() => {
+				$metaOG.each(function () {
 					var $property = $(this).attr('property'),
 						$content = $(this).attr('content');
 
@@ -138,7 +138,7 @@
 
 			// FB
 			if ($metaFB.length !== 0) {
-				$metaFB.each(() => {
+				$metaFB.each(function () {
 					var $property = $(this).attr('property'),
 						$content = $(this).attr('content'),
 						adminIds,
@@ -152,7 +152,7 @@
 						} else if ($property === 'fb:admins') {
 							adminIds = $content.split(',');
 
-							$.each(adminIds, (index, value) => {
+							$.each(adminIds, function (index, value) {
 								adminLinks += '<a href="https://www.facebook.com/profile.php?id=' + value + '">' + value + '</a> ';
 							});
 
@@ -176,7 +176,7 @@
 		htmlLint.addPanel('Open Graph', output, errors);
 	};
 
-	htmlLint.panel.overview = () => {
+	htmlLint.panel.overview = function () {
 		var errors = 0,
 			$appleTouchIcons = $('link[rel*="apple-touch-icon"]'),
 			$shortcutIcons = $('link[rel="shortcut icon"], link[rel="icon"]'),
@@ -184,7 +184,7 @@
 			output = '<dl>';
 
 		if ($icons.length > 0) {
-			$icons.each((index, value) => {
+			$icons.each(function (index, value) {
 				var $value = $(value);
 
 				output += '<dt>' +
@@ -214,7 +214,7 @@
 		htmlLint.addPanel('Overview', output, errors);
 	};
 
-	htmlLint.panel.technology = () => {
+	htmlLint.panel.technology = function () {
 		var errors = 0,
 			output = '<dl>';
 
