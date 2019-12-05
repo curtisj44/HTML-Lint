@@ -188,7 +188,6 @@
 		'script[language]': {
 			'label': '`language` attribute is not valid on `script`'
 		},
-
 		'script[type]': {
 			label: '`type` attribute is not necessary on `script`',
 			details: [{
@@ -196,12 +195,15 @@
 				source: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#JavaScript_types'
 			}]
 		},
-
 		'style[media="all"]': {
 			'label': '`media="all"` is not needed on `style`'
 		},
-		'style[type="text/css"]': {
-			'label': '`type="text/css"` is not needed on `style`'
+		'style[type]': {
+			label: '`type` attribute is not necessary `style`',
+			details: [{
+				quote: 'This attribute is optional and defaults to text/css if it is not specified — there is very little reason to include this in modern web documents.',
+				source: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style#Attributes'
+			}]
 		},
 
 		// > It is purely advisory and has no influence on rendering or processing.
