@@ -56,6 +56,10 @@ html-lint http://www.google.com foo
 - `gulp` → compiles Sass to CSS, concatenates JS, minifies CSS and JS, and watches
 - `gulp watch` → runs default `gulp` task and then watches for changes
 
+### Testing the CLI locally
+
+1. Run `node html-lint.js <url>`
+
 <!--
 ### Publishing
 
