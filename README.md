@@ -1,5 +1,8 @@
 # HTML-Lint
 
+[![version on NPM](https://img.shields.io/npm/v/html-lint.svg?style=flat-square)](https://www.npmjs.com/package/html-lint)
+[![weekly downloads on NPM](https://img.shields.io/npm/dw/html-lint.svg?colorB=000000&style=flat-square)](https://www.npmjs.com/package/html-lint)
+
 HTML-Lint is a tool designed to supplement HTML validation by identify coding practices that pass validation, but are less than ideal.
 
 ## How to Use:
