@@ -62,7 +62,7 @@
 			if (contentAttr) {
 				if ($value.attr('name') === 'msapplication-TileImage') {
 					output += '<img src="' + contentAttr + '" style="background-color:' + $metaTags.filter($('meta[name="msapplication-TileColor"]')).attr('content') + '" alt="msapplication-TileImage">';
-				if ($value.attr('name') === 'twitter:image') {
+				} else if ($value.attr('name') === 'twitter:image') {
 					output += '<img src="' + contentAttr + '" alt="' + contentAttr + '" />';
 				} else if (
 					contentAttr.indexOf('http') === 0 ||
