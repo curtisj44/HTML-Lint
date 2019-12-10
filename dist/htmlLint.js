@@ -1,10 +1,647 @@
+'use strict';
+
+(function (htmlLint) {
+	var tests = {
+		// ---- Tags ----
+		'a:empty, b:empty, abbr:empty, acronym:empty, button:empty, dd:empty, div:empty, dl:empty, dt:empty, h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, form:empty, fieldset:empty, label:empty, li:empty, ol:empty, p:empty, span:empty, strong:empty, ul:empty': {
+			'label': 'empty tag'
+		},
+		'applet': {
+			'label': '`applet`'
+		},
+		'center': {
+			'label': '`center`'
+		},
+		'font': {
+			'label': '`font`'
+		},
+		'iframe': {
+			'label': '`iframe`'
+		},
+		'noscript': {
+			'label': '`noscript`'
+		},
+		's': {
+			'label': '`s`'
+		},
+		'strike': {
+			'label': '`strike`'
+		},
+		'u': {
+			'label': '`u`'
+		},
+		'br + br': {
+			'label': 'Multiple `br`’s (* not quite accurate)'
+		},
+
+		// // ---- Attributes ----
+		':contains("=NOTFOUND!")': {
+			'label': 'Missing SiteCore resource'
+		},
+
+		'abbr:not([title])': {
+			'label': '`abbr` missing `title`'
+		},
+		'acronym:not([title])': {
+			'label': '`acronym` missing `title`'
+		},
+		'a:contains("Click here"), a:contains("click here")': {
+			'label': '“Click here” used as link text'
+		},
+		'a:contains("Read more"), a:contains("Read more")': {
+			'label': '“Read more” used as link text'
+		},
+		'a:not([href])': {
+			'label': '`a` missing `href`'
+		},
+		'a[href=""]': {
+			'label': '`a[href=""]`'
+		},
+		'a[href="#"]': {
+			'label': '`a[href="#"]`'
+		},
+		'a[href*="javascript:"]': {
+			'label': '`a[href*="javascript:"]`'
+		},
+		'a[href*="<"]': {
+			'label': '`a[href*="<"]`'
+		},
+		'a[href*=">"]': {
+			'label': '`a[href*=">"]`'
+		},
+		'a[href*="{"]': {
+			'label': '`a[href*="{"]`'
+		},
+		'a[href*="}"]': {
+			'label': '`a[href*="}"]`'
+		},
+		'a[target]': {
+			'label': '`a[target]`'
+		},
+		//'head script:not([src*="hasJS.js"], [src*="swfobject.js"], [src*="google-analytics.com"])': {
+		//	'label': '`script` in the `head`'
+		//},
+		'fieldset:not(:has(legend))': {
+			'label': '`fieldset` missing `legend`'
+		},
+		'fieldset > *:not(legend):first-child': {
+			'label': '`fieldset`’s first child is not `legend`'
+		},
+		'form[action=""]': {
+			'label': '`form[action=""]`'
+		},
+		'form[action="#"]': {
+			'label': '`form[action="#"]`'
+		},
+		'form:not(:has(fieldset))': {
+			'label': '`form` missing `fieldset`'
+		},
+
+		// application caching feature via the `manifest` attribute is deprecated and highly discouraged:
+		// https://developer.mozilla.org/en-US/docs/Web/HTML/Using_the_application_cache
+		'html[manifest]': {
+			'label': '`manifest` attribute is deprecated'
+		},
+
+		'input[type="text"]': {
+			'label': '`type="text"` is not needed on `input`'
+		},
+		'img:not([alt])': {
+			'label': '`img` missing `alt` attribute'
+		},
+		'img:not(".tracking")[alt=""]': {
+			'label': '`img[alt=""]`'
+		},
+
+		// > Describe the image briefly, but avoid the phrase “image of” or “graphic of”. Because screen readers already know it is a graphic.
+		// https://www.marcozehe.de/2015/12/14/the-web-accessibility-basics/
+		'img[alt*="graphic of"]': {
+			'label': '"graphic of" used in `img` `alt`'
+		},
+		'img[alt*="Graphic of"]': {
+			'label': '"Graphic of" used in `img` `alt`'
+		},
+		'img[alt*="image of"]': {
+			'label': '"image of" used in `img` `alt`'
+		},
+		'img[alt*="Image of"]': {
+			'label': '"Image of" used in `img` `alt`'
+		},
+		'img[alt*="photo of"]': {
+			'label': '"photo of" used in `img` `alt`'
+		},
+		'img[alt*="Photo of"]': {
+			'label': '"Photo of" used in `img` `alt`'
+		},
+		'img[alt*="picture of"]': {
+			'label': '"picture of" used in `img` `alt`'
+		},
+		'img[alt*="Picture of"]': {
+			'label': '"Picture of" used in `img` `alt`'
+		},
+
+		'img[src=""]': {
+			'label': '`img[src=""]`'
+		},
+		'img[width="1"][height="1"]': {
+			'label': 'Tracking pixel `img`'
+		},
+		// `button` provides more styling options, pseudo elements, and embedding of more than a text string
+		'input[type="submit"]': {
+			'label': 'Prefer `button[type="submit"]` over `input[type="submit"]`'
+		},
+		'label:not([for])': {
+			'label': '`label` missing `for`'
+		},
+		'body link:not("#html-lint-css")': {
+			'label': '`link` not in `head`'
+		},
+		'link:not([rel])': {
+			'label': '`link` missing `rel`'
+		},
+		'link[charset]': {
+			'label': '`link[charset]`'
+		},
+		'link[rel="shortcut icon"][type="image/ico"]': {
+			'label': '`type="images/ico"` is not needed on `link`'
+		},
+		'link[rel="stylesheet"][media="all"]': {
+			'label': '`media="all"` is not needed on `link`'
+		},
+		'link[rel="stylesheet"][type="text/css"]': {
+			'label': '`type="text/css"` is not needed on `link`'
+		},
+		// https://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396
+		'meta[http-equiv="X-UA-Compatible"]': {
+			'label': 'Specifying a legacy document mode via `X-UA-Compatible` is considered deprecated and should no longer be used'
+		},
+		// https://developer.apple.com/library/ios/releasenotes/General/RN-iOSSDK-8.0/
+		'meta[name="viewport"][content*="minimal-ui"]': {
+			'label': '`minimal-ui` has been retired'
+		},
+		'nav:not([role])': {
+			'label': '`nav` missing `role`'
+		},
+		'script[charset]': {
+			'label': '`script[charset]`'
+		},
+		'script[language]': {
+			'label': '`language` attribute is not valid on `script`'
+		},
+		'script[type]': {
+			label: '`type` attribute is not necessary on `script`'
+			// details: [{
+			// 	quote: 'Per the HTML specification, JavaScript files should always be served using the' +
+			// 		'MIME type `text/javascript`. No other values are considered valid, and using any of' +
+			// 		'those may result in scripts that do not load or run.',
+			// 	source: 'https://developer.mozilla.org/en-US/docs/Web/HTTP/Basics_of_HTTP/MIME_types#JavaScript_types'
+			// }]
+		},
+		'style[media="all"]': {
+			'label': '`media="all"` is not needed on `style`'
+		},
+		'style[type]': {
+			label: '`type` attribute is not necessary `style`'
+			// details: [{
+			// 	quote: 'This attribute is optional and defaults to text/css if it is not specified — there is very little reason to include this in modern web documents.',
+			// 	source: 'https://developer.mozilla.org/en-US/docs/Web/HTML/Element/style#Attributes'
+			// }]
+		},
+
+		// > It is purely advisory and has no influence on rendering or processing.
+		// https://developer.mozilla.org/en-US/docs/Web/SVG/Attribute/version
+		'svg[version]': {
+			'label': '`version` attribute on `svg` is not needed'
+		},
+
+		'table:not([summary])': {
+			'label': '`table` missing `summary`'
+		},
+		//'table:not(:has(caption))': {
+		//	'label': '`table` missing `caption`'
+		//},
+		'table:not(:has(th))': {
+			'label': '`table` missing `th`'
+		},
+		'table table': {
+			'label': '`table` inside `table`'
+		},
+
+		// TODO: Currently causes this error: `TypeError: Cannot read property 'type' of undefined`
+		// 'th:not([scope])': {
+		// 	'label': '`th` missing `scope`'
+		// },
+
+		'th[scope=""]': {
+			'label': '`th[scope=""]`'
+		},
+
+		':not("canvas, img, mask, object, rect, svg")[height]': {
+			'label': 'Invalid attribute: `height`'
+		},
+		':not("canvas, img, mask, object, rect, svg")[width]': {
+			'label': 'Invalid attribute: `width`'
+		},
+
+		'[align]': {
+			'label': 'Invalid attribute: `align`'
+		},
+		'[alink]': {
+			'label': 'Bad attribute: `alink`'
+		},
+		'[background]': {
+			'label': 'Invalid attribute: `background`'
+		},
+		'[bgcolor]': {
+			'label': 'Invalid attribute: `bgcolor`'
+		},
+		'[border]': {
+			'label': 'Bad attribute: `border`'
+		},
+		'[cellpadding]': {
+			'label': 'Bad attribute: `cellpadding`'
+		},
+		'[cellspacing]': {
+			'label': 'Bad attribute: `cellspacing`'
+		},
+		'[class=""]': {
+			'label': '`class=""`'
+		},
+
+		// React’s JSX uses a `className` attribute instead of the standard `class` attribute.
+		// This could cause confusion when switch context between HTML and JSX.
+		'[className]': {
+			'label': 'Bad attribute: `className`'
+		},
+
+		// https://www.w3.org/TR/filter-effects/#AccessBackgroundImage
+		'[enable-background]': {
+			'label': '`enable-background` attribute is deprecated'
+		},
+
+		'[frameborder]': {
+			'label': 'Bad attribute: `frameborder`'
+		},
+		'[halign]': {
+			'label': 'Invalid attribute: `halign`'
+		},
+		'[id=""]': {
+			'label': '`id=""`'
+		},
+		'[link]': {
+			'label': 'Bad attribute: `link`'
+		},
+		'[marginheight]': {
+			'label': 'Bad attribute: `marginheight`'
+		},
+		'[marginwidth]': {
+			'label': 'Bad attribute: `marginwidth`'
+		},
+		'[name=""]': {
+			'label': '`name=""`'
+		},
+
+		// "defer" is a deprecated value for the SVG attribute `preserveAspectRatio`
+		// https://bugzilla.mozilla.org/show_bug.cgi?id=1280425
+		'[preserveAspectRatio*="defer"]': {
+			'label': '“defer” is a deprecated value for the SVG attribute `preserveAspectRatio`'
+		},
+
+		// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role
+		'[role="button"]': {
+			'label': '`[role="button"]`'
+		},
+
+		'[shape]': {
+			'label': 'Bad attribute: `shape`'
+		},
+		'[size]': {
+			'label': 'Bad attribute: `size`'
+		},
+		'[src*="javascript:"]': {
+			'label': '`[src*="javascript:"]`'
+		},
+		'[style*="background"]': {
+			'label': 'Inline style: `background`'
+		},
+		'[style*="border"]': {
+			'label': 'Inline style: `border`'
+		},
+		'[style*="font"]': {
+			'label': 'Inline style: `font`'
+		},
+		'[style*="letter-spacing"]': {
+			'label': 'Inline style: `letter-spacing`'
+		},
+		'[style*="line-height"]': {
+			'label': 'Inline style: `line-height`'
+		},
+		'[style*="list-style"]': {
+			'label': 'Inline style: `list-style`'
+		},
+		'[style*="outline"]': {
+			'label': 'Inline style: `outline`'
+		},
+		'[style*="overflow"]': {
+			'label': 'Inline style: `overflow`'
+		},
+		'[style*="resize"]': {
+			'label': 'Inline style: `resize`'
+		},
+		'[style*="text"]': {
+			'label': 'Inline style: `text`'
+		},
+		'[style*="vertical"]': {
+			'label': 'Inline style: `vertical`'
+		},
+		'[style*="white-space"]': {
+			'label': 'Inline style: `white-space`'
+		},
+		'[style*="word"]': {
+			'label': 'Inline style: `word`'
+		},
+		'[tabindex]': {
+			'label': 'Bad attribute: `tabindex`'
+		},
+		'[title=""]': {
+			'label': '`title` attribute is empty'
+		},
+		'[valign]': {
+			'label': 'Invalid attribute: `valign`'
+		},
+		'[vlink]': {
+			'label': 'Bad attribute: `vlink`'
+		},
+
+		// --- Inline event handlers ----
+
+		'[onabort]': {
+			'label': 'Inline event handler: `onabort`'
+		},
+		'[onautocomplete]': {
+			'label': 'Inline event handler: `onautocomplete`'
+		},
+		'[onautocompleteerror]': {
+			'label': 'Inline event handler: `onautocompleteerror`'
+		},
+		'[onafterprint]': {
+			'label': 'Inline event handler: `onafterprint`'
+		},
+		'[onbeforeprint]': {
+			'label': 'Inline event handler: `onbeforeprint`'
+		},
+		'[onbeforeunload]': {
+			'label': 'Inline event handler: `onbeforeunload`'
+		},
+		'[onblur]': {
+			'label': 'Inline event handler: `onblur`'
+		},
+		'[oncancel]': {
+			'label': 'Inline event handler: `oncancel`'
+		},
+		'[oncanplay]': {
+			'label': 'Inline event handler: `oncanplay`'
+		},
+		'[oncanplaythrough]': {
+			'label': 'Inline event handler: `oncanplaythrough`'
+		},
+		'[onchange]': {
+			'label': 'Inline event handler: `onchange`'
+		},
+		'[onclick]': {
+			'label': 'Inline event handler: `onclick`'
+		},
+		'[onclose]': {
+			'label': 'Inline event handler: `onclose`'
+		},
+		'[oncontextmenu]': {
+			'label': 'Inline event handler: `oncontextmenu`'
+		},
+		'[oncopy]': {
+			'label': 'Non-standard, inline event handler: `oncopy`'
+		},
+		'[oncuechange]': {
+			'label': 'Inline event handler: `oncuechange`'
+		},
+		'[oncut]': {
+			'label': 'Non-standard, inline event handler: `oncut`'
+		},
+		'[ondblclick]': {
+			'label': 'Inline event handler: `ondblclick`'
+		},
+		'[ondrag]': {
+			'label': 'Inline event handler: `ondrag`'
+		},
+		'[ondragdrop]': {
+			'label': 'Inline event handler: `ondragdrop`'
+		},
+		'[ondragend]': {
+			'label': 'Inline event handler: `ondragend`'
+		},
+		'[ondragenter]': {
+			'label': 'Inline event handler: `ondragenter`'
+		},
+		'[ondragexit]': {
+			'label': 'Inline event handler: `ondragexit`'
+		},
+		'[ondragleave]': {
+			'label': 'Inline event handler: `ondragleave`'
+		},
+		'[ondragover]': {
+			'label': 'Inline event handler: `ondragover`'
+		},
+		'[ondragstart]': {
+			'label': 'Inline event handler: `ondragstart`'
+		},
+		'[ondrop]': {
+			'label': 'Inline event handler: `ondrop`'
+		},
+		'[ondurationchange]': {
+			'label': 'Inline event handler: `ondurationchange`'
+		},
+		'[onemptied]': {
+			'label': 'Inline event handler: `onemptied`'
+		},
+		'[onended]': {
+			'label': 'Inline event handler: `onended`'
+		},
+		'[onerror]': {
+			'label': 'Inline event handler: `onerror`'
+		},
+		'[onfocus]': {
+			'label': 'Inline event handler: `onfocus`'
+		},
+		'[onhashchange]': {
+			'label': 'Inline event handler: `onhashchange`'
+		},
+		'[oninput]': {
+			'label': 'Inline event handler: `oninput`'
+		},
+		'[oninvalid]': {
+			'label': 'Inline event handler: `oninvalid`'
+		},
+		'[onkeydown]': {
+			'label': 'Inline event handler: `onkeydown`'
+		},
+		'[onkeypress]': {
+			'label': 'Inline event handler: `onkeypress`'
+		},
+		'[onkeyup]': {
+			'label': 'Inline event handler: `onkeyup`'
+		},
+		'[onlanguagechange]': {
+			'label': 'Inline event handler: `onlanguagechange`'
+		},
+		'[onload]': {
+			'label': 'Inline event handler: `onload`'
+		},
+		'[onloadeddata]': {
+			'label': 'Inline event handler: `onloadeddata`'
+		},
+		'[onloadedmetadata]': {
+			'label': 'Inline event handler: `onloadedmetadata`'
+		},
+		'[onloadstart]': {
+			'label': 'Inline event handler: `onloadstart`'
+		},
+		'[onmessage]': {
+			'label': 'Inline event handler: `onmessage`'
+		},
+		'[onmousedown]': {
+			'label': 'Inline event handler: `onmousedown`'
+		},
+		'[onmouseenter]': {
+			'label': 'Inline event handler: `onmouseenter`'
+		},
+		'[onmouseleave]': {
+			'label': 'Inline event handler: `onmouseleave`'
+		},
+		'[onmousemove]': {
+			'label': 'Inline event handler: `onmousemove`'
+		},
+		'[onmouseout]': {
+			'label': 'Inline event handler: `onmouseout`'
+		},
+		'[onmouseover]': {
+			'label': 'Inline event handler: `onmouseover`'
+		},
+		'[onmouseup]': {
+			'label': 'Inline event handler: `onmouseup`'
+		},
+		'[onmousewheel]': {
+			'label': 'Inline event handler: `onmousewheel`'
+		},
+		'[onmove]': {
+			'label': 'Inline event handler: `onmove`'
+		},
+		'[onoffline]': {
+			'label': 'Inline event handler: `onoffline`'
+		},
+		'[ononline]': {
+			'label': 'Inline event handler: `ononline`'
+		},
+		'[onpagehide]': {
+			'label': 'Inline event handler: `onpagehide`'
+		},
+		'[onpageshow]': {
+			'label': 'Inline event handler: `onpageshow`'
+		},
+		'[onpaste]': {
+			'label': 'Non-standard, inline event handler: `onpaste`'
+		},
+		'[onpause]': {
+			'label': 'Inline event handler: `onpause`'
+		},
+		'[onplay]': {
+			'label': 'Inline event handler: `onplay`'
+		},
+		'[onplaying]': {
+			'label': 'Inline event handler: `onplaying`'
+		},
+		'[onpopstate]': {
+			'label': 'Inline event handler: `onpopstate`'
+		},
+		'[onprogress]': {
+			'label': 'Inline event handler: `onprogress`'
+		},
+		'[onreset]': {
+			'label': 'Inline event handler: `onreset`'
+		},
+		'[onresize]': {
+			'label': 'Inline event handler: `onresize`'
+		},
+		'[onscroll]': {
+			'label': 'Inline event handler: `onscroll`'
+		},
+		'[onseeked]': {
+			'label': 'Inline event handler: `onseeked`'
+		},
+		'[onseeking]': {
+			'label': 'Inline event handler: `onseeking`'
+		},
+		'[onselect]': {
+			'label': 'Inline event handler: `onselect`'
+		},
+		'[onshow]': {
+			'label': 'Inline event handler: `onshow`'
+		},
+		'[onsort]': {
+			'label': 'Inline event handler: `onsort`'
+		},
+		'[onstalled]': {
+			'label': 'Inline event handler: `onstalled`'
+		},
+		'[onstorage]': {
+			'label': 'Inline event handler: `onstorage`'
+		},
+		'[onsubmit]': {
+			'label': 'Inline event handler: `onsubmit`'
+		},
+		'[onsuspend]': {
+			'label': 'Inline event handler: `onsuspend`'
+		},
+		'[ontimeupdate]': {
+			'label': 'Inline event handler: `ontimeupdate`'
+		},
+		'[ontoggle]': {
+			'label': 'Inline event handler: `ontoggle`'
+		},
+		'[onunload]': {
+			'label': 'Inline event handler: `onunload`'
+		},
+		'[onvolumechange]': {
+			'label': 'Inline event handler: `onvolumechange`'
+		},
+		'[onwaiting]': {
+			'label': 'Inline event handler: `onwaiting`'
+		},
+
+		// Ids & Classes
+		'#ContentWrapper': {
+			'label': 'Bad Id: `ContentWrapper`'
+		},
+		'.MsoNormal': {
+			'label': 'Bad Class: `MsoNormal`'
+		},
+
+		// http://guides.rubyonrails.org/i18n.html#adding-translations
+		'.translation_missing, [alt*="translation_missing"], [placeholder*="translation_missing"]': {
+			'label': 'Missing Rails i18n string'
+		}
+	};
+
+	// Based on: https://caolan.org/posts/writing_for_node_and_the_browser.html
+	htmlLint.tests = tests;
+})(typeof exports === 'undefined' ? window.htmlLint = window.htmlLint || {} : exports);
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.addPanel = function (name, output, errors) {
 		var $htmlLint = $('#html-lint'),
-			nameRevised = name.replace(' ', '').toLowerCase(),
-			$panel = $htmlLint.find('[data-panel="' + nameRevised + '"]');
+		    nameRevised = name.replace(' ', '').toLowerCase(),
+		    $panel = $htmlLint.find('[data-panel="' + nameRevised + '"]');
 
 		if ($panel.length > 0) {
 			$panel.remove();
@@ -22,25 +659,29 @@
 			}
 		}
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.close = function () {
 		var $closeButton = $('.html-lint-close');
 
-		$closeButton.bind('click', function () {
+		$closeButton.on('click', function () {
 			htmlLint.closeAction($closeButton);
 			return false;
 		});
 
-		$(document).bind('keyup', function (e) {
+		$(document).on('keyup', function (e) {
 			if (e.keyCode === 27) {
 				htmlLint.closeAction($closeButton);
 			}
 		});
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
@@ -50,17 +691,16 @@
 			$('#html-lint-css, #html-lint-jquery, #html-lint-js').remove();
 		});
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.editFlash = function () {
 		var $flashObjects = $('object, embed');
 
-		if (
-			$flashObjects.length > 0 &&
-			$flashObjects.find('param[name="wmode"]').attr('value') !== 'opaque'
-		) {
+		if ($flashObjects.length > 0 && $flashObjects.find('param[name="wmode"]').attr('value') !== 'opaque') {
 			$('<param />', {
 				name: 'wmode',
 				value: 'opaque'
@@ -69,14 +709,16 @@
 			$flashObjects.attr('wmode', 'opaque').hide().show();
 		}
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.handleErrors = function (tests) {
 		var errors = 0,
-			currentErrors,
-			output = '';
+		    currentErrors,
+		    output = '';
 
 		$.each(tests, function (index, test) {
 			currentErrors = $(index).length;
@@ -92,19 +734,16 @@
 
 		htmlLint.addPanel('Tests', output, errors);
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.init = function () {
 		var $htmlLint = $('#html-lint'),
-			isMock = window.location.protocol === 'file:' && window.location.pathname.indexOf('/mocks/') > 0,
-			output = '<div id="html-lint">' +
-				'<h1>HTML-Lint</h1>' +
-				'<h2>Total Errors</h2>' +
-				'<button class="html-lint-button html-lint-close">&times;</button>' +
-				'<ol class="html-lint-tab-list"></ol>' +
-				'</div>';
+		    isMock = window.location.protocol === 'file:' && window.location.pathname.indexOf('/mocks/') > 0,
+		    output = '<div id="html-lint">' + '<h1>HTML-Lint</h1>' + '<h2>Total Errors</h2>' + '<button class="html-lint-button html-lint-close">&times;</button>' + '<ol class="html-lint-tab-list"></ol>' + '</div>';
 
 		if (typeof $ === 'undefined') $ = jQuery;
 
@@ -121,8 +760,11 @@
 				$('body').append(output);
 			}
 
+			console.log(htmlLint.panel);
+
 			$.each(htmlLint.panel, function (index, value) {
 				htmlLint.panel[index]();
+				console.log(index);
 			});
 
 			$htmlLint.fadeIn(250, function () {
@@ -133,7 +775,9 @@
 		htmlLint.close();
 		htmlLint.tabSetup();
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
@@ -141,23 +785,21 @@
 
 	htmlLint.panel.metaData = function () {
 		var errors = 0,
-			output = '<dl>',
-
-			$head = $('head'),
-			$metaTags = $head.find('meta'),
-			$title = $head.find('title').html(),
-			$charset = $metaTags.filter('meta[charset], meta[http-equiv="content-type"], meta[http-equiv="Content-Type"]'),
-			$description = $metaTags.filter('meta[name="description"], meta[name="Description"]'),
-			$keywords = $metaTags.filter('meta[name="keywords"], meta[name="Keywords"]'),
-			$viewport = $metaTags.filter('meta[name="viewport"]'),
-
-			checkTag = function (tag) {
-				if (!tag) {
-					tag = htmlLint.utility.error();
-					errors += 1;
-				}
-				return tag;
-			};
+		    output = '<dl>',
+		    $head = $('head'),
+		    $metaTags = $head.find('meta'),
+		    $title = $head.find('title').html(),
+		    $charset = $metaTags.filter('meta[charset], meta[http-equiv="content-type"], meta[http-equiv="Content-Type"]'),
+		    $description = $metaTags.filter('meta[name="description"], meta[name="Description"]'),
+		    $keywords = $metaTags.filter('meta[name="keywords"], meta[name="Keywords"]'),
+		    $viewport = $metaTags.filter('meta[name="viewport"]'),
+		    checkTag = function checkTag(tag) {
+			if (!tag) {
+				tag = htmlLint.utility.error();
+				errors += 1;
+			}
+			return tag;
+		};
 
 		// title
 		output += '<dt>&lt;title&gt;</dt><dd>' + checkTag($title) + '</dd>';
@@ -177,15 +819,9 @@
 			errors += 1;
 		}
 
-		// keywords
-		if ($keywords.length < 1) {
-			output += '<dt>keywords</dt><dd>' + htmlLint.utility.error() + '</dd>';
-			errors += 1;
-		}
-
 		$metaTags.not('meta[property^="og:"], meta[property^="fb:"]').each(function (index, value) {
 			var $value = $(value),
-				contentAttr = $value.attr('content');
+			    contentAttr = $value.attr('content');
 
 			if ($value.attr('name')) {
 				output += '<dt>' + $value.attr('name') + '</dt>';
@@ -204,10 +840,7 @@
 			if (contentAttr) {
 				if ($value.attr('name') === 'msapplication-TileImage') {
 					output += '<img src="' + contentAttr + '" style="background-color:' + $metaTags.filter($('meta[name="msapplication-TileColor"]')).attr('content') + '" alt="msapplication-TileImage">';
-				} else if (
-					contentAttr.indexOf('http') === 0 ||
-					contentAttr.indexOf('.txt') > 0
-				) {
+				} else if (contentAttr.indexOf('http') === 0 || contentAttr.indexOf('.txt') > 0) {
 					output += '<a href="' + contentAttr + '">' + contentAttr + '</a>';
 				} else {
 					output += contentAttr;
@@ -220,12 +853,8 @@
 
 				// viewport
 				if (
-					// http://adrianroselli.com/2015/10/dont-disable-zoom.html
-					contentAttr.indexOf('user-scalable=0') > 0 ||
-					contentAttr.indexOf('user-scalable=no') > 0 ||
-					contentAttr.indexOf('maximum-scale') > 0 ||
-					contentAttr.indexOf('minimum-scale') > 0
-				) {
+				// http://adrianroselli.com/2015/10/dont-disable-zoom.html
+				contentAttr.indexOf('user-scalable=0') > 0 || contentAttr.indexOf('user-scalable=no') > 0 || contentAttr.indexOf('maximum-scale') > 0 || contentAttr.indexOf('minimum-scale') > 0) {
 					output += ' ' + htmlLint.utility.error('don&rsquo;t prevent user zoom');
 				}
 			} else if ($value.attr('charset')) {
@@ -245,17 +874,17 @@
 
 	htmlLint.panel.openGraph = function () {
 		var errors = 0,
-			$head = $('head'),
-			$metaOG = $head.find('meta[property^="og:"]'),
-			$metaFB = $head.find('meta[property^="fb:"]'),
-			output = '<dl>';
+		    $head = $('head'),
+		    $metaOG = $head.find('meta[property^="og:"]'),
+		    $metaFB = $head.find('meta[property^="fb:"]'),
+		    output = '<dl>';
 
 		if ($metaOG.length !== 0 || $metaFB.length !== 0) {
 			// OG
 			if ($metaOG.length !== 0) {
 				$metaOG.each(function () {
 					var $property = $(this).attr('property'),
-						$content = $(this).attr('content');
+					    $content = $(this).attr('content');
 
 					output += '<dt>' + $property + '</dt>';
 
@@ -282,9 +911,9 @@
 			if ($metaFB.length !== 0) {
 				$metaFB.each(function () {
 					var $property = $(this).attr('property'),
-						$content = $(this).attr('content'),
-						adminIds,
-						adminLinks = '';
+					    $content = $(this).attr('content'),
+					    adminIds,
+					    adminLinks = '';
 
 					output += '<dt>' + $property + '</dt>';
 
@@ -320,22 +949,16 @@
 
 	htmlLint.panel.overview = function () {
 		var errors = 0,
-			$appleTouchIcons = $('link[rel*="apple-touch-icon"]'),
-			$shortcutIcons = $('link[rel="shortcut icon"], link[rel="icon"]'),
-			$icons = $appleTouchIcons.add($shortcutIcons),
-			output = '<dl>';
+		    $appleTouchIcons = $('link[rel*="apple-touch-icon"]'),
+		    $shortcutIcons = $('link[rel="shortcut icon"], link[rel="icon"]'),
+		    $icons = $appleTouchIcons.add($shortcutIcons),
+		    output = '<dl>';
 
 		if ($icons.length > 0) {
 			$icons.each(function (index, value) {
 				var $value = $(value);
 
-				output += '<dt>' +
-					$value.attr('rel') +
-					($value.attr('sizes') ? ' (' + $value.attr('sizes') + ')' : '') +
-					'</dt>' +
-					'<dd>' +
-					'<img src="' + $value.attr('href') + '" alt="' + $value.attr('rel') + '" />' +
-					'</dd>';
+				output += '<dt>' + $value.attr('rel') + ($value.attr('sizes') ? ' (' + $value.attr('sizes') + ')' : '') + '</dt>' + '<dd>' + '<img src="' + $value.attr('href') + '" alt="' + $value.attr('rel') + '" />' + '</dd>';
 			});
 		}
 
@@ -358,7 +981,7 @@
 
 	htmlLint.panel.technology = function () {
 		var errors = 0,
-			output = '<dl>';
+		    output = '<dl>';
 
 		// TODO - write this all better
 
@@ -384,8 +1007,14 @@
 			output += '<dt>Google Analytics</dt><dd>-</dd>';
 		}
 
+		/* ---- Hotjar ---- */
+		// https://docs.hotjar.com/docs/hotjar-tracking-code
+		if (window.hj) {
+			output += '<dt>Hotjar</dt><dd>-</dd>';
+		}
+
 		/* ---- jQuery ---- */
-		if (!(htmlLint.utility.jQueryAdded)) {
+		if (!htmlLint.utility.jQueryAdded) {
 			output += '<dt>jQuery</dt><dd>' + $.fn.jquery;
 
 			if ($.fn.jquery !== htmlLint.utility.jQuery[0] && $.fn.jquery !== htmlLint.utility.jQuery[1]) {
@@ -445,6 +1074,11 @@
 		/* ---- New Relic ---- */
 		if (window.NREUM) {
 			output += '<dt>New Relic</dt><dd>-</dd>';
+		}
+
+		/* ---- Optimizely ---- */
+		if (window.optly) {
+			output += '<dt>Optimizely</dt><dd>-</dd>';
 		}
 
 		/* ---- Prototype ---- */
@@ -528,16 +1162,16 @@
 	};
 
 	htmlLint.panel.tests = function () {
-		htmlLint.handleErrors(htmlLint.test);
+		htmlLint.handleErrors(htmlLint.tests);
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
 
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.preInit = function () {
-		var link,
-			script;
+		var link, script;
 
 		// Add CSS
 		if (document.getElementById('html-lint-css') === null) {
@@ -561,15 +1195,16 @@
 			document.body.appendChild(script);
 		}
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
 
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.tabAction = function ($href, $tabList, $tabPanels) {
 		var $panelName = $href.replace('#', ''),
-			$tabListCurrent = $tabList.find('a[href="' + $href + '"]'),
-			$tabPanelCurrent = $tabPanels.filter('[data-panel="' + $panelName + '"]');
+		    $tabListCurrent = $tabList.find('a[href="' + $href + '"]'),
+		    $tabPanelCurrent = $tabPanels.filter('[data-panel="' + $panelName + '"]');
 
 		if (!$tabListCurrent.hasClass('selected')) {
 			// tab button
@@ -581,18 +1216,20 @@
 			$tabPanelCurrent.addClass('selected');
 		}
 	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
+
 (function (htmlLint) {
 	'use strict';
 
 	htmlLint.tabSetup = function () {
 		var errors = 0,
-			$htmlLint = $('#html-lint'),
-			$tabList = $htmlLint.find('.html-lint-tab-list'),
-			$tabPanels = $htmlLint.find('.html-lint-tab-panel');
+		    $htmlLint = $('#html-lint'),
+		    $tabList = $htmlLint.find('.html-lint-tab-list'),
+		    $tabPanels = $htmlLint.find('.html-lint-tab-panel');
 
 		// tab button
-		$tabList.find('a').bind('click', function () {
+		$tabList.find('a').on('click', function () {
 			htmlLint.tabAction($(this).attr('href'), $tabList, $tabPanels);
 			return false;
 		});
@@ -607,574 +1244,8 @@
 
 		$htmlLint.find('h2').append(htmlLint.utility.error(errors));
 	};
-}(window.htmlLint = window.htmlLint || {}));
-// TODO: keep in sync with `/lib/tests.js`
-(function (htmlLint) {
-	'use strict';
-
-	htmlLint.test = {
-		// ---- Tags ----
-		'a:empty, b:empty, abbr:empty, acronym:empty, button:empty, dd:empty, div:empty, dl:empty, dt:empty, h1:empty, h2:empty, h3:empty, h4:empty, h5:empty, h6:empty, form:empty, fieldset:empty, label:empty, li:empty, ol:empty, p:empty, span:empty, strong:empty, ul:empty': {
-			'label': 'empty tag'
-		},
-		'applet': {
-			'label': '<code>&lt;applet&gt;</code>'
-		},
-		'center': {
-			'label': '<code>&lt;center&gt;</code>'
-		},
-		'font': {
-			'label': '<code>&lt;font&gt;</code>'
-		},
-		'iframe': {
-			'label': '<code>&lt;iframe&gt;</code>'
-		},
-		'noscript': {
-			'label': '<code>&lt;noscript&gt;</code>'
-		},
-		's': {
-			'label': '<code>&lt;s&gt;</code>'
-		},
-		'strike': {
-			'label': '<code>&lt;strike&gt;</code>'
-		},
-		'u': {
-			'label': '<code>&lt;u&gt;</code>'
-		},
-		'br + br': {
-			'label': 'Multiple <code>&lt;br&gt;</code>&rsquo;s (* not quite accurate)'
-		},
-
-		// ---- Attributes ----
-		':contains("=NOTFOUND!")': {
-			'label': 'Missing SiteCore resource'
-		},
-
-		'abbr:not([title])': {
-			'label': '<code>&lt;abbr&gt;</code> missing <code>title</code>'
-		},
-		'acronym:not([title])': {
-			'label': '<code>&lt;acronym&gt;</code> missing <code>title</code>'
-		},
-		'a:contains("Click here"), a:contains("click here")': {
-			'label': '&ldquo;Click here&rdquo; used as link text'
-		},
-		'a:contains("Read more"), a:contains("Read more")': {
-			'label': '&ldquo;Read more&rdquo; used as link text'
-		},
-		'a:not([href])': {
-			'label': '<code>&lt;a&gt;</code> missing <code>href</code>'
-		},
-		'a[href=""]': {
-			'label': '<code>a[href=""]</code>'
-		},
-		'a[href="#"]': {
-			'label': '<code>a[href="#"]</code>'
-		},
-		'a[href*="javascript:"]': {
-			'label': '<code>a[href*="javascript:"]</code>'
-		},
-		'a[href*="<"]': {
-			'label': '<code>a[href*="<"]</code>'
-		},
-		'a[href*=">"]': {
-			'label': '<code>a[href*=">"]</code>'
-		},
-		'a[href*="{"]': {
-			'label': '<code>a[href*="{"]</code>'
-		},
-		'a[href*="}"]': {
-			'label': '<code>a[href*="}"]</code>'
-		},
-		'a[target]': {
-			'label': '<code>a[target]</code>'
-		},
-		//'head script:not([src*="hasJS.js"], [src*="swfobject.js"], [src*="google-analytics.com"])': {
-		//	'label': '<code>&lt;script&gt;</code> in the <code>&lt;head&gt;</code>'
-		//},
-		'fieldset:not(:has(legend))': {
-			'label': '<code>&lt;fieldset&gt;</code> missing <code>&lt;legend&gt;</code>'
-		},
-		'fieldset > *:not(legend):first-child': {
-			'label': '<code>&lt;fieldset&gt;</code>&rsquo;s first child is not <code>&lt;legend&gt;</code>'
-		},
-		'form[action=""]': {
-			'label': '<code>form[action=""]</code>'
-		},
-		'form[action="#"]': {
-			'label': '<code>form[action="#"]</code>'
-		},
-		'form:not(:has(fieldset))': {
-			'label': '<code>&lt;form&gt;</code> missing <code>&lt;fieldset&gt;</code>'
-		},
-		'input[type="text"]': {
-			'label': '<code>type="text"</code> is not needed on <code>&lt;input&gt;</code>'
-		},
-		'img:not([alt])': {
-			'label': '<code>&lt;img&gt;</code> missing <code>alt</code> attribute'
-		},
-		'img:not(".tracking")[alt=""]': {
-			'label': '<code>img[alt=""]</code>'
-		},
-
-		// > Describe the image briefly, but avoid the phrase “image of” or “graphic of”. Because screen readers already know it is a graphic.
-		// https://www.marcozehe.de/2015/12/14/the-web-accessibility-basics/
-		'img[alt*="graphic of"]': {
-			'label': '"graphic of" used in `img` `alt`'
-		},
-		'img[alt*="image of"]': {
-			'label': '"image of" used in `img` `alt`'
-		},
-		'img[alt*="picture of"]': {
-			'label': '"picture of" used in `img` `alt`'
-		},
-
-		'img[src=""]': {
-			'label': '<code>img[src=""]</code>'
-		},
-		'img[width="1"][height="1"]': {
-			'label': 'Tracking pixel <code>img</code>'
-		},
-		// `button` provides more styling options, pseudo elements, and embedding of more than a text string
-		'input[type="submit"]': {
-			'label': 'Prefer <code>&lt;button type="submit"&gt;</code> over <code>&lt;input type="submit"&gt;</code>'
-		},
-		'label:not([for])': {
-			'label': '<code>&lt;label&gt;</code> missing <code>for</code>'
-		},
-		'body link:not("#html-lint-css")': {
-			'label': '<code>&lt;link&gt;</code> not in <code>&lt;head&gt;</code>'
-		},
-		'link:not([rel])': {
-			'label': '<code>&lt;link&gt;</code> missing <code>rel</code>'
-		},
-		'link[charset]': {
-			'label': '<code>link[charset]</code>'
-		},
-		'link[rel="shortcut icon"][type="image/ico"]': {
-			'label': '<code>type="images/ico"</code> is not needed on <code>&lt;link&gt;</code>'
-		},
-		'link[rel="stylesheet"][media="all"]': {
-			'label': '<code>media="all"</code> is not needed on <code>&lt;link&gt;</code>'
-		},
-		'link[rel="stylesheet"][type="text/css"]': {
-			'label': '<code>type="text/css"</code> is not needed on <code>&lt;link&gt;</code>'
-		},
-		// https://msdn.microsoft.com/en-us/library/jj676915%28v=vs.85%29.aspx?f=255&MSPPError=-2147217396
-		'meta[http-equiv="X-UA-Compatible"]': {
-			'label': 'Specifying a legacy document mode via <code>X-UA-Compatible</code> is considered deprecated and should no longer be used'
-		},
-		// https://developer.apple.com/library/ios/releasenotes/General/RN-iOSSDK-8.0/
-		'meta[name="viewport"][content*="minimal-ui"]': {
-			'label': '<code>minimal-ui</code> has been retired'
-		},
-		'nav:not([role])': {
-			'label': '<code>&lt;nav&gt;</code> missing <code>role</code>'
-		},
-		'script[charset]': {
-			'label': '<code>script[charset]</code>'
-		},
-		'script[language]': {
-			'label': '<code>language</code> attribute is not valid on <code>&lt;script&gt;</code>'
-		},
-		'script[type="text/javascript"]': {
-			'label': '<code>type="text/javascript"</code> is not needed on <code>&lt;script&gt;</code>'
-		},
-		'style[media="all"]': {
-			'label': '<code>media="all"</code> is not needed on <code>&lt;style&gt;</code>'
-		},
-		'style[type="text/css"]': {
-			'label': '<code>type="text/css"</code> is not needed on <code>&lt;style&gt;</code>'
-		},
-		'table:not([summary])': {
-			'label': '<code>&lt;table&gt;</code> missing <code>summary</code>'
-		},
-
-		//'table:not(:has(caption))': {
-		//	'label': '<code>&lt;table&gt;</code> missing <code>&lt;caption&gt;</code>'
-		//},
-
-		'table:not(:has(th))': {
-			'label': '<code>&lt;table&gt;</code> missing <code>&lt;th&gt;</code>'
-		},
-		'table table': {
-			'label': '<code>&lt;table&gt;</code> inside <code>&lt;table&gt;</code>'
-		},
-		'th:not([scope])': {
-			'label': '<code>&lt;th&gt;</code> missing <code>scope</code>'
-		},
-		'th[scope=""]': {
-			'label': '<code>th[scope=""]</code>'
-		},
-
-		':not("canvas, img, object, rect, svg")[height]': {
-			'label': 'Invalid attribute: <code>height</code>'
-		},
-		':not("canvas, img, object, rect, svg")[width]': {
-			'label': 'Invalid attribute: <code>width</code>'
-		},
-
-		'[align]': {
-			'label': 'Invalid attribute: <code>align</code>'
-		},
-		'[alink]': {
-			'label': 'Bad attribute: <code>alink</code>'
-		},
-		'[background]': {
-			'label': 'Invalid attribute: <code>background</code>'
-		},
-		'[bgcolor]': {
-			'label': 'Invalid attribute: <code>bgcolor</code>'
-		},
-		'[border]': {
-			'label': 'Bad attribute: <code>border</code>'
-		},
-		'[cellpadding]': {
-			'label': 'Bad attribute: <code>cellpadding</code>'
-		},
-		'[cellspacing]': {
-			'label': 'Bad attribute: <code>cellspacing</code>'
-		},
-		'[class=""]': {
-			'label': '<code>class=""</code>'
-		},
-		'[frameborder]': {
-			'label': 'Bad attribute: <code>frameborder</code>'
-		},
-		'[halign]': {
-			'label': 'Invalid attribute: <code>halign</code>'
-		},
-		'[id=""]': {
-			'label': '<code>id=""</code>'
-		},
-		'[link]': {
-			'label': 'Bad attribute: <code>link</code>'
-		},
-		'[marginheight]': {
-			'label': 'Bad attribute: <code>marginheight</code>'
-		},
-		'[marginwidth]': {
-			'label': 'Bad attribute: <code>marginwidth</code>'
-		},
-		'[name=""]': {
-			'label': '<code>name=""</code>'
-		},
-		// https://developer.mozilla.org/en-US/docs/Web/Accessibility/ARIA/ARIA_Techniques/Using_the_button_role
-		'[role="button"]': {
-			'label': '<code>[role="button"]</code>'
-		},
-		'[shape]': {
-			'label': 'Bad attribute: <code>shape</code>'
-		},
-		'[size]': {
-			'label': 'Bad attribute: <code>size</code>'
-		},
-		'[src*="javascript:"]': {
-			'label': '<code>[src*="javascript:"]</code>'
-		},
-		'[style*="background"]': {
-			'label': 'Inline style: <code>background</code>'
-		},
-		'[style*="border"]': {
-			'label': 'Inline style: <code>border</code>'
-		},
-		'[style*="font"]': {
-			'label': 'Inline style: <code>font</code>'
-		},
-		'[style*="letter-spacing"]': {
-			'label': 'Inline style: <code>letter-spacing</code>'
-		},
-		'[style*="line-height"]': {
-			'label': 'Inline style: <code>line-height</code>'
-		},
-		'[style*="list-style"]': {
-			'label': 'Inline style: <code>list-style</code>'
-		},
-		'[style*="outline"]': {
-			'label': 'Inline style: <code>outline</code>'
-		},
-		'[style*="resize"]': {
-			'label': 'Inline style: <code>resize</code>'
-		},
-		'[style*="text"]': {
-			'label': 'Inline style: <code>text</code>'
-		},
-		'[style*="vertical"]': {
-			'label': 'Inline style: <code>vertical</code>'
-		},
-		'[style*="word"]': {
-			'label': 'Inline style: <code>word</code>'
-		},
-		'[tabindex]': {
-			'label': 'Bad attribute: <code>tabindex</code>'
-		},
-		'[title=""]': {
-			'label': '<code>title</code> attribute is empty'
-		},
-		'[valign]': {
-			'label': 'Invalid attribute: <code>valign</code>'
-		},
-		'[vlink]': {
-			'label': 'Bad attribute: <code>vlink</code>'
-		},
-
-		// --- Inline event handlers ----
-
-		'[onabort]': {
-			'label': 'Inline event handler: <code>onabort</code>'
-		},
-		'[onautocomplete]': {
-			'label': 'Inline event handler: <code>onautocomplete</code>'
-		},
-		'[onautocompleteerror]': {
-			'label': 'Inline event handler: <code>onautocompleteerror</code>'
-		},
-		'[onafterprint]': {
-			'label': 'Inline event handler: <code>onafterprint</code>'
-		},
-		'[onbeforeprint]': {
-			'label': 'Inline event handler: <code>onbeforeprint</code>'
-		},
-		'[onbeforeunload]': {
-			'label': 'Inline event handler: <code>onbeforeunload</code>'
-		},
-		'[onblur]': {
-			'label': 'Inline event handler: <code>onblur</code>'
-		},
-		'[oncancel]': {
-			'label': 'Inline event handler: <code>oncancel</code>'
-		},
-		'[oncanplay]': {
-			'label': 'Inline event handler: <code>oncanplay</code>'
-		},
-		'[oncanplaythrough]': {
-			'label': 'Inline event handler: <code>oncanplaythrough</code>'
-		},
-		'[onchange]': {
-			'label': 'Inline event handler: <code>onchange</code>'
-		},
-		'[onclick]': {
-			'label': 'Inline event handler: <code>onclick</code>'
-		},
-		'[onclose]': {
-			'label': 'Inline event handler: <code>onclose</code>'
-		},
-		'[oncontextmenu]': {
-			'label': 'Inline event handler: <code>oncontextmenu</code>'
-		},
-		'[oncopy]': {
-			'label': 'Non-standard, inline event handler: <code>oncopy</code>'
-		},
-		'[oncuechange]': {
-			'label': 'Inline event handler: <code>oncuechange</code>'
-		},
-		'[oncut]': {
-			'label': 'Non-standard, inline event handler: <code>oncut</code>'
-		},
-		'[ondblclick]': {
-			'label': 'Inline event handler: <code>ondblclick</code>'
-		},
-		'[ondrag]': {
-			'label': 'Inline event handler: <code>ondrag</code>'
-		},
-		'[ondragdrop]': {
-			'label': 'Inline event handler: <code>ondragdrop</code>'
-		},
-		'[ondragend]': {
-			'label': 'Inline event handler: <code>ondragend</code>'
-		},
-		'[ondragenter]': {
-			'label': 'Inline event handler: <code>ondragenter</code>'
-		},
-		'[ondragexit]': {
-			'label': 'Inline event handler: <code>ondragexit</code>'
-		},
-		'[ondragleave]': {
-			'label': 'Inline event handler: <code>ondragleave</code>'
-		},
-		'[ondragover]': {
-			'label': 'Inline event handler: <code>ondragover</code>'
-		},
-		'[ondragstart]': {
-			'label': 'Inline event handler: <code>ondragstart</code>'
-		},
-		'[ondrop]': {
-			'label': 'Inline event handler: <code>ondrop</code>'
-		},
-		'[ondurationchange]': {
-			'label': 'Inline event handler: <code>ondurationchange</code>'
-		},
-		'[onemptied]': {
-			'label': 'Inline event handler: <code>onemptied</code>'
-		},
-		'[onended]': {
-			'label': 'Inline event handler: <code>onended</code>'
-		},
-		'[onerror]': {
-			'label': 'Inline event handler: <code>onerror</code>'
-		},
-		'[onfocus]': {
-			'label': 'Inline event handler: <code>onfocus</code>'
-		},
-		'[onhashchange]': {
-			'label': 'Inline event handler: <code>onhashchange</code>'
-		},
-		'[oninput]': {
-			'label': 'Inline event handler: <code>oninput</code>'
-		},
-		'[oninvalid]': {
-			'label': 'Inline event handler: <code>oninvalid</code>'
-		},
-		'[onkeydown]': {
-			'label': 'Inline event handler: <code>onkeydown</code>'
-		},
-		'[onkeypress]': {
-			'label': 'Inline event handler: <code>onkeypress</code>'
-		},
-		'[onkeyup]': {
-			'label': 'Inline event handler: <code>onkeyup</code>'
-		},
-		'[onlanguagechange]': {
-			'label': 'Inline event handler: <code>onlanguagechange</code>'
-		},
-		'[onload]': {
-			'label': 'Inline event handler: <code>onload</code>'
-		},
-		'[onloadeddata]': {
-			'label': 'Inline event handler: <code>onloadeddata</code>'
-		},
-		'[onloadedmetadata]': {
-			'label': 'Inline event handler: <code>onloadedmetadata</code>'
-		},
-		'[onloadstart]': {
-			'label': 'Inline event handler: <code>onloadstart</code>'
-		},
-		'[onmessage]': {
-			'label': 'Inline event handler: <code>onmessage</code>'
-		},
-		'[onmousedown]': {
-			'label': 'Inline event handler: <code>onmousedown</code>'
-		},
-		'[onmouseenter]': {
-			'label': 'Inline event handler: <code>onmouseenter</code>'
-		},
-		'[onmouseleave]': {
-			'label': 'Inline event handler: <code>onmouseleave</code>'
-		},
-		'[onmousemove]': {
-			'label': 'Inline event handler: <code>onmousemove</code>'
-		},
-		'[onmouseout]': {
-			'label': 'Inline event handler: <code>onmouseout</code>'
-		},
-		'[onmouseover]': {
-			'label': 'Inline event handler: <code>onmouseover</code>'
-		},
-		'[onmouseup]': {
-			'label': 'Inline event handler: <code>onmouseup</code>'
-		},
-		'[onmousewheel]': {
-			'label': 'Inline event handler: <code>onmousewheel</code>'
-		},
-		'[onmove]': {
-			'label': 'Inline event handler: <code>onmove</code>'
-		},
-		'[onoffline]': {
-			'label': 'Inline event handler: <code>onoffline</code>'
-		},
-		'[ononline]': {
-			'label': 'Inline event handler: <code>ononline</code>'
-		},
-		'[onpagehide]': {
-			'label': 'Inline event handler: <code>onpagehide</code>'
-		},
-		'[onpageshow]': {
-			'label': 'Inline event handler: <code>onpageshow</code>'
-		},
-		'[onpaste]': {
-			'label': 'Non-standard, inline event handler: <code>onpaste</code>'
-		},
-		'[onpause]': {
-			'label': 'Inline event handler: <code>onpause</code>'
-		},
-		'[onplay]': {
-			'label': 'Inline event handler: <code>onplay</code>'
-		},
-		'[onplaying]': {
-			'label': 'Inline event handler: <code>onplaying</code>'
-		},
-		'[onpopstate]': {
-			'label': 'Inline event handler: <code>onpopstate</code>'
-		},
-		'[onprogress]': {
-			'label': 'Inline event handler: <code>onprogress</code>'
-		},
-		'[onreset]': {
-			'label': 'Inline event handler: <code>onreset</code>'
-		},
-		'[onresize]': {
-			'label': 'Inline event handler: <code>onresize</code>'
-		},
-		'[onscroll]': {
-			'label': 'Inline event handler: <code>onscroll</code>'
-		},
-		'[onseeked]': {
-			'label': 'Inline event handler: <code>onseeked</code>'
-		},
-		'[onseeking]': {
-			'label': 'Inline event handler: <code>onseeking</code>'
-		},
-		'[onselect]': {
-			'label': 'Inline event handler: <code>onselect</code>'
-		},
-		'[onshow]': {
-			'label': 'Inline event handler: <code>onshow</code>'
-		},
-		'[onsort]': {
-			'label': 'Inline event handler: <code>onsort</code>'
-		},
-		'[onstalled]': {
-			'label': 'Inline event handler: <code>onstalled</code>'
-		},
-		'[onstorage]': {
-			'label': 'Inline event handler: <code>onstorage</code>'
-		},
-		'[onsubmit]': {
-			'label': 'Inline event handler: <code>onsubmit</code>'
-		},
-		'[onsuspend]': {
-			'label': 'Inline event handler: <code>onsuspend</code>'
-		},
-		'[ontimeupdate]': {
-			'label': 'Inline event handler: <code>ontimeupdate</code>'
-		},
-		'[ontoggle]': {
-			'label': 'Inline event handler: <code>ontoggle</code>'
-		},
-		'[onunload]': {
-			'label': 'Inline event handler: <code>onunload</code>'
-		},
-		'[onvolumechange]': {
-			'label': 'Inline event handler: <code>onvolumechange</code>'
-		},
-		'[onwaiting]': {
-			'label': 'Inline event handler: <code>onwaiting</code>'
-		},
-
-		// Ids & Classes
-		'#ContentWrapper': {
-			'label': 'Bad Id: <code>ContentWrapper</code>'
-		},
-		'.MsoNormal': {
-			'label': 'Bad Class: <code>MsoNormal</code>'
-		},
-
-		// http://guides.rubyonrails.org/i18n.html#adding-translations
-		'.translation_missing, [placeholder*="translation_missing"]': {
-			'label': 'Missing Rails i18n string'
-		}
-	};
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});
+'use strict';
 
 (function (htmlLint) {
 	'use strict';
@@ -1182,13 +1253,13 @@
 	htmlLint.utility = {
 		css: 'https://curtisj44.github.io/HTML-Lint/dist/html-lint.min.css',
 
-		error: function (message) {
+		error: function error(message) {
 			return '<span class="html-lint-error">' + (message || 'missing tag') + '</span>';
 		},
 
 		jQueryAdded: false,
 
-		jQuery: ['1.12.4', '3.0.0'],
+		jQuery: ['1.12.4', '3.2.1'],
 		jQueryUI: '1.12.0',
 		Modernizr: '3.3.1',
 		MooTools: '1.6.0',
@@ -1197,5 +1268,4 @@
 
 	// TODO - organize this better
 	htmlLint.preInit();
-
-}(window.htmlLint = window.htmlLint || {}));
+})(window.htmlLint = window.htmlLint || {});

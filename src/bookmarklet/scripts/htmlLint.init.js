@@ -26,8 +26,11 @@
 				$('body').append(output);
 			}
 
+			console.log(htmlLint.panel);
+
 			$.each(htmlLint.panel, function (index, value) {
 				htmlLint.panel[index]();
+				console.log(index);
 			});
 
 			$htmlLint.fadeIn(250, function () {

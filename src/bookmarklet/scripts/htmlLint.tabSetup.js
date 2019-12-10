@@ -8,7 +8,7 @@
 			$tabPanels = $htmlLint.find('.html-lint-tab-panel');
 
 		// tab button
-		$tabList.find('a').bind('click', function () {
+		$tabList.find('a').on('click', function () {
 			htmlLint.tabAction($(this).attr('href'), $tabList, $tabPanels);
 			return false;
 		});

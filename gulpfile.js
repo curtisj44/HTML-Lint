@@ -2,6 +2,7 @@ var gulp = require('gulp'),
 
 	// dependencies
 	autoprefixer = require('gulp-autoprefixer'),
+	babel = require('gulp-babel'),
 	concat = require('gulp-concat'),
 	del = require('del'),
 	minifier = require('gulp-minifier'),
@@ -11,8 +12,21 @@ var gulp = require('gulp'),
 
 	// paths
 	paths = {
-		scripts: './src/scripts/**/*.js',
-		styles: './src/styles/**/*.sass'
+		scripts: [
+			'./lib/tests.js',
+			'./src/bookmarklet/scripts/htmlLint.addPanel.js',
+			'./src/bookmarklet/scripts/htmlLint.close.js',
+			'./src/bookmarklet/scripts/htmlLint.closeAction.js',
+			'./src/bookmarklet/scripts/htmlLint.editFlash.js',
+			'./src/bookmarklet/scripts/htmlLint.handleErrors.js',
+			'./src/bookmarklet/scripts/htmlLint.init.js',
+			'./src/bookmarklet/scripts/htmlLint.panel.js',
+			'./src/bookmarklet/scripts/htmlLint.preInit.js',
+			'./src/bookmarklet/scripts/htmlLint.tabAction.js',
+			'./src/bookmarklet/scripts/htmlLint.tabSetup.js',
+			'./src/bookmarklet/scripts/htmlLint.utility.js'
+		],
+		styles: './src/bookmarklet/styles/**/*.sass'
 	};
 
 gulp.task('default', ['build-scripts', 'build-styles']);
@@ -28,6 +42,7 @@ gulp.task('clean-scripts', function () {
 gulp.task('build-scripts', ['clean-scripts'], function () {
 	gulp
 		.src(paths.scripts)
+		.pipe(babel())
 		.pipe(concat('htmlLint.js'))
 		.pipe(gulp.dest('./dist'))
 		.pipe(notify('Compiled scripts: [<%= file.relative %>]'))

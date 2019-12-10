@@ -41,12 +41,6 @@
 			errors += 1;
 		}
 
-		// keywords
-		if ($keywords.length < 1) {
-			output += '<dt>keywords</dt><dd>' + htmlLint.utility.error() + '</dd>';
-			errors += 1;
-		}
-
 		$metaTags.not('meta[property^="og:"], meta[property^="fb:"]').each(function (index, value) {
 			var $value = $(value),
 				contentAttr = $value.attr('content');
@@ -68,6 +62,8 @@
 			if (contentAttr) {
 				if ($value.attr('name') === 'msapplication-TileImage') {
 					output += '<img src="' + contentAttr + '" style="background-color:' + $metaTags.filter($('meta[name="msapplication-TileColor"]')).attr('content') + '" alt="msapplication-TileImage">';
+				if ($value.attr('name') === 'twitter:image') {
+					output += '<img src="' + contentAttr + '" alt="' + contentAttr + '" />';
 				} else if (
 					contentAttr.indexOf('http') === 0 ||
 					contentAttr.indexOf('.txt') > 0
@@ -108,24 +104,30 @@
 	};
 
 	htmlLint.panel.openGraph = function () {
-		var errors = 0,
-			$head = $('head'),
-			$metaOG = $head.find('meta[property^="og:"]'),
-			$metaFB = $head.find('meta[property^="fb:"]'),
-			output = '<dl>';
+		var errors = 0;
+		var $head = $('head');
+		var $metaOG = $head.find('meta[property^="og:"]');
+		var $metaFB = $head.find('meta[property^="fb:"]');
+		var output = '<dl>';
 
 		if ($metaOG.length !== 0 || $metaFB.length !== 0) {
 			// OG
 			if ($metaOG.length !== 0) {
 				$metaOG.each(function () {
-					var $property = $(this).attr('property'),
-						$content = $(this).attr('content');
+					var $property = $(this).attr('property');
+					var $content = $(this).attr('content');
+
+					var isImageProperty = $property === 'og:image' || $property === 'og:image:secure_url';
+
+					var hasImage = $content.indexOf('.gif') !== -1 ||
+						$content.indexOf('.jpg') !== -1 ||
+						$content.indexOf('.png') !== -1;
 
 					output += '<dt>' + $property + '</dt>';
 
 					if ($content) {
-						if ($property === 'og:image') {
-							if ($content.indexOf('.gif') !== -1 || $content.indexOf('.jpg') !== -1 || $content.indexOf('.png') !== -1) {
+						if (isImageProperty) {
+							if (hasImage) {
 								output += '<dd><img src="' + $content + '" alt="' + $content + '" /></dd>';
 							} else {
 								output += '<dd>' + htmlLint.utility.error() + ' = ' + $content + '</dd>';
@@ -248,6 +250,12 @@
 			output += '<dt>Google Analytics</dt><dd>-</dd>';
 		}
 
+		/* ---- Hotjar ---- */
+		// https://docs.hotjar.com/docs/hotjar-tracking-code
+		if (window.hj) {
+			output += '<dt>Hotjar</dt><dd>-</dd>';
+		}
+
 		/* ---- jQuery ---- */
 		if (!(htmlLint.utility.jQueryAdded)) {
 			output += '<dt>jQuery</dt><dd>' + $.fn.jquery;
@@ -309,6 +317,11 @@
 		/* ---- New Relic ---- */
 		if (window.NREUM) {
 			output += '<dt>New Relic</dt><dd>-</dd>';
+		}
+
+		/* ---- Optimizely ---- */
+		if (window.optly) {
+			output += '<dt>Optimizely</dt><dd>-</dd>';
 		}
 
 		/* ---- Prototype ---- */
@@ -392,6 +405,6 @@
 	};
 
 	htmlLint.panel.tests = function () {
-		htmlLint.handleErrors(htmlLint.test);
+		htmlLint.handleErrors(htmlLint.tests);
 	};
 }(window.htmlLint = window.htmlLint || {}));

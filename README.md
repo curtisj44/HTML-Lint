@@ -7,11 +7,9 @@ HTML-Lint is a tool designed to supplement HTML validation by identify coding pr
 ### Option 1: Bookmarklet
 
 1. Copy the code below:
-
-  ```js
-  javascript: (function(){'use strict';var script = document.createElement('script');script.src = 'https://curtisj44.github.io/HTML-Lint/dist/htmlLint.min.js';script.id = 'html-lint-js';document.body.appendChild(script);}());
-  ```
-
+   ```js
+   javascript: (function(){'use strict';var script = document.createElement('script');script.src = 'https://curtisj44.github.io/HTML-Lint/dist/htmlLint.min.js';script.id = 'html-lint-js';document.body.appendChild(script);}());
+   ```
 1. Create a new bookmark.
 1. Set the name to “HTML-Lint” and paste the above as the URL.
 
@@ -58,12 +56,15 @@ html-lint http://www.google.com foo
 - `gulp` → compiles Sass to CSS, concatenates JS, minifies CSS and JS, and watches
 - `gulp watch` → runs default `gulp` task and then watches for changes
 
+### Testing the CLI locally
+
+1. Run `node html-lint.js <url>`
+
 <!--
 ### Publishing
 
 Poorly hidden notes to myself:
 
 1. Run `npm version [major|minor|patch]` to bump the version and tag the release
-1. Merge `master` into `gh-pages` to update the bookmarklet
 1. Run `npm publish` to push the latest to NPM
 -->
