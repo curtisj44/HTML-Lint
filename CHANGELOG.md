@@ -24,6 +24,7 @@ Guidelines:
 ### Added
 
 - This changelog
+- Check for empty `srcset` attributes
 
 ## [2.4.2] - 2019-12-05
 
