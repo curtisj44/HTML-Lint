@@ -25,7 +25,7 @@ Guidelines:
 
 - This changelog
 - Check for empty `srcset` attributes
-- Check for missing `title` attributes on `iframe`
+- Check for missing `title` attribute on `iframe`
 
 ## [2.4.2] - 2019-12-05
 
