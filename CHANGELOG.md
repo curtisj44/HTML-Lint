@@ -30,6 +30,11 @@ Guidelines:
 - Check to ensure `aria-hidden` attributes equals "true", when present
 - Check for legacy `allowfullscreen` attributes (and the vendor variations `mozallowfullscreen` and `webkitallowfullscreen`)
 - Check for legacy `allowpaymentrequest` attributes
+- Checks for obsolete `img` and `iframe` attributes:
+   - `allowtransparency`
+   - `hspace`
+   - `scrolling`
+   - `vspace`
 
 ## [2.4.2] - 2019-12-05
 
