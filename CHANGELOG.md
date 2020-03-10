@@ -28,7 +28,8 @@ Guidelines:
 - Check for missing `title` attribute on `iframe`
 - Check for empty `src` attributes (on all elements, not only `img`)
 - Check to ensure `aria-hidden` attributes equals "true", when present
-- Check for legacy `allowfullscreen` and `allowpaymentrequest` attributes
+- Check for legacy `allowfullscreen` attributes (and the vendor variations `mozallowfullscreen` and `webkitallowfullscreen`)
+- Check for legacy `allowpaymentrequest` attributes
 
 ## [2.4.2] - 2019-12-05
 
