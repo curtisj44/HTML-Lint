@@ -35,6 +35,7 @@ Guidelines:
    - `hspace`
    - `scrolling`
    - `vspace`
+- Check for `<desc>Created with Sketch.</desc>` found in non-optimized SVGs exported from Sketch
 
 ## [2.4.2] - 2019-12-05
 
